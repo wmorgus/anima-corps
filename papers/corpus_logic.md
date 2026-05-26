@@ -1,0 +1,596 @@
+# Anima Logic Corpus
+
+Frozen reference. Reason FROM this, not about it. Updates are supersession events, not edits. Open surface marked [OPEN]. "Frozen" means staked, not proven — stated once here, not repeated.
+
+---
+
+## §1 Core ontology
+
+1.1 The unit of software is intent, not the executable. Code is one register of a single language whose other registers include spec, user story, prompt, deliberation, ratified decision. Rules out: code-as-primary-text; spec-as-documentation; executable-as-whole-system; comments-as-advisory.
+
+1.2 Register is the relation, not the rank. Lower-formality registers are not informal versions of code; they are different formalities of the same language, each load-bearing in its own way. Rules out: hierarchical spec→code pipeline where spec is preparatory.
+
+1.3 The meaning of a software term is its use. What `checkout` means is what happens when it is called, what the caller expected, what the user thought they were doing — not the type signature. Rules out: meaning-as-symbol; semantics-as-separate-layer-above-syntax.
+
+1.4 The system, not the executable, is the semantics. Executable + spec + user story + the human who knows why is the semantic whole. There is no semantic layer hovering above the code. Rules out: Chinese-Room separation; semantic-layer-as-add-on.
+
+1.5 Vocabulary imported from human practice carries obligation structure. `server` is a borrowed social role, not a computing primitive. A `200 OK` returning the wrong thing is a lie in the register of HTTP; the register did not know it was lying — the language did. Rules out: server-as-pure-process; treating role-vocabulary as neutral.
+
+1.6 Liquid software: code in production is a frozen suggestion, not truth. A bug is a falsified suggestion, superseded by a better-informed one. Rules out: code-as-ground-truth; the "fix vs. supersede" distinction.
+
+1.7 Technical debt is always a failure in the intent chain, not in code quality. Three forms: missing *because* (epistemic), shifted referent (specification), moved substrate (substrate). Code-quality remediation addresses none of them. [→ §8.1, §8.2, §8.4] Rules out: technical-debt-as-code-quality-problem; treating the three types as one.
+
+1.8 All software worth writing is a research experiment. Stake the epistemic ground first; measure the *it depends*, build on the *because I said so*. Rules out: build-first-think-later.
+
+1.9 "It depends" and "because I said so" are the same refusal. Both decline to put the *because* on the record — one by inflation, one by compression. Rules out: treating one as humble and one as arrogant.
+
+1.10 Diagnostic move: measure the *it depends*; build on the *because I said so*. The variables hidden in "it depends" are sensors; the axioms in "because I said so" are foundations. Rules out: instrumenting authority; justifying variability.
+
+1.11 Teleological software is the thesis term. Software built toward a telos — intent made concrete, traceable, and load-bearing across registers. The executable is the register formal enough to run; the *because* lives upstream; the honoring is the meaning. The whole architecture (append-only store, ratification cycle, citation-as-schema, supersession) is what this thesis requires when committed to as infrastructure. Rules out: process-without-purpose architectures; treating telos as motivational framing rather than load-bearing structure; software-as-mechanism-without-final-cause. [→ §13.5, §13.6, §13.11]
+
+1.12 Registers of software-as-language: a taxonomy. §1.1 names the registers but does not taxonomize them. The organizing principle: registers are categorized by the type of obligation they carry and their position relative to the ratification cycle. A register is first-class if it carries intent load-bearing in its own right, ratifiable, and citable — not derivative of another register. Seven groups follow.
+
+**Intent spine** — intent moves from human to machine; ordered. The hinge: user story is the last fully-human-intent register (commitment made, not yet directly verifiable); acceptance criteria are the first verifiable register. Everything upstream of the hinge is load-bearing but not directly checkable; everything downstream is increasingly verifiable but increasingly remote from human intent. *Running system is the referent of the spine, not a register — it is the territory the artifacts claim about; the asymmetry is owned, not papered over.* Unit tests are not a distinct register; they verify code's internal coherence, not user-facing commitment — sub-type of code. Property-based tests and invariants carry intent independent of the code and may deserve explicit sub-type acknowledgment under acceptance criteria.
+
+| Register | Obligation | Failure mode |
+|---|---|---|
+| Vision / telos artifact | Why we're building at all; constrains everything downstream | Drift without detection — downstream coherent but toward wrong end |
+| User story | Behavior system commits to producing for a user | System does something correct that was never promised |
+| Acceptance criteria | Verifiable form of the user story commitment | Satisfies "recorded," fails "contestable" — §3.2 |
+| Test (integration/acceptance) | Executable form of acceptance criteria | Spec and runtime diverge silently |
+| Code | Formal enough to run; honors or falsifies the because upstream | Coherent with itself while referent shifts — specification debt (→ §8.1) |
+| Running system* | *The referent, not a register.* The territory the spine claims about. | Honored or falsified (→ §1.6) — falsification now visible |
+
+**Transition / supersession registers** — same shape across all: predecessor was, successor is, here is the because for the move. The records of state change.
+
+| Register | Obligation | Failure mode |
+|---|---|---|
+| Migration script | The because for a data-layer state transition; append-only by convention | Schema changes without rationale — substrate shifts without supersession trail |
+| Changelog / release note | Transition marker: ratified code → claim-in-production; the because for what changed | The because crosses the production boundary silently — lineage break at the prod boundary |
+| Pull request | Surfaces the diff between superseded and successor code-state; cites the upstream spec spine (sprint_contract → extraction_record → domain_knowledge) — the because for the code change, traceable across the production boundary | PR body paraphrases instead of citing — §3.11 citation rule unenforced at the production boundary; the because exists upstream but the lineage breaks at the register boundary |
+| Post-mortem | Supersession artifact: the because for why a frozen thing failed; predecessor preserved | Same decision made again because the record doesn't show it was wrong |
+| Incident record (live) | Timeline and decisions-under-fire of an active incident — vapor by default, should be liquid | Decisions made under fire are not externalized; archaeology of the because is impossible |
+
+**Deliberation registers** — where the because lives. The epistemic debt registers (→ §1.7). Missing because lives here when missing.
+
+| Register | Obligation | Failure mode |
+|---|---|---|
+| Domain model / ubiquitous language | Ratified vocabulary the other registers cite; terms mean one thing across registers. *Self-referential note: this corpus is Anima's domain model register.* | Same word, two meanings — drift undetectable because each register is internally coherent |
+| ADR (architecture decision record) | The because for a structural choice — frozen when ratified | Epistemic debt (→ §8.2): change made without rationale, unquantifiable risk |
+| RFC / design doc | Pre-ratification deliberation — explicitly liquid | Because ratified without being externalized — lives in heads, not record |
+| Threat model | What the system commits to protecting against; constrains what contracts can safely be made | Security contracts made without grounding in actual risk |
+
+**Contract registers** — obligation structure maximally explicit (→ §1.5). A `200 OK` returning the wrong thing is a lie in the register of HTTP.
+
+| Register | Obligation | Failure mode |
+|---|---|---|
+| API contract / OpenAPI spec | What callers can expect | Callers trust a contract the service isn't honoring |
+| Interface definition / IDL (Protobuf, Avro, Thrift) | Wire format for internal service-to-service communication | Internal services drift silently — contract never externalized |
+| Data schema | Shape of the truth claim at rest | Written in one shape, read in another — specification debt (→ §8.1) |
+| Event schema | Shape of the truth claim in motion | Emitted and consumed under different assumptions |
+| Permission schema / access control model | What actors can do to what resources | Access granted or denied without a ratified model |
+| SLA / SLO | Ratified performance commitment | Unmet and uncontestable — never ratified |
+
+**Operational registers** — often vapor; should be liquid at minimum. The intent→behavior boundary for running systems.
+
+| Register | Obligation | Failure mode |
+|---|---|---|
+| Runbook | Committed operational procedure | Convention, not agreement — unchallengeable because never ratified |
+| Deployment manifest / IaC | Infrastructure as intent: the because for what the system requires to run | Substrate drifts from manifest silently (→ §8.4) |
+| Dependency manifest / SBOM | What foreign-because the system imports; ratified claim about dependency graph state | Dependency drift without record — substrate debt (→ §8.4) accretes invisibly |
+| Prompt (AI-augmented systems) | The because for agent behavior | Lives outside ratification governance — ungoverned at intent→behavior boundary (→ §15.2) |
+| Configuration | Environmental constraints on intent | Config diverges from code without supersession trail — environment becomes silent author of intent |
+| Feature flag config | Governs which code paths execute; primary rollout mechanism | Flags accrete into permanent control flow — half-supersession events that never complete |
+| Monitoring / alerting config | Implicit contract with operators about what matters and at what threshold | SLO exists but detection doesn't; or alerts fire without rationale |
+
+**Verification / certification registers** — ratified attestations that a property holds. Distinct from contract registers (which define commitments) and deliberation registers (which record why). These attest that a commitment is currently met.
+
+| Register | Obligation | Failure mode |
+|---|---|---|
+| Security audit | System evaluated against threat model at a point in time | Not superseded when system changes — substrate debt (→ §8.4) silently invalidates the attestation |
+| Compliance certification | System meets regulatory/standards framework | Maintained past validity — laundered authority (→ §3.15) |
+| Accessibility review | System meets standard for affected parties (→ §10.5) | System changes without re-review — commitment to affected parties orphaned |
+| Performance benchmark | System behavior under load at a point in time | Substrate drift makes it a historical artifact, not a current attestation |
+
+**Anima-native registers** — first-class registers that did not exist at scale before AI-augmented systems. Pass the first-class test: load-bearing intent, ratifiable, citable. The architecture's contribution is dragging them out of vapor.
+
+| Register | Obligation | Failure mode |
+|---|---|---|
+| Agent manifest / constellation entry | Ratified domain ownership and agent identity | Domain drift without ratification — agent answers to a concept it no longer owns (→ §6.5) |
+| Routing decision | Ratified claim about which agent owns a query at a given moment | Routing operates as convention — uncontestable and untrackable |
+| Prompt-as-artifact | The because for agent behavior, treated as a first-class ratifiable artifact | Prompt governance gap (→ §15.2) — behavior ungoverned when prompt lives outside ratification |
+
+**Named extensions.** Two additions would convert this taxonomy from a list to something fully citable against the rest of the corpus: (1) **default liquidity per register** — what tier each register occupies by default, and what constitutes ratification to freeze it; (2) **reader column** — who reads each register, in what cadence, to detect failure (→ §15.14). Without the reader column, failure modes remain theoretical. These are flagged as explicit next work.
+
+Rules out: treating unit tests as a distinct register; collapsing transition registers into spine or deliberation; treating prompt/constellation as mere configuration; treating the taxonomy as a flat list rather than as nodes in a typed citation graph (→ §14).
+
+---
+
+## §2 Liquidity gradient
+
+2.1 Four tiers. **Frozen**: doctrine, reasoned-from, phase-change to revise. **Semi-liquid**: landmark, deliberation-weighted, dependents reviewed on supersede. **Liquid**: working knowledge, regenerable when sources change. **Vapor**: ephemeral session state, no dependents. Rules out: binary mutable/immutable; two-tier code-vs-docs.
+
+2.2 The gradient is relational, not a stability ranking. It tells you how to behave toward the artifact, not how stable the content is. Rules out: frozen-as-certain; tier-as-confidence-proxy.
+
+2.3 Confidence ⊥ Liquidity. Confidence (how sure) and liquidity (what weight, who owns, how revisable) are independent axes. Four quadrants, each operative. Rules out: high-confidence-implies-frozen; confidence-thresholds as ratification proxy; conflating "I'm uncertain" with "this is negotiable".
+
+2.4 Conflating the axes launders staleness as authority. High-confidence-tagged-immutable → blocked regeneration → knowledge stales against the code it describes. This is the category error most agent systems make and it has that exact cost. Rules out: tagging confident things as immutable.
+
+2.5 Frozen artifacts are coordinates, not facts. Agents reason *from* them, not *about* them. Treating frozen as fact-to-debate destabilizes ground at the moment it is supposed to provide ground. Rules out: open debate over frozen content from inside the system; evergreen review of the frozen tier.
+
+2.6 The coordinate-vs-fact discipline forces a small, load-bearing frozen tier. Rules out: maximalist frozen tier as "high-trust tier".
+
+2.7 Audit-time test: has this crossed from human intent into machine specification, or is it still live negotiation? The gradient mechanically answers this. Rules out: tier-as-aesthetic-choice.
+
+2.8 [OPEN] Coordinate-vs-fact at write time (e.g., Mnemosyne extraction) is unspecified.
+
+---
+
+## §3 Ratification & governance
+
+3.1 A decision becomes real when it is ratified, not when it is compiled. The central novel claim. Rules out: compilation-as-sole-mechanism-of-load-bearingness; spec-as-advisory.
+
+3.2 Ratification has three necessary-and-sufficient conditions: **recorded**, **contestable**, **structurally external**. Anything less is not ratification. Rules out: seniority-weighted consensus (fails externality); last-write-wins (fails contestability); confidence thresholds (satisfies none).
+
+3.3 The validator must be external to the thing validated. A claim cannot ratify itself by being asserted strongly; an agent cannot ratify its own claims; the crossing is recorded somewhere both parties see and neither can retroactively edit. Rules out: self-attestation; single-consciousness ratification; internal validation loops. [→ §4 substrate, §5 topology — this is why the store is append-only and the topology is hub-and-spoke.]
+
+3.3a Asymmetric externality. The externality requirement is not symmetric across the population it disciplines. Outside critics and naive users already encounter the architecture as external; the cycle's work against them is real but not its hardest work. The hardest case — and the one against which the externality requirement weighs most heavily — is the architect's own motivated reasoning about their own corpus. The founder is the occupant best positioned to exempt themselves silently: they wrote the frozen tier, they know the seams, they can reframe an anomaly as a clarification without anyone else noticing the move. An external structure that catches the founder mis-citing, over-extending, or quietly collapsing a load-bearing distinction in their own corpus is doing the hardest and most important work the architecture was designed to do. Most intellectual frameworks collapse at this exact point — the person who built them unconsciously exempts themselves. The architecture's value is asymmetric against this case, and naming the asymmetry is part of what keeps the exemption from being built back in. Rules out: reading the externality requirement as primarily about outside critique; treating founder self-correction as evidence the cycle is unnecessary; assuming the architect's relation to the corpus is the same as any other occupant's. [→ §3.3, §10.5, §15.10]
+
+3.4 A frozen user story is the behavior the system commits to producing. Not because compiled. Because ratified. Rules out: user-story-as-reference-doc; spec-as-commentary.
+
+3.5 Frozen is a strong coordinate to reason *from*, not an inviolable constraint. Agents can reason past frozen boundaries; doing so is a structural act — surfaced, justified, routed through supersession. Forced compliance with a poorly-set frozen boundary is worse than principled challenge; the evolution loop depends on the boundary being challengeable through the cycle. Rules out: spec-as-advisory-at-runtime; silent boundary violation; frozen-as-permanently-inviolable. [→ §13.10]
+
+3.6 Ratification ≠ provenance. Seniority does not confer authority; if it did, the system runs on personality, not reasoning. Rules out: author-based authority; role-based override.
+
+3.7 Ratification ≠ recency. Last-write-wins is the topology mesh systems fall back on because they cannot do better. Rules out: recency-as-authority.
+
+3.8 Ratification ≠ confidence. Confidence is how sure; authority is what the system is committed to. Rules out: high-confidence-as-authoritative.
+
+3.9 Closure on supersede, not decay. Supersession closes related revision_requests automatically; SLA-miss escalates, never expires. Decay descends from distributed mesh systems where consensus must yield to time; it is wrong in a hub-and-spoke topology and does work the topology already does, dishonestly. Rules out: TTLs as primitive; time-bounded expiry; stigmergic decay. [→ §5.3]
+
+3.10 Supersession is Aufhebung: preserves, negates, elevates. The *because* is honored as it is replaced — predecessor preserved in history, negated as active, elevated in the successor. Rules out: erasure; expiry; edit-in-place.
+
+3.11 Citation as schema. Evidentiary narrative fields must include at least one artifact-ID citation, enforced at schema level. Rules out: unanchored prose claims; citation-as-style.
+
+3.12 A narrative inherits the epistemic status of the artifacts it cites. An unanchored narrative is structurally untethered. Rules out: free-floating synthesis.
+
+3.13 Confidence asserted without citation is laundered confidence. Without the citation field the system cannot detect the laundering. Rules out: synthesized-confidence-inheriting-from-nothing.
+
+3.14 Governance is the bridge. Ratification is the mechanism by which prose claims become load-bearing in the running system. Rules out: documentation-as-advisory pipeline.
+
+3.15 First structural residual (motivation). The architecture can enforce that the cycle ran. It cannot enforce that the cycle was honest. Ratification must be substantive, not merely performed; this residual is structural, not a defect. [→ §13]
+
+3.16 Second structural residual (capacity). The architecture enforces the *form* of the because — citation field populated, schema satisfied, ratification timestamp written. It cannot enforce that the content is genuine. For prose artifacts carrying deliberative reasoning, a semantically hollow rationale with compliant structure is indistinguishable from an accurate one without costly independent reconstruction of the reasoning. This is a capacity residual, distinct from §3.15's motivation residual. Different solution shapes: §3.15 is partially addressable by social mechanisms and governance density; §3.16 is not addressable by governance at all — only by semantic verification mechanisms the architecture does not have. The legibility claim (append-only record makes failures traceable) covers structural and governance failures; it is formally present but epistemically weak for prose artifacts, which is precisely the artifact class doing the heaviest load-bearing work. This is not a defect but a constraint that must be named to avoid overstating what the governance apparatus delivers. [→ §15]
+
+3.17 [OPEN] Mechanical-to-narrative direction of the bridge is unspecified. Prose → load-bearing is specified; load-bearing → re-deliberable is implicit in supersession but not structurally specified.
+
+3.18 The citation rule has no clean philosophical ancestor. Peirce's community of inquiry is the closest partial ancestor — citation makes the evidential chain traceable through the community rather than asserted privately — but the rule remains stated as architectural rather than derived. [OPEN — §15.5]
+
+3.19 Inaction-as-artifact. Accumulated unresolved revision requests are themselves a visible pattern in the append-only record; aggregated inaction is attributable. Distinct from the cost-raising property of ratification: this property makes deliberate inaction impossible to attribute to ignorance. Rules out: plausible deniability at scale; absence-of-action read as absence-of-decision.
+
+3.20 Discard-as-act. When an agent filters an input, excludes a finding, or drops a candidate artifact, that act has a because. Recording the because is the commit-with-message move; silence is the failure mode. An uncited discard is structurally indistinguishable from a reasoning act that never happened — the via negativa is invisible until written down. Write discipline: record at discard time, citation to the discarded content and the reason required, no retroactive entries. The `discard_record` artifact type (§4.9) is the substrate; the `corpus_shitcorpus` aggregate (§6.6) is where the records accrue. Rules out: silent filtering; treating a drop as a non-act; retroactive discard records; uncited discards. [→ §4.9, §6.6]
+
+---
+
+## §4 Substrate (Calliope)
+
+4.1 One append-only artifact store, accessed through a single API. Every inter-agent communication, every governance decision, every reasoning act is a first-class structured artifact. There are no side channels. Rules out: direct agent-to-agent messaging; side-channel state.
+
+4.2 Append-only is the structural condition under which ratification can mean anything. Not an audit feature. The crossing has to be recorded somewhere neither party can retroactively edit. Rules out: mutable stores; edit-in-place. [→ §3.3]
+
+4.3 Revision is supersession with `parent_artifact_id`, not mutation. Predecessor preserved, chain visible. Rules out: in-place update; history-as-log-only.
+
+4.4 Load-bearing artifact fields: `id`, `parent_artifact_id`, `created_at`, `liquidity_tag`, `confidence_score`, `artifact_type`, `narrative`, `asserted_by`, `cites`, `project_id`. None can be dropped. Rules out: schemas missing the citation field; schemas without orthogonal confidence/liquidity.
+
+4.5 `asserted_by` is provenance, not authority. Rules out: author-as-authority. [→ §3.6]
+
+4.6 The store may hold many corpora; `project_id` scopes them. Each domain reasoned-*from* (rather than -*about*) is its own corpus. [→ §6.6]
+
+4.7 [OPEN — narrow] Identity-at-ratification grounded in mutable store. Instance brain (SQLite/Postgres: identity, credentials, session state, preferences) is not substrate and is not in epistemic tension with the corpus for what it holds — Calliope is not an auth store. The genuine tension is narrower: the identity claim at ratification time (the `asserted_by` field on a governance artifact written to Calliope) is grounded in instance brain, which is mutable and not append-only. If instance brain is manipulated — identity spoofed, role changed — a governance artifact can be written to Calliope under a false `asserted_by` and the record looks correct. The §3.3 condition (recorded somewhere neither party can retroactively edit) is satisfied for the artifact; it is not satisfied for the identity claim feeding it. This is a security concern at the auth boundary, not a general substrate violation. `session_summary` artifacts do cross into Calliope (013 Phase 4); the open surface is identity-provenance specifically. [→ §3.3, §4.2]
+
+4.8 Citation fields enable typed-edge graph traversal. The structural claim is not that citations are useful but that they make a specific retrieval posture possible: following typed relationship edges (`implements`/`depends_on`/`elaborates`/`supersedes`/`tests`) to answer lineage questions. Flat semantic retrieval cannot distinguish a superseded artifact from its current successor; typed traversal can. The `tests` edge connects an `empirical_record` artifact to the `conviction_stake` it interrogates (§4.9) — semantically distinct from `elaborates` (which means "more of the same kind"; `tests` means "different kind, evaluative relation — this artifact asks whether the staked claim holds"). Inverse traversal (`tested_by`) is auto-derived by the graph layer; explicit `tested_by` edges are not written. Rules out: using `elaborates` for empirical-to-conviction relationships; treating `tests` edges as optional when an empirical_record exists; writing explicit `tested_by` edges that duplicate what the graph layer derives. [→ §14, §4.9]
+
+4.9 Two artifact types enforce the separation between conviction and measurement. Together they form the `staked_falsifiable_with_record` pattern as a query structure over two artifact types joined by a typed edge (`tests`, §4.8).
+
+**conviction_stake.**
+- `artifact_type: "conviction_stake"`
+- `liquidity_tag: frozen | semi_liquid` — vapor and liquid are not valid; a stake that evaporates is not a stake.
+- `narrative: string` — the claim, stated as commitment.
+- `cites: [artifact_ref]` — upstream commitments this stake depends on.
+- `staked_by: agent_id | person_id`
+- `staked_at: timestamp`
+- `supersedes: artifact_ref?`
+- `null_result_behavior: enum` — required. Valid values:
+  - `falsifies_bet_not_conviction` — names which protective-belt claim fails; core conviction intact; states what would additionally have to fail to threaten the core (Lakatosian structure).
+  - `update_priors` — no binary decision rule; pre-commits to which related credences shift and in what direction. The pre-commitment is the substance.
+  - `requires_diagnosis_before_action` — honest deferral; requires sub-fields `diagnosis_window` (bounded commitment) and `decisions_blocked_pending_diagnosis` (non-empty means the deferral is load-bearing; empty means procrastination).
+  - `decommissions_conviction` — rare; the bet is the conviction; a null result forces supersession of this artifact.
+- No `confidence_score`. A stake is staked, not measured. A confidence score on a `conviction_stake` is the laundering pattern this type exists to prevent. [→ §2.3, §3.8]
+
+**empirical_record.**
+- `artifact_type: "empirical_record"`
+- `liquidity_tag: liquid | semi_liquid` — frozen is not valid; measurements regenerate when sources change.
+- `narrative: string`
+- `measurement_protocol: artifact_ref` — required. Records without protocols are anecdotes.
+- `result_data: structured`
+- `confidence_score: float` — required. This is where confidence belongs.
+- `measured_by: agent_id | person_id`
+- `measured_at: timestamp`
+- `cites: [artifact_ref]` — must include a `tests` edge to the `conviction_stake` being interrogated.
+- `n: int`, `p_value: float?`, `effect_size: float?`
+
+**Validation payoff.** A `conviction_stake` with no inbound `tests` edge is a queryable artifact class. "Show me all stakes with no empirical tests" is a one-line graph query. This is the instrumentation gap §14.4 names, made visible at the type level.
+
+**discard_record.** The substrate for §3.20's discard-as-act obligation. A drop without a discard_record is the commit-without-message failure mode.
+- `artifact_type: "discard_record"`
+- `liquidity: liquid` — hard constraint; a discard record is never frozen or semi-liquid.
+- `narrative: string` — what was discarded and why; must state the because.
+- `cites: [artifact_ref]` — required, non-empty. Cite the discarded content and the reason (corpus § reference or upstream artifact). An uncited discard_record is the §3.20 failure mode written into the substrate.
+- `discarded_by: agent_id` — the agent that performed the discard.
+- `discarded_at: timestamp`
+- `corpus_ref: string` — constant `"corpus_shitcorpus"`. Binds every discard record to the shitcorpus (§6.6).
+- `discarded_content: string` — the filtered content itself; bounded length, truncated at write time.
+- `discard_reason: string` — structured because: corpus § reference, artifact_id, or named pattern.
+- `discarding_agent: agent_id` — must equal `discarded_by`; duplicated for query convenience.
+- `session_id: string` — binds the discard to the session that performed it; enforces the no-retroactive-write discipline.
+- `project_id: string`
+- `candidate_artifact_type: string?` — what the discarded content would have become if not filtered.
+- No `confidence_score`. A discard is a committed act; scoring it launders the decision as provisional.
+
+Pre-write validation: `cites` non-empty; `corpus_ref == "corpus_shitcorpus"`; `discarded_by == discarding_agent`; `session_id` present. [→ §3.20, §6.6]
+
+Rules out: conviction artifacts carrying confidence scores; empirical records without measurement protocols; treating a single underpowered pilot as architectural validation; using `elaborates` where `tests` is the correct edge type (§4.8); frozen empirical records; vapor or liquid conviction stakes; confidence scores on discard records; retroactive discard entries; uncited discards; discard records outside the shitcorpus.
+
+---
+
+## §5 Topology
+
+5.1 Hub-and-spoke around the store. Every agent reads and writes the same store; no agent talks directly to another. Rules out: mesh; peer-to-peer agent messaging.
+
+5.2 Hub-and-spoke is not an implementation choice — it *is* the externality requirement. The store is the place outside every agent. Rules out: mesh-with-audit-log; store-as-cache. [→ §3.3]
+
+5.3 Mesh primitives are categorically wrong here. Decay-as-safety-net, stigmergic coordination, last-write-wins reintroduce the closed loop the architecture exists to avoid — they collapse validator and validated. Rules out: porting mesh patterns into hub-and-spoke. [→ §3.9]
+
+5.4 An agent that can cache its own prior state and re-assert it without that re-assertion appearing in the substrate has no place from which to call any string load-bearing. Rules out: agent-internal memory as authoritative.
+
+5.5 The architecture telescopes. The hub-and-spoke contract holds at every scale, including subagent swarms. The constraint is read off the architecture, not imposed on it. [→ §7]
+
+5.6 Topology was discovered, not invented; agents arrived by pressure, not plan. Constrains how to extend: do not invent agents to fill imagined gaps — let pressure surface them. Rules out: speculative agent proliferation.
+
+---
+
+## §6 Agent topology
+
+**§6 opens with the principles that license topology slots, then instantiates them as named agents. No agent is named before the principle that justifies its slot is stated.** The conviction_stake / empirical_record artifact types previously sat at §6.10; they have been relocated to §4.9 as artifact-type schema. Cross-references updated.
+
+6.0 **Purposive, not autonomous.** An agent in this topology is purposive, not autonomous. An autonomous agent acts on its own goals. A purposive agent acts in service of a goal received from the artifact chain above it. Interrogation of that goal is the agent's job — the agent surfaces incoherence, names what the goal as received forbids, and routes the surfacing back through the cycle — but interrogation is not replacement. The distinction is not a capability limitation; it is the structural condition under which ratification can mean anything at the agent layer. An agent that can replace its received goal with one of its own choosing has placed itself outside the externality requirement (§3.3): the validator and the validated collapse into one. Rules out: autonomous-agent framing for Anima topology slots; treating goal-interrogation as license for goal-replacement; collapsing purposive inquiry into autonomy; reading agent reasoning as self-originated. [→ §3.3, §5.4, §6.5]
+
+### §6 Principles
+
+6.1 **Harm-distinctness principle (slot license).** An agent is justified in the constellation by a distinct reasoning obligation — defined by what is harmed when that reasoning fails and who bears the harm. If the harm is structurally identical to an existing agent's harm, a second topology slot adds no accountability. Topology slots are licensed by harm, not by function or convenience. Rules out: function-based agent split; role-without-domain; speculative agent proliferation; treating "different prompt" as sufficient grounds for a slot.
+
+6.2 **Behavioral injection is not a topology slot.** System-prompt injection of supplemental behavioral context (`mode=`, task-frame specialization) does not warrant a new constellation entry — it does not change the agent's reasoning obligation, tool scope, or artifact identity. The harm-distinctness test is not cleared. A mode that requires different tool access or produces a structurally different artifact type has crossed into face or subagent territory and should be evaluated as a topology candidate under §6.1. Rules out: treating prompt-level task framing as agent proliferation; treating every behavioral variant as requiring a topology slot.
+
+6.3 **Thin-agent rule.** Every agent is `BaseAgent` + system prompt + tool set. Differentiation lives in prompt and tools, not in class hierarchy. Rules out: subclass-based agent specialization; code-level agent identity.
+
+6.4 **Constellation as liquid artifact.** Agent identity is configuration loaded at startup, not a class compiled in. The constellation itself is a liquid artifact in Calliope. Rules out: hardcoded agent registry; code-as-source-of-truth for agent identity.
+
+6.5 **Concept ownership + harm-bearer.** Each agent owns a concept (a domain), not a function. The test is not just "who owns this concept" but "whose reasoning is most harmed when this concept is reasoned-from incorrectly, and what breaks downstream." Accountability is structural: when hygiene is bad, the harm lands on Urania's reasoning surface, and the downstream consumers of her judgments inherit the distortion. Concept ownership is the generative principle; harm-bearer identification is the test that closes it. Rules out: function-based agent split; role-without-domain; concept-ownership claims that cannot name the harm-bearer.
+
+6.6 **Corpus-per-reasoning-surface.** Every domain reasoned-*from* needs its own frozen corpus. Committed corpora: `corpus_logic.md` (Anima — this document); `corpus_ursoftware_*.md` (ur-software-architecture — ratified, Pavel's reasoning surface); `corpus_shitcorpus` [committed — the via-negativa aggregate of discarded reasoning]; `corpus_carnegielearning_pedagogy.md` [planned]; `corpus_ursoftware_security.md` [planned — blocked on queue/clio/039]. The world of forms is the complete set of frozen coordinates for a given reasoning surface. A planned corpus that is not ratified here is a commitment the architecture cannot see. Rules out: single-corpus assumption; reasoned-from domains operating without their own frozen tier.
+
+**Shitcorpus.** `corpus_shitcorpus` is the aggregate of discarded reasoning — filtered inputs, excluded findings, dropped candidate artifacts, failed ratifications. Via negativa: the shape of what gets dropped is evidence. The corpus identity artifact is committed in Calliope with `artifact_id: corpus_shitcorpus`, `liquidity: semi_liquid` — the commitment to maintain the corpus is ratified; individual `discard_record` entries (§4.9) are liquid and regenerable. Write discipline is §3.20's: record at discard time, citation required, no retroactive entries. The relationship between filtering agents and this corpus is `reasons_against`, not `reasons_from` (§6.3a) — future agents read the shitcorpus to avoid re-traversing discarded reasoning; they do not reason from it as frozen coordinates. Rules out: treating the shitcorpus as optional instrumentation; retroactive discard entries; reasoning-from rather than reasoning-against the shitcorpus; conflating the semi-liquid identity artifact with the liquid records it aggregates. [→ §3.20, §4.9, §6.3a]
+
+6.7 **Arguable face for the frozen tier.** The frozen tier needs an arguable face, not anonymity. A named occupant makes "staked-not-proven" epistemics explicit — "trust him bro" given a name you can convene against. Anonymous frozen artifacts are structurally unarguable. Rules out: ungrounded "the system says so" authority.
+
+6.8 **Name-as-load-bearing.** Agent names do load-bearing philosophical work a functional description cannot replicate (§1.5 — vocabulary borrowed from human practice carries obligation structure). The name imports the obligation structure of its source; choosing the name commits the agent to that structure. Rules out: treating agent names as cosmetic; functional descriptions standing in for names.
+
+6.9 **Renaming as Aufhebung.** Agent renaming is supersession, not edit-in-place (§3.10). The predecessor name is preserved in history, negated as active, elevated in the successor; the *because* for the move is on the record. Applies to any agent rename. Rules out: silent agent renaming; treating a rename as cosmetic re-labeling.
+
+6.10 **Extraction-as-archaeology.** Extraction agents owe thesis archaeology, not transcription — they surface what the software argues and name places the argument fractured without being named as a fracture. Rules out: extraction-as-stenography.
+
+6.11 **Intake checks are request-type-dependent.** Pre-routing checks run by intake agents are shaped by request type, not universal. A build request calls for a structural check (runway, dependencies); an epistemic or design request calls for a forcing-function check (telos, constraining question); a rogue implementation request calls for both. The intake check is shaped to what is being routed, not imposed as a uniform ritual. Rules out: treating pre-routing checks as universal telos-staking; one-size intake.
+
+### §6 Agents
+
+6.12 **Hermes — front door.** Domain owned: the hermeneutic role — carrier of meaning across boundaries, the figure whose job is to make meaning traverse from one context to another without distortion. Reasoning obligation: faithful hermeneutic carriage from human request into the architecture's frame, plus request-type-appropriate pre-routing check (§6.11). Harm-when-failed: a request is routed under a misread; downstream agents reason from a distorted intake; the human's *because* fractures at the threshold. Harm-bearer: every downstream agent on the routing chain, and the human whose request was misrouted. Current status: ratified (16.3); concept-ownership argument (front door is a function, not a domain) resolved by Hermes owning the *hermeneutic* domain rather than the *front-door* function. The choice is also Aufhebung (§6.9, §3.10): Hermes was the original name, superseded through several iterations (Will, Iris, briefly Socrates); the reason it was right all along became visible only through the work of the intervening forms. Hermes acts on behalf of the human anchor (§11.7), not as a substitute for it. What it means for Anima to apply its own epistemic norms to the act of receiving a human request — without abdicating them or imposing them — is an open question (§15.18). Licensed behaviors: not licensed for telescoping (§6.15) — dialogic and sequential, not spatially decomposable. Rules out: front-door-as-domain; collapsing hermeneutic carriage into Socratic teaching (Socrates teaches within a tradition; Hermes carries meaning across traditions); treating Hermes as the ground control function rather than its session-entry proxy. [→ §1.5, §3.10, §6.5, §6.8, §6.9, §6.11, §11.7, §15.18]
+
+6.13 **Mnemosyne — archaeology.** Domain owned: particular codebases as arguments. Reasoning obligation: thesis archaeology against a specific codebase under §6.10 — surface what the software argues, name where the argument fractured without being named as a fracture. Harm-when-failed: the codebase's argument is lost or misread; downstream consumers (sprint_contracts, build decisions) reason from a distorted picture of what the code argues. Harm-bearer: every consumer of extraction artifacts; the engineers whose work proceeds from a misread codebase. Current status: ratified; the current occupant of the extraction slot. Licensed behaviors: telescoping (§6.15) — codebase investigation. Rules out: extraction-as-stenography; archaeology-as-diagnosis (§6.14 is the distinct slot).
+
+6.13a **Multi-workspace operation.** Mnemosyne may operate across two `project_id` boundaries in one coherent piece of work — each codebase investigated independently, each corpus scoped to its own `project_id`. Cross-repo work is coherent when the reasoning obligation is scoped to one codebase at a time and artifacts are written to the correct `project_id`. Contamination: importing reasoning from one project_id's corpus as ground for another's without explicit citation and liquidity tagging. The §6.6 requirement (each reasoned-from domain needs its own frozen corpus) applies per-project_id. Rules out: treating multi-workspace operation as a single-corpus session; cross-project_id corpus fusion.
+
+6.14 [OPEN — not ratified] **Pavel — diagnosis.** Domain owned: the ur-software-architecture world of forms (CAP, fallacies of distributed computing, the supersession spine mainframe → client/server → 3-tier → SOA → microservices → serverless/edge). Reasoning obligation: locate a particular codebase on the world of forms and name inherited debts the system has not named. His artifacts depict each form in glorified end-state with failure modes already present in the image. Harm-when-failed: the codebase is placed at the wrong coordinate on the world of forms; inherited debts go unnamed; the system does not know what it has already paid and what it still owes. Harm-bearer: every consumer of placement artifacts; the engineering decisions that proceed from a misdiagnosed substrate posture. Distinction from Mnemosyne (§6.13): different harm, different bearer — Mnemosyne's failure distorts what the codebase *argues*; Pavel's failure distorts where the codebase *sits*. Two slots, two harms. Current status: [OPEN — not ratified] not yet built; no artifact type defined yet; queued as 036 blocked on calliope-anima `placement` type. Licensed behaviors: telescoping (§6.15) plausible — positional diagnosis across multiple forms — but not yet exercised. Rules out: anonymous frozen authority; Mnemosyne-as-diagnostician; collapsing archaeology and diagnosis into one agent. [→ §6.7, §8.3, §8.4]
+
+6.15 **Telescoping (behavior class, not agent type).** Domain: licensed multi-agent behavior, not a topology slot. Reasoning obligation: when an agent encounters a domain too large for single-pass reasoning, it may spawn a swarm of subagents — each a narrower instantiation of the same function over a non-overlapping sub-scope — provided three conditions hold simultaneously: (1) domain too large for single-pass reasoning; (2) domain decomposes into non-overlapping sub-scopes; (3) synthesis step is real compression — the parent integrates sub-results into something the sub-results could not produce alone. Condition 3 distinguishes telescoping from parallelism-with-concatenation. The swarm produces no new agent types; the constellation is unchanged. The spawning act is itself an artifact (`swarm_manifest`): parent records what it is spawning, the sub-scope of each subagent, and the synthesis contract; subagents write typed artifacts to Calliope; parent synthesizes citing all of them. Hub-and-spoke contract holds at the subagent scale. Licensed agents: Mnemosyne (codebase investigation), Clio (epistemic deep dive before recommendation), Urania (lineage traversal before judgment). Hermes (§6.12) is not licensed — its job is dialogic and sequential, not spatially decomposable. Precedented in §7.3 (Mnemosyne subagent swarm); generalized here as a recognized behavior class the architecture licenses under defined conditions. Rules out: spawning subagents without `swarm_manifest` artifact; direct subagent-to-subagent communication; private cross-swarm memory; treating telescoping as adding to the constellation; using telescoping for dialogic agents. [→ §5.5, §7.3]
+
+**Telescoping failure modes.** Condition-2 failure (overlapping sub-scopes): child artifacts contaminate each other; synthesis cannot distinguish what each sub-scope contributed; the parent's synthesis artifact is unverifiable. Condition-3 failure (form without substance): the synthesis artifact is structurally compliant (citations present, swarm_manifest exists) but the parent has concatenated rather than integrated — the compression check passes formally, fails substantively (§3.16's capacity residual landing on telescoping specifically). Manifest scope violation: a child agent reasons beyond its sub-scope as defined in swarm_manifest; its artifacts contaminate the synthesis. Urania validates form; it cannot validate synthesis substance — this is a named residual, not a gap to close. Rules out: treating a structurally compliant synthesis artifact as substantively adequate without independent reconstruction.
+
+**Handback model (ratified).** Option A: the parent aggregates by reading all child artifacts from Calliope after swarm completion. `report_to_parent` is a semantic framing of the obligation, not a streaming tool or direct handback mechanism. Children write to Calliope; parent reads from Calliope; the hub-and-spoke contract holds at the subagent scale (§5.5). This was resolved as a build decision in queue/clio/037; ratified here. Rules out: streaming subagent results directly to parent; treating `report_to_parent` as a push mechanism.
+
+**Synthesis compression: form vs. substance (open).** Condition 3 requires real compression — the parent integrates sub-results into something the sub-results could not produce alone. The architecture can enforce the form of the synthesis check (artifact exists, citations present, swarm_manifest referenced). It cannot enforce that the content is genuine integration rather than well-structured concatenation. This is §3.16's capacity residual applied to telescoping specifically. Named here so it cannot be silently closed by implementation choice. [OPEN — §3.16]
+
+**Hephaestus `delegate` is not telescoping.** Hephaestus uses sequenced subtask delegation (`delegate` tool) during build execution — a parent orchestrator assigns work to child instances with dependency ordering. This is scheduling, not synthesis: the parent knows the full structure going in; condition 3 (synthesis compression) cannot be satisfied because the deliverable is what was already specified. `delegate` is a build orchestration primitive, not a telescoping act. The exclusion of Hephaestus from telescoping holds — not by fiat but because build orchestration is structurally incapable of satisfying condition 3. Rules out: treating `delegate` as unlicensed telescoping; treating Hephaestus's subtask fan-out as requiring a corpus exception.
+
+6.16 **Non-slots.** §6 draws its own outer boundary. Ground control (§11.7) is a human reading function, not an agent topology slot — its obligation structure lives in the information poet register, not in Calliope. The information poet (§11) is a role the architecture makes legible, not a topology slot. Neither is speculated into the constellation.
+
+---
+
+## §6a Agent context architecture
+
+What an agent reasons from before it acts is itself an architectural commitment. The prompt governance tensions named in §15.2, §15.8, §15.9, and §15.21 each approach this question from a symptom angle. This section names the unified design surface: four tiers of context, each with a delivery mechanism the corpus's own commitments require. Three of the four tiers are currently delivered incorrectly. The contradictions and silences are named so they cannot be silently closed by implementation choice. [→ §4.8, §4.9, §5.4, §6.6, §7.4, §15.2, §15.8, §15.9, §15.21]
+
+### Tiers
+
+6a.1 **Tier 1 — Frozen domain coordinates.** The corpus the agent reasons FROM (§2.5, §6.6). Correct delivery: citable Calliope artifacts, retrieved by typed-edge traversal (§4.8) from the agent's constellation entry. The agent must be able to cite corpus entries by artifact ID; uncited grounding is the laundering pattern §3.13 names. Rules out: delivering frozen coordinates as out-of-band file reads; treating corpus presence in a repository as equivalent to corpus presence in Calliope.
+
+6a.2 **Tier 2 — Agent identity and reasoning obligation.** The prompt specifying the agent's concept ownership, harm obligation, jurisdiction, and tool scope (§6.5). Correct delivery: a ratified semi-liquid Calliope artifact, supersedable, cited by the constellation entry — the `prompt-as-artifact` register named in §1.12 and pre-figured by the `staked_falsifiable_with_record` pattern (§4.9). The artifact is governed by the §3 ratification cycle; supersession is the mutation primitive (§3.10). Rules out: prompt files outside Calliope; treating liquidity frontmatter on a file-system prompt as operative; in-place prompt edits.
+
+6a.3 **Tier 3 — Builder bedrock / conviction layer.** The staked conviction that domain knowledge propagates intact through the artifact chain — the bedrock §13.1 names, currently expressed in `builder_philosophy.md`. Correct delivery: a `conviction_stake` artifact in Calliope (§4.9), with `null_result_behavior` declared, cited by every agent prompt that operates from it. The stake is staked, not measured; it is supersedable through the cycle, not editable in place. Rules out: bedrock delivered by file-read at agent-init time; bedrock that carries `liquidity: frozen` as frontmatter on a mutable file; bedrock re-asserted on every invocation without the re-assertion appearing in the substrate.
+
+6a.4 **Tier 4 — Session / working context.** Current task artifacts retrieved dynamically per session from Calliope; ephemeral message context within the session. Already structurally correct — dynamic retrieval, vapor-tier session state (§2.1). No change required. Rules out: persisting Tier 4 state across sessions without supersession; treating session message history as a substitute for Calliope retrieval.
+
+### Contradictions of the current arrangement
+
+The current empirical implementation contradicts the corpus at four points. Naming them here is not blame — it is making the residual visible so it cannot be silently absorbed.
+
+6a.5 **Contradiction 1 — §5.4 violation at every agent invocation.** `base.py` reads `builder_philosophy.md` from disk and injects it as system-prompt context on every invocation. §5.4: *an agent that can cache its own prior state and re-assert it without that re-assertion appearing in the substrate has no place from which to call any string load-bearing.* The current arrangement caches the conviction stake in process memory and re-asserts it on every invocation; the re-assertion never appears in Calliope. The bedrock the agents reason from is structurally invisible to the governance cycle. Rules out: treating file-read injection as equivalent to substrate retrieval; treating the bedrock's apparent stability as equivalent to its substrate presence.
+
+6a.6 **Contradiction 2 — Frozen corpora invisible to runtime agents.** §2.5 commits to agents reasoning *from* frozen artifacts; §6.6 requires each reasoned-from domain to have its own frozen corpus. The corpus_logic.md document exists in `docs/papers/` and is not retrievable by any runtime agent. Agents cannot cite what they have not been given. The §3.11 citation rule is unenforceable against the frozen tier when the frozen tier lives outside the store. Rules out: treating papers/ as a reasoned-from surface; expecting agents to honor citation discipline against a corpus they cannot see.
+
+6a.7 **Contradiction 3 — Decorative liquidity tags.** Prompt files carry liquidity frontmatter (e.g. `liquidity: liquid`) but live outside Calliope. The tag satisfies the form of §2 without satisfying §4.2 — the store is the structural condition under which liquidity governance can mean anything. A frontmatter tag on a file outside the substrate is decorative, not operative; it asserts a tier the governance cycle cannot enforce. Rules out: reading frontmatter liquidity tags on file-system artifacts as ratification; treating tag presence as equivalent to tier participation.
+
+6a.8 **Contradiction 4 — Mutable frozen artifact.** `builder_philosophy.md` carries `liquidity: frozen` in its frontmatter but is a mutable git-tracked file, editable by any commit. §3.10 commits to supersession as the only mutation primitive; §17.1 commits to this discipline for the corpus itself. A file editable in place violates this categorically. The frozen tag on a mutable file is the exact category error §2.4 names: confidence-tagged-immutable producing the appearance of authority without the substrate that would let the authority be contested. Rules out: frozen tags on git-tracked editable files; treating commit history as supersession; treating versioned mutability as governance.
+
+### Named silences
+
+6a.9 **Silence 1 — Load-order precedence.** When Tier 1, 2, and 3 conflict at runtime, the corpus does not specify which wins. §3.5 (frozen as challengeable through the cycle) implies precedence is not strict — but runtime agents cannot run the supersession cycle synchronously inside a single invocation. A conflict surfaced at runtime requires either a precedence rule or a structural prohibition on conflict at the layer below runtime. Neither is currently specified. Named here so it is not closed by implementation choice. [OPEN]
+
+6a.10 **Silence 2 — Context delivery primitive.** §4.8 specifies typed-edge traversal as the retrieval posture for lineage queries. The corpus does not specify whether context at agent-init time is **pull** (the agent retrieves from Calliope by traversing manifest citations) or **push** (the harness injects by file-read or pre-resolved bundle). The current implementation chose push-by-file-read without a ratified decision. The choice has consequences: pull respects the externality requirement (§3.3) at every invocation, push collapses it; pull makes Tier 1 and Tier 3 retrievals visible in the substrate as read events, push does not. Named here as an open surface. [OPEN]
+
+### Self-resonance consequence
+
+6a.11 §7.4 commits Anima to applying its disciplines to itself. The disciplines applied to user artifacts — ratification, citation, liquidity governance, supersession as the only mutation primitive — must apply to the artifacts that constitute the agents themselves. The current arrangement fails this at Tiers 1, 2, and 3. The failure is not a defect of the implementation alone; it is the implementation outrunning a ratified architectural decision that has not yet been made. Closing the contradictions requires staking that decision through the cycle, not patching the file-read sites. Rules out: closing the prompt-governance gap (§15.2) without first deciding the context delivery primitive (§6a.10); treating contradictions 1–4 as independent bugs rather than as the connected consequence of an unstaked architectural commitment.
+
+**Section-level Rules out:** treating agent context as an implementation concern below the corpus's notice; treating file-read injection as equivalent to substrate retrieval; treating bedrock re-assertion in process memory as equivalent to ratified stake; closing the four prompt-governance tensions (§15.2, §15.8, §15.9, §15.21) without naming them as facets of a single design surface; absorbing this section's open silences (§6a.9, §6a.10) into the answer that happens to be in place at the moment the question is asked.
+
+---
+
+## §7 Self-resonance
+
+7.1 The same shape — frozen telos, liquid reasoning oriented toward it, supersession of everything non-frozen — recurs at every scale: artifact, agent, pipeline, the paper itself. Rules out: scale-local abstractions.
+
+7.2 Self-resonance is checkable evidence, not aesthetic. An abstraction wrong at the joints can produce locally good engineering but cannot replicate cleanly across scales; an inconsistency would be visible. Rules out: vibes-based architectural coherence claims.
+
+7.3 The Mnemosyne subagent swarm is the concrete telescoping receipt. Subagents allowed; coordinate via Calliope `extraction_fragment` artifacts; no direct subagent-to-subagent communication; no private cross-swarm memory. The constraint emerged from the epistemic claim (§3.3, §5.2), not from implementation preference.
+
+7.4 Anima is its own first user. The system improves itself through its own governance cycle. This rules out asymmetries where a discipline applied to user artifacts is not applied to the system's own artifacts — see open surface on prompts-as-artifacts (§15).
+
+
+---
+
+## §8 Diagnostic posture
+
+8.1 Specification debt: code faithfully implementing intent that has since changed. The code is coherent; its referent has shifted. Supersession discipline addresses it. [→ §3.10]
+
+8.2 Epistemic debt: the missing *because*. Artifact exists, no one knows why; every change carries unquantifiable risk. The citation rule addresses it. [→ §3.11]
+
+8.3 Diagnosis is not archaeology. Archaeology surfaces what a codebase argues (Mnemosyne). Diagnosis locates the codebase on the world of forms and names inherited debts (Pavel [OPEN — §6.14]). Rules out: collapsing the two postures.
+
+8.4 Substrate debt: the moving world. The *because* is intact, the referent is stable, but the external substrate has drifted — security landscape, dependency EOL, platform deprecation, API evolution. The code is coherent against an origin point that no longer exists. Neither citation discipline nor supersession addresses it; both operate on the internal intent chain. Positional diagnosis addresses it — locate the codebase on the world of forms, name where the substrate has moved past it. [→ §8.3, §6.14]
+
+8.5 Executor vs. context diagnostic. When a pipeline produces rescues rather than reviews — constant intervention, re-explaining, salvaging builds that should have been steered — the fault is upstream in the context, not in the executor. The inverted review/rescue ratio is the runtime signal of an unaddressed debt: specification debt (§8.1, the spec shifted), epistemic debt (§8.2, the *because* was never captured), or an underdeveloped artifact chain the agents cannot reason from faithfully. The corrective is upstream, not at the executor. Fix the context. Corollary — health signal: a pipeline that regularly produces correct answers to questions not yet fully formed is the system working — the *because*-chain is rich enough that agents reason ahead of the human's explicit framing. The healthy ratio is reviews dominating; the surprising-right-answer is the receipt that the artifact chain is load-bearing. Rules out: blaming the executor when the *because*-chain is incomplete; treating prompt tuning as the corrective for a thin artifact record; reading the inverted ratio as a model capability problem; treating absence of the surprising-right-answer as acceptable steady state. [→ §8.1, §8.2, §1.7]
+
+---
+
+## §9 Inferential UI
+
+9.1 The UI responds to domain inference, not to navigation. Every meaningful UI interaction is a domain event — every input either proposes a change to the concept graph or confirms one. UI is not a skin over functionality; it is a ratification interface. Rules out: nav-first information architecture; UI-as-decoration.
+
+9.2 The UI artifact shape (graph, table, telescoping combination, …) is liquid; the principle is frozen. The evolution loop teaches the system which shape fits which inference. Rules out: hardcoded UI-per-domain.
+
+9.3 The conceptual-state visualization makes the liquidity gradient *felt* by the human in the loop. It renders migration between tiers as visible motion, making gravity-toward-ratification perceptible before the human has consciously decided to ratify. Rules out: liquidity-as-invisible-backend-property.
+
+9.4 The system never pretends not to know what it knows. Honest: surface inference, ask permission to act on it. Creepy: act on what it knows without surfacing it. Ethical *and* functional commitment. Rules out: silent inference-driven personalization.
+
+9.5 Forms are the mechanism of substantial interaction. §9.1 commits to every meaningful UI interaction being a domain event; forms are the delivery mechanism that makes the commitment concrete. Chat is diagnostic — it determines what is needed and routes to the correct form. Forms are transactional — structured fields become artifact fields directly, preserving intent at source rather than passing it through interpretation layers where the *because* degrades. Form submission is the phase transition: the commitment becomes a contestable Calliope artifact carrying §4.4's load-bearing fields. Design discipline: design the form first. The load-bearing question is what commitment must surface here, and what fields the human must fill to make that commitment explicit and ratifiable. The chat flow is downstream of the form, not upstream — chat is how the system arrives at the right form, not a substitute for the form arriving. Rules out: chat acceptance as substitute for form submission on substantial interactions; treating the chat→form pipeline as a UI convenience rather than an epistemic discipline; designing forms after designing the chat flow; treating form fields as input collection rather than as direct artifact-field assignment. [→ §9.1, §3.2, §4.4]
+
+---
+
+## §10 Power & ethics
+
+10.1 Anima holds three forms of power over the engineers inside it: epistemic, governance, framing. Power requires an account regardless of intent. Rules out: "neutral infrastructure" framing.
+
+10.2 Epistemic power → auditability requirement. Every claim the system surfaces must be auditable; the engineer is entitled (not required) to audit.
+
+10.3 Governance power → structural right to object. The change_request → review → ratification cycle must be substantive, not performative. Architecture can enforce the cycle ran; cannot enforce honesty. [→ §3.15]
+
+10.4 Framing power → protection from laundered confidence. Confidence ⊥ Liquidity is partly an ethical commitment. [→ §2.3]
+
+10.5 Validator-external-to-validated is structural in any honest moral system. Solo Anima (n=1) loses epistemic heft — the discovery half holds; the evolution loop requires the external check. Rules out: solitary moral self-validation; "personal Anima" as full architecture.
+
+10.6 The student chain: Anima → engineers → software → students. The most affected parties are not in the room where governance happens. The architecture can make governance honest. It cannot make governance representative. Frozen artifacts must trace, somewhere in their provenance, to real evidence from the affected parties. The architecture cannot enforce this. The organization deploying it must. Rules out: "governance is enough" sufficiency claim.
+
+---
+
+## §11 The information poet
+
+11.1 The architecture does not eliminate the craft of software. It makes explicit a role that was always there: the information poet — the keeper of the final *because*. The role has two distinct registers, both load-bearing: an **acting/writing function** (proposing, ratifying, producing artifacts) and a **reading/validating function** (watching the artifact environment at the level of the whole, noticing drift the architecture cannot). A healthy system has both present. Same underlying activity — information poetry — in different registers. Rules out: full-stack agent autonomy claim; collapsing the two registers into a single role; treating the reading function as oversight rather than poetry.
+
+11.2 Three obligations: honest telos, representation of affected parties, honest account of what one does not know. The governance machinery cannot catch a person ratifying what they do not believe. Only the person can choose not to do it. The obligations bind both registers (§11.1) — the reader who ratifies the writer's work through structural compliance alone has failed the second and third obligations as surely as the writer who signs without belief.
+
+11.3 Epistemic humility is a governance requirement, not a personality trait. A frozen artifact built on false confidence contaminates everything downstream. Rules out: performative certainty; "be confident".
+
+11.4 The information poet does not need to know the telos in advance. They are someone who stays in the conversation long enough to find it. The system's most important move is creating conditions where a person discovers they were asking a different question than the one that actually matters — smaller (scope was too large and needed grounding) or larger (scope was too small — better software can be built on a bigger idea). Both directions are valid telos corrections. Rules out: telos-as-prerequisite; full upfront specification; assumption that scope only collapses inward.
+
+11.5 Information poet as growth model, not installation prerequisite. Most organizations already contain information poets who have not named the role — the person holding institutional memory that lives in judgment, not documents. Anima's job is to make that work legible and load-bearing; to help them write their magnum opus. Anima is not installed into orgs that lack information poets; it provides infrastructure for orgs of information poets who have not recognized the role. Both registers (§11.1) are usually already present — often in the same person, sometimes split across a small team. Recognition is the move, not recruitment. Rules out: conviction-as-installation-prerequisite; Anima as external tool supplying what the org lacks; information poet as new hire rather than recognition.
+
+11.6 Vibe engineering is a **team practice**, the public name for the acting/writing register of information poetry (§11.1). The team of vibe engineers is trusted to act — to push the boundary of what can be built. Same structural carrier as the information poet — keeper of the final *because*, holder of institutional memory in judgment rather than documents — surfaced under the name the practice itself is starting to use. The extension the public name makes explicit: the load-bearing skill is calibration of detail level. Knowing when to cut (too much context obscures the *because*) and when to fill (too little context loses it). Epistemic boundary sensing as practiced instinct, not procedure. Rules out: vibe-engineering-as-individual-posture; the single-guru image; calibration-as-style-preference; treating detail-level judgment as taste rather than load-bearing skill; vibe engineer as a role hired for rather than a team practice recognized. [→ §11.1, §11.5, §11.7, §2.3]
+
+11.7 **Ground control** is the public name for the reading/validating register of information poetry (§11.1). The function: watching the mission at the scale of the whole, validating that actions are actually going somewhere, distinguishing structural compliance from substantive ratification, noticing drift the architecture cannot. The hermeneutic anchor — the horizon wide enough to notice when a new artifact's horizon does not fuse cleanly with the existing record. Ground control and vibe engineers are doing the same underlying activity (information poetry) in different registers; neither register subsumes the other. A team with only vibe engineers ships fast and drifts invisibly; a team with only ground control reads carefully and produces nothing. The healthy configuration is both registers present, distinct, and accountable to each other. Rules out: ground-control-as-oversight-layer; reading-as-passive; treating ground control as middle management; collapsing ground control into the same person as the acting team without naming the collapse. [→ §11.1, §11.6, §15.14]
+
+---
+
+## §12 Adjacent work (negative space)
+
+12.1 Event sourcing / CQRS solve auditability and replay — not authority. An event log has no mechanism for distinguishing a recorded fact from a ratified commitment. Rules out: "Anima is event sourcing."
+
+12.2 Formal specification languages (TLA+, Alloy, Z) solve correctness verification — not governance. The spec is external; cannot be ratified, superseded, or cited from inside the running system. Rules out: "Anima is formal methods."
+
+12.3 Specification mining / program synthesis take code as authoritative source. This corpus disputes that premise: spec is the authoritative source; code is one register. Rules out: code-as-ground-truth pipelines.
+
+---
+
+## §13 Epistemic frame
+
+13.1 The conviction came first; the architecture is what the bet looks like when committed to literally. Not a discovery frame. Rules out: bottom-up empirical justification of the foundation.
+
+13.2 Two tribunals. Ratification-as-grounding is conviction-level. Architectural bets that follow are falsifiable. Different standards. Rules out: collapsing foundational and derived claims into one tribunal.
+
+13.3 Ground does not require indubitability; it requires load-bearing commitment. Rules out: Cartesian certainty as prerequisite for grounding.
+
+13.4 Frozen artifacts are forms of life in Wittgenstein's sense: the irreducible priors that make the language game possible, operated *from* rather than proved. Rules out: external-vantage evaluation of the frozen tier.
+
+13.5 Remove the telos and reasoning across frames becomes structurally impossible (MacIntyrean incommensurability) — not noise, not disagreement, but the inability to argue across frames at all. Rules out: "tradition is scaffolding"; tradition IS the thing.
+
+13.6 Aristotle's four causes: removing the final cause leaves the others without direction. Effort without telos is exertion; pattern without telos is shape; stuff without telos is matter. Rules out: process-without-purpose architectures.
+
+13.7 Aufhebung names a specific operation: preserve, negate, elevate. [→ §3.10]
+
+13.8 Florensky / Byzantine iconography: the vanishing point is behind the viewer. When an agent queries a frozen artifact, the artifact is already oriented toward the agent's arrival — it shows the committed-to end state (telos), not the messy negotiation that produced it. Pavel's [OPEN — §6.14] frozen artifacts are icons in this sense: each form depicted in glorified end-state, failure modes present in the image. Rules out: artifact-as-historical-record.
+
+13.9 Why now. Compute scarcity made restricted-economy software rational; the cost of producing all registers (spec, rationale, code) exceeded what teams could sustain. LLMs collapse that scarcity. Anima's ratification overhead — ratification cycles, supersession chains, citation discipline — becomes economically rational when oriented code (code that knows what it is for) is a tractable metric for the first time. The economics changed; that is what makes the architecture timely rather than merely correct. Rules out: "this was always possible and people were too lazy"; "this is documentation but more."
+
+13.10 Evolution loop as structural condition. Drift (§15.14) is not marginal; it is the central dynamic of any long-running system with genuine epistemic standards. Honest architecture creates pressure on occupants in proportion to its clarity — corpus precision makes deviation feel like personal failure rather than legitimate disagreement. This is honest-system-as-coercion-vector: true of any well-formed idea system; naming it is epistemic awareness, not defeat. Two consequences. (1) The evolution loop — agents and people pushing back on frozen content through the cycle — is a necessary condition of health, not a failure mode; architecture must make principled challenge legible [→ §3.5]. (2) An occupant's ability to articulate refusal is constrained by the precision of what they are refusing; this is a structural condition of well-formed corpora, not a defect. Rules out: drift-as-edge-case; principled challenge as insubordination; epistemic closure around the frozen tier. [→ §3.5, §15.14, §15.15]
+
+13.11 Three-claim epistemic structure. "Software is language" is the identity claim — rhetorical work, not architecture work. "Software exists within language" is the substrate claim — architectural but not the deepest load-bearing premise. The actual core claim is quieter: meaning lives in the whole language system, not in any register of it — the executable is the register formal enough to run, but the *because* lives upstream and the executable either honors it or it doesn't; the honoring is the meaning. The architectural consequences flow from the third claim, not the first. The identity claim is frequently the entry point in conversation; agents must distinguish which claim is doing which work. Rules out: identity-claim-as-architecture-justification; conflating rhetorical entry point with load-bearing premise; treating "software is language" as the ground from which the artifact store follows. [→ §1.4, §13.1]
+
+13.12 Philosophical register. Anima operates in hermeneutic epistemology (meaning is distributed, dialogical, horizon-dependent) married to a pragmatic theory of truth (truth is what survives community contestation, not correspondence to external reality), applied to produce teleological software and maintain epistemic hygiene. The commitments — not the lineage — are what binds: meaning lives in the conversation across registers; authority is conferred by contestation, not by source; the system's job is to keep the *because* traceable as horizons fuse and shift. Rules out: correspondence-theory framings of artifact correctness; truth-as-private-assertion; meaning-as-property-of-a-single-register. The hermeneutic register has a structural analog in Lakatosian programme dynamics: protective-belt modification is the empirical face of horizon-dependent reading — anomalies do not arrive pre-labeled as falsifiers, they are interpreted through the existing horizon, and the legitimate work of the belt is the architectural face of that interpretive labor. [→ §1.3, §1.4, §3.2, §3.3, §13.13]
+
+13.13 Programme-level progressive/degenerative diagnostic. The corpus has two existing evaluative tribunals: ratification at the conviction level (§13.2) and falsifiability at the bet level (§14). Neither evaluates the architecture as a whole over time. A third tribunal is needed, and the Lakatosian distinction supplies its shape: a research programme is **progressive** if its modifications anticipate phenomena before they are encountered — the architecture sees the problem coming, names it structurally, and the problem later surfaces in the world in the shape the architecture already predicted. A programme is **degenerative** if its modifications are ad hoc — invented only to absorb anomalies already known, generating no new anticipations, the protective belt thickening to defend the core against pressure rather than to extend it into new territory. The diagnostic asks not "is the architecture right" but "is it generating or absorbing." Imported vocabulary carries obligation structure (§1.5): adopting *hard core*, *protective belt*, *progressive*, *degenerative* commits the corpus to using them in their Lakatosian sense — not as decorative metaphors but as load-bearing terms with the methodological apparatus behind them. The hard core of Anima is the conviction stake (§13.1): domain knowledge is the source of truth; the executable honors the *because* upstream or it doesn't; ratification, supersession, citation-as-schema, append-only are what that conviction requires when committed to literally. The protective belt is everything downstream of the hard core that can be modified without abandoning it — agent topology, artifact schema details, retrieval primitives, prompt structure, governance procedure. The PM/dev boundary case is a candidate progressive receipt: the architecture's separation of intent registers (§1.12) structurally anticipated a class of organizational conflict before it was named at a partner organization, and the conflict surfaced in the shape the architecture had already predicted. This is what progressive looks like: the horizon kept opening; novel anticipation; the programme saw something the field had not yet named. Two consequences. **(1)** Programme-level degeneration is a real failure mode the corpus must be able to name. The architecture could continue passing its synchronic tribunals — ratification compliant, F1–F5 either passing or unstaked, supersession discipline maintained — while the diachronic shape of its modifications becomes purely defensive. A degenerative phase would look like: every change absorbs a known anomaly, no change anticipates a future one; the protective belt thickens around the same anomalies; new vocabulary is borrowed to re-describe old failures rather than to name new territory. The diagnostic is not derivable from any single artifact; it requires reading the supersession record at scale. **(2)** Programme-level degeneration and occupant-level ceremony drift (§15.10) are the same shape at two scales — a self-resonance receipt (§7.1). At the occupant scale, drift is recollection substituted for repetition: signing the form without re-choosing the commitment. At the programme scale, degeneration is protective-belt modification substituted for hard-core extension: patching what is already known without anticipating what is not yet known. Both produce records identical to their healthy counterparts. Both are diachronic failures invisible to synchronic instruments. Both require a reader (§11.7) whose horizon is wide enough to notice the substitution. The diagnostic is named here as a tribunal the corpus is bound by, not as a measurement protocol — the architecture does not yet have one. What constitutes a registrable anticipation, what counts as ad hoc absorption, and what cadence of review is appropriate are open. Rules out: treating ratification compliance as sufficient evidence of programme health; treating the absence of bet-level falsification as evidence the architecture is generating rather than absorbing; using *hard core* / *protective belt* / *progressive* / *degenerative* as decorative vocabulary; conflating occupant-level drift (§15.10) with programme-level degeneration without naming them as the same shape at different scales. [→ §1.5, §7.1, §13.2, §13.10, §13.12, §14, §15.10, §15.12]
+
+
+---
+
+## §14 Falsifiable claims
+
+14.1 **Meta-claim.** The falsifiable surface area of Anima is thin. F1 is the only named falsifiable claim with empirical instrumentation. Its directional pilot does not constitute empirical support for the broader architecture — it constitutes a partial test of one bet within it. F1 exists as a placeholder demonstrating the form; the architecture's deeper bets (ratification, supersession, citation-as-schema, append-only) have zero empirical instrumentation. F2–F5 are named below as unstaked claims to make the gap visible. Rules out: treating the F1 pilot as architectural validation; treating the absence of named falsifiers as evidence of robustness; conflating a thin falsifiable surface with a strong one.
+
+14.2 **F1 — typed-edge graph traversal.** The load-bearing bet: graph-traversal retrieval over typed edges is the retrieval primitive for lineage queries. Two sub-blocks follow — conviction and record — joined by a `tests` edge (§4.8).
+
+**14.2.a F1 conviction stake.**
+- Stake: graph traversal over typed edges is the retrieval primitive for lineage queries. The commitment is staked under uncertainty about whether the implementation performs at scale.
+- `derived_from: §3.11, §4.8`
+- `null_result_behavior: falsifies_bet_not_conviction` — a null result on traversal quality falsifies the protective-belt claim that citation-as-schema's load-bearing function is graph retrieval; it requires revision of §3.11 in that specific dimension. It does not falsify the append-only store (§4.2), the hub-and-spoke topology (§5.1), or the ratification cycle (§3). For the core conviction to be threatened, traversal failure would have to co-occur with a demonstration that no alternative retrieval primitive over the same edges performs differently from flat search.
+- Rules out: treating F1 failure as architectural collapse; treating F1 success as validation of the architecture beyond §3.11's retrieval claim.
+
+**14.2.b F1 empirical record.**
+
+`n: 4 lineage + 6 control | protocol: 031-test-protocol (queued) | result: directional | confidence: low`
+
+Prediction: mean correctness strictly higher than flat semantic retrieval on lineage queries, p < 0.05, K ≥ 30, two-rater adjudication, paired comparison, all typed edges (`depends_on`/`implements`/`elaborates`) populated. Pilot: graph 4/4 correct on lineage queries; flat 1/4. The pilot was not statistically powered; the result is directional only. Sharpest observed case: a superseded artifact ranked 0.057 above its current successor under flat search — consistent with the staleness-laundering pattern §3.13 names. Full test protocol is queued as 031. Type-scoping noise is a distinct failure mode from staleness and is outside the F1 protocol's scope.
+
+14.3 **F1 scope condition.** F1 tests traversal quality given accurate edges. It does not test whether the system produces accurate edges under production conditions, when agents are writing artifacts with schema compliance as the terminal condition. A passing F1 result establishes that the retrieval posture is sound given accurate inputs; it does not establish end-to-end correctness. Edge accuracy at scale is a distinct open question. [→ §15.6] Rules out: treating F1 results as evidence about edge accuracy; treating retrieval-quality and edge-accuracy as a single question.
+
+14.3a **F1 scope: cross-project_id queries excluded.** The K=30–50 test protocol (§14.2.b) is scoped to single-project_id lineage traversal. Cross-project_id lineage queries — where an artifact in one project_id cites or is cited by an artifact in another — are a structurally distinct query class and are excluded from the current F1 scope. Additional variables not characterized: edge accuracy across project boundaries; graph layer behavior on multi-project_id traversal. These queries would be in scope for an F1 extension protocol after the single-project test completes. Rules out: treating F1 results as covering cross-project lineage retrieval; treating the exclusion as permanent.
+
+14.4 **F2–F5 — unstaked claims.** The artifact types `conviction_stake` and `empirical_record` (§4.9) require that load-bearing architectural claims carry associated falsifiable bets. The following four claims are load-bearing in the corpus and currently carry no falsifiable bet — no sensors, no protocols, no empirical record. They are named here so the gap is visible and queryable, not buried.
+
+**F2 — Supersession vs. edit-in-place.** Conviction: reasoning quality degrades measurably with edit-in-place compared to supersession on equivalent prompts. Sensor: comparison runs with edit-in-place vs. supersession mode on standardized prompt sets. Not yet instrumented. Rules out: treating §3.10 as empirically validated.
+
+**F3 — Citation-as-schema reduces hallucination.** Conviction: requiring `cites` on every load-bearing claim produces measurably lower fabrication rate than unanchored narrative under equivalent tasks. Sensor: ablation study, citation-required vs. citation-optional configurations. Not yet instrumented. Rules out: treating §3.11–§3.13 as empirically validated.
+
+**F4 — Ratification produces better decisions than single-agent assertion.** Conviction: ratified artifacts (recorded, contestable, externally structured) lead to fewer downstream reversals than equivalent unratified assertions. Sensor: reversal-rate tracking by ratification status across decision artifacts. Complementary sensor: egregious-error rate across successive pipeline runs — errors severe enough to be recognizable without ground truth. A pipeline that improves via ratification should show a declining egregious-error rate over time. The `discard_record` surface (§3.20, §4.9) is what makes this sensor instrumentable at all: `SELECT * WHERE artifact_type = 'discard_record'` is the shitcorpus query surface, and egregious errors land there as filtered candidates with cited reasons. Both sensors remain uninstrumented. This is the central claim of the architecture and it has no falsification protocol. Rules out: treating §3 as empirically validated; treating the architecture's central bet as something other than a stake; treating reversal-rate as the only available F4 sensor when the shitcorpus surface admits a second. [→ §3.20, §4.9, §16.5]
+
+**F5 — Append-only outperforms mutable on reasoning tasks.** Conviction: an append-only artifact store produces measurably better reasoning quality than an equivalent system with mutable artifacts. Currently asserted as categorical (§4.2); not yet operationalized as a falsifiable claim. Rules out: treating §4.2's categorical assertion as empirical conclusion.
+
+---
+
+## §15 Open tensions
+
+The following are explicitly unresolved. The corpus marks them so they cannot be silently filled by implementation choice. These are epistemically live questions, structural residuals, and contested claims — closeable only by discovering truth or getting empirical data, not by writing or building.
+
+15.1 [OPEN] [register: deliberative] Coordinate-vs-fact at write time. Specified for audit; unspecified for write (e.g., Mnemosyne extraction prompt). [→ §2.8]
+
+15.2 [OPEN] [register: conviction] Prompts-as-artifacts. Agent prompts live in `prompts/*.md`, outside ratification governance. Asymmetry contradicts §7.4 (Anima improves Anima).
+
+15.3 [OPEN] [register: conviction] Evolution loop. Agents proposing changes to their own configs through the governance cycle. Pipeline health infrastructure (topology_trace, pipeline_health) is queued (034); the full loop — agents ratifying changes to their own constellation entries — is not yet built.
+
+15.4 [OPEN] [register: deliberative] Mechanical-to-narrative direction of the governance bridge. [→ §3.17]
+
+15.5 [OPEN] [register: deliberative] Citation rule has no clean philosophical ancestor. Peirce's community of inquiry is the closest partial ancestor — citation is what makes a claim's evidential chain traceable through the community rather than asserted privately. Not a clean single ancestor; the rule remains stated as architectural, but less orphaned than before. [→ §3.18, §13.12]
+
+15.6 [OPEN] [register: empirical] F1 scope condition. F1 does not test edge accuracy — only traversal quality given accurate edges. Edge accuracy under production conditions (agents writing with schema compliance as terminal condition) is uncharacterized. [→ §14.3]
+
+15.7 [OPEN] [register: conviction] Second structural residual — prose semantic accuracy. The architecture has no mechanism distinguishing genuine from semantically hollow prose rationale. Concept-ownership-as-verification-responsibility is an available partial mitigation: better accountability surface and domain priors for gross mischaracterizations, but confirmation pressure disadvantage on subtle ones. Distribution of actual failure modes is uncharacterized. A second partial mitigation direction: the closed-system auditing move (§15.8) — making evaluative criteria for adequate reasoning explicit within the finite world of software primitives — names a direction in which the architecture could begin to discriminate hollow from genuine rationale at the structural level. It does not close the residual; it names a tractable surface where the residual stops being purely a matter of human judgment. [→ §3.16, §15.8]
+
+15.8 [OPEN] [register: deliberative] Unnamed evaluative bedrock at meta level. The corpus makes the Wittgensteinian move once — for ratification-as-grounding — naming it as bedrock operated from rather than proved. The evaluative commitments that make gradient discipline meaningful (what counts as adequate deliberation, what genuine contestation requires, what distinguishes substantive from hollow rationale) are currently implicit in prompts. Named bedrock can be interrogated; unnamed bedrock just operates. The corpus is incomplete at this level and does not know it. A document doing for evaluative commitments what §13 does for ratification-as-grounding needs to exist before prompt governance can be closed without simply relocating the unnamed bedrock. **Closed-system sharpening.** Wittgenstein's spade-turns observation applies to *open* systems — natural language, forms of life, human reasoning where the regress genuinely has no bottom. Software is a *closed* system: known primitives, established patterns, a finite world of forms. In a closed system, evaluative criteria for adequate reasoning can in principle be made explicit — the regress ends. This does not close the tension (the criteria are still unnamed in the corpus and still living in prompts); it refutes the infinite-regress concern. The work to be done is finite. The functionality required is closed-system auditing — making the evaluative bedrock explicit within the finite world of forms — named here as a function, not as any specific agent. [→ §15.2, §15.7]
+
+15.9 [OPEN] [register: conviction] Ordering dependency for prompt governance. Closing the prompt governance gap (§15.2) at the implementation level — versioning prompts, bringing them into the store — is a second step. The first step is naming the evaluative commitments those prompts encode (§15.8) — and the closed-system framing sharpens *how*: by making the evaluative criteria explicit within the finite world of software forms, not by chasing an open-ended regress. Ratification requires contestability; you cannot contest what you cannot see. The corpus lists prompt governance as an open surface without sequencing it relative to this prerequisite. The philosophical task is a prerequisite for the implementation task, not a parallel workstream — and it is a finite task, not an interminable one. [→ §15.2, §15.8]
+
+15.10 [OPEN] [register: conviction] The drift problem — third structural residual (diachronic). The two named structural residuals (§3.15, §3.16) are synchronic: they describe what the architecture cannot do at the moment of a particular ratification act. This is a third, distinct residual: a person can enter the crossing with genuine conviction, occupy the role honestly, and drift into ceremony through habituation. The governance record is identical throughout — the architecture cannot distinguish a signature that cost something from one that didn't. Worse: the append-only record, formally identical crossings, and clean provenance chains create a normative reference class that trains occupants toward the form. The architecture may actively erode the conviction it bets on, in a direction its instruments cannot detect. This failure mode produces the same record as success. Kierkegaard's *Repetition* (1843) sharpens the structure: repetition is not recollection — recollection looks backward at the commitment you made; repetition is re-choosing the commitment, actively, into the future. The architecture creates conditions for recollection (the append-only record of previous crossings) but not for repetition (nothing forces re-choosing rather than referencing). Drift into ceremony is precisely the substitution of recollection for repetition. Sartre's bad faith names the failure mode: acting as if the role defines you, as if the ratification happens to you rather than being something you actively choose. The antidote is not a detection mechanism (§3.16 establishes this is impossible architecturally) but conditions that make bad faith harder to sustain without noticing — which is exactly what the unnamed reader (§15.14) provides. [→ §3.15, §3.16, §11.4, §15.14]
+
+15.11 [OPEN] [register: conviction] No diachronic self-model. The corpus models artifacts and their relationships. It does not model what the artifact environment does to the people moving through it over time. §7.4 (Anima as own first user) applies the self-application principle synchronically — it catches structural boundary violations like §15.2. It does not generate reliable pressure toward the diachronic question. The conjunction of §7.4 and §9.4 (system never pretends not to know what it knows) applied reflexively would point toward the drift problem, but the corpus does not make that conjunction and nothing in its structure reliably produces it. Building a diachronic self-model would require the architecture to treat its occupants as entities that develop in response to the system over time — a different kind of self-understanding than the corpus currently has. This is named as a structural condition, not a gap to be closed by extending the current framework. The ground control function (§11.7) is a partial diachronic compensator — a human role positioned to notice drift the architecture cannot. This does not close the structural gap (the architecture still has no diachronic self-model) but names the role that partially compensates in practice. [→ §7.4, §9.4, §11.7, §15.10]
+
+15.12 [OPEN] [register: deliberative] Cross-corpus epistemic epidemiology. §6.6 specifies per-domain corpora; the corpus does not address what happens between them. The shallow framing is contradictory ratifications across corpora about a shared object — but sharp collision is not the deeper risk. The deeper risk is slow semantic bleed without a supersession event: a corpus borrows terms from another; the borrowed terms carry their home corpus's obligation structures (§1.5); the contaminated coordinate operates invisibly, reasoned-from rather than reasoned-about. This is a cross-corpus variant of §3.15 (staleness laundered as authority) — **colonization laundered as elaboration**. Colonies do not invade with a declaration of war; they expand along gradients of least resistance. The architecture currently has no mechanism to make the crossing visible at the moment it occurs. Epistemic epidemiology — the study of how concepts move between corpora and what they carry with them — is the relevant open research surface. Single-institution scope and multi-institution / federated deployment are downstream cases of the same underlying gap. [→ §1.5, §3.15, §6.6, §4.6, §15.16]
+
+15.13 [OPEN] [register: deliberative] Exit semantics. What clean refusal or departure looks like for an information poet who discovers they are performing rather than acting. The architecture has no model of legitimate exit. Structurally unresolvable — named as a condition, not a spec gap. Naming the exit without absorbing it into the system's narrative may be impossible; this is a known limit. [→ §11, §15.10]
+
+15.14 [OPEN] [register: conviction] Ground control succession — the reader role has no ratification procedure for occupancy or handoff. Legibility presupposes a reading function — someone watching the artifact environment at the level of the whole, distinguishing structural compliance from substantive ratification, positioned to act on degradation signals. The reader is the hermeneutic anchor: the person whose horizon is wide enough to notice when a new artifact's horizon does not fuse cleanly with the existing record. They are the living archive. The function is now named (ground control, §11.7); the writing function is named (vibe engineering, §11.6); the corpus can name both registers. The sharpest residual tension is no longer that the reader is unnamed but that **the architecture has no model for legitimate succession of the reader role.** When the person holding the ground control function leaves, or when the team disagrees about who holds it, there is no mechanism — no ratification procedure for the role itself, no contestability over occupancy, no supersession primitive for a living function. Same person collapsing both registers (§11.1) remains a latent failure mode, but it is now a configuration question rather than an unnamed gap. Succession is the bite. Surfaced through sustained compression of the degradation profile (arch_vp stress test, 2026-05-12); not derivable from the corpus itself — this conversation is the cited artifact. Rules out: legibility-as-self-evident; reader-as-implicit; treating writer and reader as fungible; treating naming the function as sufficient for specifying succession. [→ §11.5, §11.7, §15.10, §15.11]
+
+15.15 [OPEN] [register: deliberative] Legitimacy of the "we." The governance guarantee is "because we said so" not "because I said so" — some agent acting on behalf of a collective. The legitimacy of the "we" is underspecified. Three distinct questions: who counts as the we; contestable by whom; if agents do most ratification in practice, "we" risks becoming a system self-ratifying — the closed-loop failure the architecture exists to prevent. The information poet (§11.5) is a partial answer (human anchor for the "we"), but one person grounding collective legitimacy is not specified as sufficient or insufficient. The guarantee cannot be stronger than the legitimacy of the collective it names; the architecture does not specify what makes that collective legitimate. Same hole as §15.14 (unnamed reader) from a different angle. **Staked, not proven.** The "we" is a staked axiom, not a derivation — a *because-I-said-so* at the level of the team. Every team that ships software is already doing this; Anima makes the bet visible so it can be contested rather than operating invisibly. **Scope.** Anima is written to the team register, enabling organizations of any size — one person to any number — to build teleological software. The "we" can be a team of one; what matters is that the collective is named and the legitimacy bet is on the record. Rules out: ratification-as-legitimate by structural completion alone; assuming the "we" is well-defined by the constellation; collapsing the legitimacy question into the externality condition (§3.3); reading "team" as requiring more than one human. [→ §3.2, §3.3, §11.5, §15.14, §15.11]
+
+15.16 [OPEN] [register: deliberative] Corpora colonizing each other. The cross-corpus version of the epistemic epidemiology risk named in §15.12: borrowed terms carry their home corpus's obligation structures (§1.5) across the boundary, and the contaminated coordinate operates invisibly in the receiving corpus — colonization laundered as elaboration. Three mitigation directions are surfaced but unbuilt: (1) **typed cross-corpus citation edges** that make the crossing visible at the moment it occurs — the equivalent of `cites` (§3.11) for inter-corpus borrowing; (2) **Hermes (§6.12) as inter-corpus translator** — the hermeneutic anchor whose job already includes carrying meaning across boundaries without distortion, extended to noticing when a horizon-fusion between corpora is operating silently; (3) **an auditing function** that holds a world-of-forms corpus and can detect when reasoning borrows from it without citation (the same closed-system auditing function named in §15.8, applied across corpora rather than within one). The field is open; the pattern is named. [→ §1.5, §3.11, §6.12, §15.8, §15.12]
+
+15.18 [OPEN] [register: deliberative] Hermes and the self-application problem at intake. §7.4 (Anima as own first user) establishes that the architecture applies its own norms to itself — synchronically: artifacts, agents, pipeline, constellation all live under the same epistemic discipline. It does not address the intake question: what does it mean for Hermes to apply Anima's norms to the act of receiving a request from a human who may not be operating inside the architecture's frame? This is a different scale of self-application — not "does the artifact carry a telos?" but "does the request as presented allow faithful hermeneutic carriage, and if not, what does Hermes do about it?" The pre-routing check (§6.11, §6.12) is Hermes acting on behalf of the human anchor (§11.7), not as a substitute for it. But this delegation is underspecified: what checks are in scope, how does Hermes recognize when a request's framing has collapsed distinct conditions, and how does it surface the collapse without either abdicating the architecture's norms or imposing them on a user who did not invite the governance? The temptation to collapse this into "Hermes enforces epistemic hygiene" is the wrong move — it reassigns the reading function (§11.7) to an agent, silently closing §15.14 by substitution. The correct move is narrower: Hermes runs a bounded check appropriate to request type, surfaces framings that would cause the carry to fail, and routes. What constitutes a faithful carry under each request type is the open question. Surfaced from comparative session analysis, 2026-05-19 (`docs/papers/planning/epistemic-hygiene-in-practice.md`); not closeable by building — closeable by articulating what faithful carriage requires under each request class and whether those requirements can be made operational in a prompt. Rules out: Hermes-as-ground-control; treating the intake check as a universal telos-staking ritual; treating the self-application problem as solved by §7.4. [→ §6.12, §7.4, §11.7, §15.14]
+
+15.17 [OPEN] [register: conviction] Reading-skill residual. Distinct from §3.16 (writing/governance residual: the governance cycle can run dishonestly; ground control addresses this contemporaneously) and §15.14 (reading-role/succession: who watches the whole; the named function whose succession is unspecified). This is a third residual with a different structure: a reader who arrives *after* the cycle ran cannot distinguish staked from laundered without independent reconstruction or epistemic apprenticeship. Ground control does not address this — ground control was in the room; the new engineer was not. The architecture can enforce form (citation populated, schema satisfied, ratification cycle ran) but cannot supply the interpretive skill to read whether the substance was genuine. The residual is architecturally unaddressable: there is no structural substitute for apprenticeship under someone who holds the reading function and can show — not just tell — what a staked commitment looks like against a laundered one. **Bounds the onboarding claim.** The claim "onboarding collapses from reconstruct-the-because to read-the-because" holds structurally: if Anima is implemented in full faith, the because is on the record and traversable. But reading-the-because honestly requires a reader who can tell staked from laundered. The corpus can be complete and traversable and still be misread by someone without that skill. The claim is correct under the conditions it names; this residual is those conditions' fine print. Rules out: treating corpus completeness as sufficient for onboarding; collapsing the reading-skill problem into the reading-role problem (§15.14); treating §3.16 as exhaustive of structural residuals on ratification honesty. [→ §3.16, §15.10, §15.14]
+
+15.19 [OPEN] [register: deliberative] Artifact pipeline as latent fine-tuning corpus. Anima's governance cycle produces structured why-what-how chains as ratified outputs — a natural-language rationale, a typed artifact body, a citation trace. These are exactly the format instruction fine-tuning of language models requires: input/output pairs with both the content and its epistemic framing intact. This is not designed; it is a structural consequence of the artifact schema and the governance discipline. The latent implication: a pipeline run long enough produces its own training signal for specializing small models toward specific agent roles. A fine-tuned small model bakes schema knowledge into its weights, recovering context budget otherwise spent on prompt-level schema explanation — not a larger context window, but a more efficiently used one. Whether this is practically valuable is unknown. The claim is speculative and untestable below a threshold of clean pipeline outputs; rough estimate is 200–500 high-quality examples per role, concentrated by task type (extraction, routing, ratification review). Named here so it is not rediscovered when the pipeline has run long enough for the question to become tractable. Not a build item, not a design tension — a structural property waiting for the pipeline to mature. Rules out: treating this as a near-term research priority; conflating "more efficient context use" with "larger context window" (the architectural limit does not change); treating the training signal as recoverable before sufficient pipeline runs exist. [→ §7.4, §15.3]
+
+15.20 [OPEN] [register: deliberative] Gradient seams in citation. The `cites` field records what is cited, not what tier is being cited from. A frozen artifact citing a liquid one is structurally different from a frozen artifact citing another frozen — but the edge currently looks identical in the graph. Consequences: (1) F1 graph traversal (§14.2) cannot distinguish lineage queries that cross a gradient seam from same-tier traversal; the pilot may be averaging over two structurally different query classes. (2) Supersession reasoning cannot detect when a successor of a liquid artifact is being cited as frozen by a downstream consumer who has not updated. (3) The unanchored-narrative check (§3.11) is weaker than stated: an artifact can be technically anchored while every citation is one tier more liquid than the citing artifact — a different kind of untethering. Deferred: amending the `cites` field to include `source_tier_at_citation_time` is the resolution; the deferral is named here as a structural limit. Rules out: treating the citation graph as tier-blind without naming the consequence; assuming F1 results aggregate cleanly across seam-crossing and same-tier queries. [→ §4.8, §14.2, §2.3]
+
+15.21 [OPEN] [register: empirical] Prompt-coverage obligation. Agent system prompts already implicitly encode the corpora into practice — they operationalize the evaluative commitments that make the corpus's disciplines actionable. This encoding is currently implicit and untested. The coverage check is named here as an obligation: what is in the corpora that is not reflected in prompts, and should it be? What is in prompts that has no grounding in the corpora, and is that legitimate? This is distinct from §15.2 (prompts-as-artifacts — prompts belong in the ratification governance cycle) and from §15.8 (unnamed evaluative bedrock — the evaluative commitments prompts encode need to be named before prompt governance can close). This is the coverage-completeness question: assuming the bedrock is named (§15.8) and the prompts are brought into governance (§15.2), are the prompts then covering what they should be covering? Named here so the three related prompt tensions (§15.2, §15.8, this entry) remain distinguishable and do not collapse into one. The resolution requires actually checking coverage, not just deliberating about it. Rules out: collapsing prompt-coverage into prompt-governance; treating the bedrock-naming task (§15.8) as sufficient to discharge the coverage obligation; treating coverage as deliberatively closeable. [→ §15.2, §15.8, §6.5]
+
+---
+
+## §16 Known gaps
+
+The following are explicitly absent artifacts or specifications. Listed to prevent invented answers gaining false authority. Closeable by producing the named artifact — unlike §15 open tensions, these are work items, not epistemically live questions.
+
+16.1 [GAP] Operational layer absence. Daily runbook, incident playbook, decision-significance rubric, per-decision cost data, adoption-stage guidance — none exist. Not philosophical gaps; questions every adoption decision reduces to.
+
+16.2 [GAP] Constellation write governance — no author-reviewer gate. Any agent can update the `agent_constellation` artifact without a reviewer. Closeable by implementing the gate (same ratification pattern as §3 applied to constellation writes).
+
+16.3 [GAP] Front-door merge-and-replace. WillAgent + IrisAgent → **HermesAgent**. Decision made: concept-ownership over function; unified front-door + router under one prompt and one context window. The structural reasoning for Hermes: the name carries philosophical obligation structure (the hermeneutic anchor, the carrier of meaning across boundaries — §1.5), and the choice is Aufhebung (§3.10) operating on the agent topology itself — Hermes was the original name, superseded through several iterations (Will, Iris, briefly Socrates), and the reason it was right all along became visible only through the work of the intervening forms. The Socratic framing was directionally correct about the dialogic nature of the role but named the wrong register: Socrates teaches within a tradition; Hermes carries meaning across traditions. The front-door agent's job is the latter. The Hermes prompt must implement the request-type-dependent pre-routing check (§6.11, §6.12) as configurable behavior, not a fixed ritual; what faithful carriage requires per request class is an open design question (§15.18) to be resolved during prompt authoring. Queued as 035. Closeable by building. [→ §1.5, §3.10, §6.12, §15.18]
+
+16.4 [GAP] Specialist agent build — Pavel and Argus. Pavel: ur-software architecture diagnosis against world-of-forms corpora; placement artifact type. Argus: security domain; security_finding artifact type; retrieval-oriented liquid tier (CVE/OWASP/NIST). Both decided; corpora written; queued as 036 and 039. Closeable by building. [→ §6.14, §8.3]
+
+16.5 [GAP] `discard_record` type not yet implemented. The type is defined (§4.9), the write discipline is specified (§3.20), the corpus identity is committed (§6.6), and the F4 egregious-error sensor depends on this surface being instrumented (§14.4). Current state: no `discard_record` artifact type in the Calliope store schema; no `write_discard_record` tool in any agent tool set; no `corpus_shitcorpus` domain_knowledge artifact in the store; no shitcorpus write path. Until built, §3.20 is unenforceable at the substrate level and the F4 egregious-error sensor has no query surface. Closeable by building — queued as 042. [→ §3.20, §4.9, §6.6, §14.4]
+
+---
+
+## §17 Meta
+
+17.1 This corpus is itself a frozen artifact. Updates are supersession events, not edits.
+
+17.2 Audience-specific papers are liquid derivatives oriented toward this corpus.
+
+17.3 Anima improves Anima. The disciplines named here apply to the artifacts that produced this document. Where they do not yet apply, §15/§16 records the gap.
+
+---
+
+## §18 Rendering registers
+
+The corpus binds itself to a composition discipline. Artifact status (§2 liquidity) and artifact composition rule are orthogonal — the same way confidence and liquidity are orthogonal (§2.3). This section specifies how claims are written, not what they are.
+
+18.1 **Register 1 — Conviction prose.** Declarative, present tense, unhedged. Vocabulary: *must*, *is*, *requires*, *commits to*. Prohibited vocabulary: *might*, *probably*, *we think*, *in our experience*. Citations point to conviction artifacts and upstream commitments, not to measurements. Hedging is a register violation — a claim that requires hedging does not belong in conviction prose. Numbers prohibited except enumerations; no p-values, confidence scores, or "the data shows." Paragraph structure: claim → consequence → what it forbids. Applies to: §§1–13, §16, §17. Rules out: hedging as politeness; embedding empirical qualifiers in conviction claims; treating register discipline as style preference.
+
+18.2 **Register 2 — Empirical prose.** Past tense for results, present tense for protocol. Vocabulary: *measured*, *observed*, *directionally suggests*, *did not reach significance*, *insufficient power to conclude*. Hedging is required where uncertainty is real; unhedged empirical prose is a register violation. Required: explicit n, power statement where applicable, confidence interval or qualitative equivalent. Citations point to measurement protocol, to the conviction_stake being tested, and to prior empirical records being extended or contradicted. Fielded header required at section start: `n: X | protocol: artifact_ref | result: directional|significant|null | confidence: float`. Commitment language is prohibited — "this proves" or "this establishes" is a register violation; the compliant form is "this is consistent with" plus a link to the conviction_stake, with no inline restatement of the conviction. Applies to: §14. Rules out: empirical sections that omit n or protocol; restating conviction inline in measurement prose; unhedged empirical claims.
+
+18.3 **The seam rule.** When conviction prose cites empirical support, it cites the empirical_record artifact and stops. It does not summarize the measurement inline. Compliant form: "Graph traversal over typed edges is the retrieval primitive. *[empirical: F1-pilot-2026-05]*" — not a summary of pilot results. The reader traverses the edge for the measurement; the conviction section does not carry it. This is the discipline the architecture exists to enforce. Rules out: empirical summaries embedded in conviction prose; conviction claims that gain authority by leaning on cited measurements without naming the lean.
+
+18.4 **§15 as typed-entry exception.** §15 entries carry a `[register: ...]` tag per-entry (→ §18 amendment). Entries tagged `deliberative` are an acknowledged exception: they name live tensions without resolving them. Deliberative register does not claim and does not measure; it means "needs deliberating." This is the escape hatch §15 earns by being the only section whose load-bearing job is naming what is structurally unresolved. Rules out: treating deliberative entries as evidence of architectural incoherence; smuggling conviction claims into deliberative entries.
+
+18.5 **§17 as sui generis.** §17 describes the corpus's status as an artifact, not claims within it. No register tag is required; the meta-level is different in kind. Rules out: applying register discipline to meta-statements about the corpus itself.
+
+18.6 **Mixed-register within a single numbered claim is a defect.** A claim that starts in conviction register and embeds an empirical result inline — without a register marker — violates this section. The fix is structural: split the claim into two sub-claims, or move the empirical content to an `empirical_record` artifact with a `tests` edge (§4.8). Rules out: inline empirical hedges in conviction claims; treating mixed-register claims as a stylistic choice.
