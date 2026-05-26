@@ -1,5 +1,5 @@
 ---
-Excavated: 2026-05-26 | Status: vapor
+Excavated: 2026-05-26 | Status: frozen
 ---
 
 Epistle 011 — The Relay
