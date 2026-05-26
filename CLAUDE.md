@@ -36,6 +36,8 @@ Usage: describe the claim or direction you want to stake. Builder produces a dra
 
 Shitcorping is a loop, not a one-shot. Lite and the human author go back and forth until the sorting is agreed. Builder commits the agreed result. Nothing officially lands in the gravel pile until builder commits.
 
+Distinguish two loops: (a) the drafting/revision loop — author and agents iterating to get the epistle's frame and claims right, which produces no gravel — from (b) the shitcorping-for-ingestion loop below, where lite pans the epistle against the live `logic.md` and `rhetoric.md` corpora. Gravel is written only after (b), never after (a).
+
 **Step 1 — Lite proposes.** Lite pans the epistle for density (gold, reaches, wandering, duplications), smelts what's load-bearing into compressed form, and proposes a verdict in conversation. No files written.
 
 **Step 2 — Author responds.** Push back on gravel calls. Accept gold. Redirect reaches. Revise the epistle mid-loop if needed. The loop continues until the author accepts.
