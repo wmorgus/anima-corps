@@ -3,62 +3,57 @@ Source: epistles/epistle-013.md
 Shitcorped: 2026-05-29
 ---
 
-# Epistle 013 — The Vocabulary Corpus // Gravel Record
+# Epistle 013 — The Word Earns Its Place Twice // Gravel Record
 
 ## Gold (earned weight)
 
-**G1 — Vocabulary is a third kind of corpus; extract the domain-model register from logic into its own artifact.**
-Logic carries axioms (cites vocab), rhetoric carries doxa, vocab carries symbols — the definitional substrate both presuppose and neither supplies. A dedicated `corpus_vocab.md`.
-*Because:* Extends §6.6 (corpus-per-reasoning-surface) into a type §6.6 does not name. Logic line 58 folds the domain-model register self-referentially into logic itself; 013 extracts it so rhetoric and ur-software can cite it without dragging logic's frame. Rules out: vocab-as-dictionary; definitional substrate folded into the conviction corpus.
+**G1 — Two-warrant separability of a load-bearing term.**
+A term earns its place on two independent warrants — a systemic/agentic warrant (precision, bandwidth, function-encoding) and a human warrant (the vow: costly utterance as commitment signal). The warrants are separable; the agentic warrant survives the full decay of the human one. The vow is the leg that can erode; the precision is the leg that doesn't.
+*Because:* Extends §6.8 (name-as-load-bearing) and §1.5 (borrowed vocab carries obligation) — both stake that a name does work and imports obligation, but treat it as one warrant. The split into two independent warrants, agentic decay-proof and human secondary-and-erodible, is novel. Rules out: defending corpus vocabulary on memorability or commitment-signal alone; treating the human/agentic reasons for a term as a single justification.
 
-**G2 — Ratification standard is divergence, not importance; terms enter through the existing epistle loop.**
-Test: does the folk reading mislead an agent reading cold? Important-and-common → no entry; minor-and-divergent → entry. No separate mechanism — the epistle loop is already the mechanism.
-*Because:* Extends §1.5 (borrowed vocabulary carries obligation) by locating where that obligation gets declared, and supplies the inclusion criterion §1.5 leaves implicit. Rules out: importance-based inclusion; a parallel ratification mechanism for vocabulary.
+**G2 — Vocabulary compression is read-time efficiency, distinct from train-time.**
+A precise term delivers act + object + orientation in one token (shitcorp = remove / accidental-error / faithfulness-to-telos). The efficiency is in the vocabulary itself, paid at read time — lower context cost per unit meaning. Distinct from §15.19's train-time efficiency (schema baked into weights).
+*Because:* §15.19 stakes efficiency at fine-tune/train time; caveman density (builder practice) is not a §-claim. Read-time vocabulary compression as a corpus commitment is unstaked, and the epistle self-distinguishes it cleanly from §15.19. Rules out: reading "shorter term" as stylistic; conflating vocabulary compression with context-window size.
 
-**G3 — Provenance source is a vocabulary-kind signal doubling as audience routing.**
-Terms grounded in agent-defs / `CLAUDE.md` → operational vocabulary (germane to builders). Terms grounded in §-claims / epistles / gravel → epistemic vocabulary (germane to reasoners). One field, two functions: chain of custody and audience routing.
-*Because:* Novel — no §-claim assigns the provenance field a routing function. Rules out: provenance-as-decoration; treating the vocab corpus as undifferentiated by audience.
+**G3 — The accidental/essential cut names what shitcorp targets.**
+Shit is accidental in the strict sense — contingent garbage removable without touching what the work is. Not the hard problems (essential, the conviction the architecture carries, §1.11). The immune cell removes the accidental; it does not touch the organism.
+*Because:* §3.20, §8.2, §6.6 name the mechanism of removal but not what class is removable-without-loss. The accident/essence cut supplies the discrimination criterion the discard work presupposes. Rules out: treating hard-problem reasoning as shitcorpable; treating shitcorping as touching the load-bearing conviction.
 
-**G4 — Firmness asymmetry: operational-substrate firmness vs. ratified-corpus firmness.**
-A definition grounded in `lite.md` / `CLAUDE.md` carries operational-substrate firmness (valid provenance, chain of custody holds); a §-claim carries ratified-corpus firmness (frozen under §3). Provenance-validity is shared; ratification-status is not. A definition is not a stake about the world — it is a coordinate for reading stakes.
-*Because:* Holds by threading §6a.5–6a.8's wire — refuses to grant agent-def-grounded terms ratified/frozen status, asserting only provenance-validity. §4.9's conviction_stake is frozen|semi_liquid; a definition is neither. Rules out: collapsing provenance-validity into ratification-status; laundering operational grounding as frozen-corpus authority. Boundary: an authoring-layer claim, not a runtime-retrieval claim — §6a.6 operates at a different layer and is not in tension.
-
-**G5 — A vocab entry's "rules out" blocks a folk reading (disambiguation); a §-claim's "rules out" blocks a world-position (conviction).**
-Same syntax, different target. Distinction held by structure — §-numbered claim vs. definition entry — not by argument.
-*Because:* Extends the corpus-wide rules-out form to a register it was not staked for, and names the no-drift guarantee structurally. Pairs with §18's register discipline. Rules out: conflating the disambiguation and conviction registers; policing the distinction by argument rather than structure.
+**G4 — corp = body; the system demonstrates the etymology.**
+Corp = body, not only corporation. To shitcorp = act as immune cell: identify what does not belong → remove it → the organism functions. The word carries the body reading because the thing it names IS a body: Anima is a living thing, a corpus that supersedes itself (§1.6) and knowingly grows. The immune function is not a metaphor borrowed from biology — it is the actual function of a living system maintaining itself. Information palaces: body-as-temple → Anima builds dwellable structures kept clean by the same immune act.
+*Because:* §6.6 stakes the shitcorpus as via-negativa aggregate and reasons_against; §3.20 stakes discard-as-act. Neither names the telos of that machinery. The immune-function frame names it. Strong form confirmed by the author: Anima IS a body, so the frame lives in the function the word names, not only in the gloss. Rules out: reading the immune frame as decorative analogy; reading the body-etymology as a usage accident rather than the function the word names.
 
 ## Gravel (dropped)
 
-**Gr1 — Entry shape (term / definition / rules-out / provenance) as standalone gold.**
-Reaching for the entry container as a stake.
-*Because:* Structural scaffolding, not a stake — the container G1–G5 fill. Rules nothing out beyond what G1 and G5 already carry.
+**Gr1 — "Anima is epistemic shitcorp" as standalone synthesis.**
+Reaching for a single banner over the debt-trio (§8.1 + §8.2 + §8.4) plus §6.6 + §3.20.
+*Because:* Restates already-staked and already-related claims without adding a cut. The live content of that section is G4's immune frame; the unification adds no discrimination.
 
-**Gr2 — "No comparative argumentation inside an entry" as standalone gold.**
-Reaching for a discipline on entry density.
-*Because:* §18 rendering-register discipline applied to the vocab corpus. The novel cut is already in G5; this restates §18's frame. Cite §18, do not re-stake.
+**Gr2 — "Same compression pressure, both registers."**
+Reaching for one force behind caveman prose and load-bearing vocabulary.
+*Because:* Observation, not stake. Rules nothing out, changes no downstream reasoning beyond what G2 already covers.
 
-**Gr3 — Pass-zero enumeration (the eight terms).**
-Reaching for the first population as gold.
-*Because:* Instance, not claim — the first population is evidence for G2's standard, not a §-claim. Belongs in `corpus_vocab.md` as content, not in logic as gold.
+## Rhetoric candidates (misplaced, not dropped)
 
-**Gr4 — "Provenance is chain of custody, not decoration" as standalone gold.**
-Reaching for a banner over the provenance failure modes.
-*Because:* Application of already-staked failure modes (§3.20, §3.15, §15.12/§15.16) to the vocab register — restates those §-claims' rules-out, does not extend them. Same gravel shape as epistle-012's Gr1 (banner over related claims).
+Both stay in the epistle as provenance. Doxa register — deployable moves, not staked logos. Candidates for the rhetoric corpus, not logic gold.
 
-## Tensions (open)
+- **The naming is the vow** — "shitcorp" imports obligation structure deliberately; willing to say the ugly word → serious about the ugly work. Instantiates rhetoric §1.12 / §3.8.
+- **Sacred in the profane** — profanity as carrier of the sacred; cannot say "shitcorp" reverentially; strips performed solemnity (the inflation §3.8 rules out). Same seam.
 
-None. T1 closed:
+## Tensions (all closed)
 
-- **T1 — four-state lifecycle provenance.** Resolved by reframing the lifecycle entry to relational stance (§2.2 — how to behave toward the artifact), which is what the definitions actually supply. Provenance citation (§1.6/§2.5 + CLAUDE.md four-state lifecycle) holds. "Fully instantiates" reframed — the lifecycle applies the gradient to epistles; it does not re-stake the gradient as a process ladder.
+- **T1 — vow survives familiarity.** Resolved: agentic warrant indifferent to decay. Worry about fame after it happens; the load-bearing claim does not depend on the discomfort holding.
+- **T2 — filter vs. barrier.** Resolved same way: the agentic warrant has no temperament to screen, so neither question conditions the load-bearing claims.
+- **T3 — etymology vs. usage.** Resolved: strong form confirmed by author — the system demonstrates the etymology; Anima is a body, so the immune frame lives in the function the word names.
 
 ## Smelter's contribution
 
-- Named that G4 holds by *refusing* ratified status — the asymmetry holds precisely because it grants only provenance-validity, not frozen authority. §6a.5–6a.8 are the wire it avoids tripping; the epistle does not name the wire.
-- Named the authoring-vs-runtime layer boundary on G4 — 013's firmness claim is corpus-authoring trustworthiness, not substrate delivery (§6a.6).
-- Surfaced T1 (lifecycle entry citing four states to a source with three, later corrected when CLAUDE.md was confirmed to carry four); resolved by the relational-stance reframe closing the §2.2 tension.
-- Routed Gr2 and Gr4 to application-of-staked-claims — consistent with epistle-012's Gr1/Gr2 gravel shape.
+- Named the human/agentic warrants as separable with asymmetric decay (G1) — the epistle circled this in "how the two warrants relate" but stated it as ordering, not as a decay-proofness property.
+- Named the discrimination criterion as the accident/essence cut (G3) — the epistle said "accidental in the strict sense" but did not name that this supplies the removable-without-loss test §3.20 presupposes.
+- Routed the vow / sacred-in-profane material to the rhetoric seam — doxa, not logos; stays in epistle as provenance, candidate for rhetoric corpus.
+- Flagged "information palaces" as novel — not yet staked in logic.md or the ur-software corpora. Candidate for its own §-claim.
 
 ## Verdict
 
 Status: liquid
-Five claims earned weight; the epistle's net contribution is the vocabulary corpus as a third kind (G1), the divergence-not-importance ratification standard (G2), and the firmness asymmetry that grants provenance-validity without frozen authority (G4). Candidate for ratification.
+Four claims earned weight; the epistle's net contribution is the two-warrant split with asymmetric decay (G1) and the immune-function telos the existing discard machinery (§3.20, §6.6) never named (G4). The vow material is real but routed to rhetoric. Candidate for ratification.

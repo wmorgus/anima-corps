@@ -36,7 +36,7 @@ Germane to reasoners, to how the corpus holds. Ratified-corpus firmness where gr
 
 **shitcorp** — the immune act: identify accidental garbage → remove → cite the because.
 Rules out: curate/filter/refine (lower-bandwidth synonyms with no because-tracking); janitorial or aesthetic reading.
-[§20.3, §20.4, §3.20, epistle-012]
+[§20.3, §20.4, §3.20, epistle-013]
 
 **gravel / shitcorpus** — the via-negativa aggregate; permanent record of what was dropped and why.
 Rules out: trash (gravel is evidence, not waste); scratch notes (no because, no chain of custody).
