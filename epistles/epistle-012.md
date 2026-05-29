@@ -1,5 +1,5 @@
 ---
-Excavated: 2026-05-29 | Status: vapor
+Excavated: 2026-05-29 | Status: liquid
 ---
 
 Epistle 012 — The Word Earns Its Place Twice
