@@ -124,6 +124,10 @@ Rules out: treating unit tests as a distinct register; collapsing transition reg
 
 2.8 [OPEN] Coordinate-vs-fact at write time (e.g., Mnemosyne extraction) is unspecified.
 
+2.9 Liquidity-laundering. "Agent generates from context" in a liquid-tier entry is not a liquid contract. It is frozen at the model's training cutoff — a date nobody chose and nobody can read. This is the dual of §2.4: §2.4 freezes what it calls immutable and calls the freeze authority; liquidity-laundering freezes what it calls liquid and calls the freeze freshness. Both conflate the confidence axis with the liquidity axis (§2.1). Rules out: treating "agent generates from context" as a live tier; reading a generate-from-training deferral as anything but frozen-at-cutoff. [→ §2.1, §2.4, Epistle 018]
+
+2.10 Retrieval-target model. Timed facts (CVE landscape, library EOL, current advisories) cannot be frozen. The correct corpus entry names *where to look*, not the timed fact itself. The retrieval target is a frozen invariant; the fetched content expires at the source, outside the corpus. This is the architecture security.md §4 demonstrates; the remaining work is generalizing it to all domains. Rules out: freezing timed facts in the corpus; treating retrieval-at-decision-time as decay (§3.9/§3.10 apply to corpus claims, not to external content the corpus points at); editing the four ur-software corpora's liquid tiers before ratifying the architecture-claim here. [→ §2.1, §2.9, §3.9, §3.10, §6a.11, security.md §4, Epistle 018]
+
 ---
 
 ## §3 Ratification & governance
