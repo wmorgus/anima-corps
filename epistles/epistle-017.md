@@ -1,5 +1,5 @@
 ---
-Excavated: 2026-05-29 | Status: vapor
+Excavated: 2026-05-29 | Status: frozen
 ---
 
 Epistle 017 — Daedalus at the Review Gate
