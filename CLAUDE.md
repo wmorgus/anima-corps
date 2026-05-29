@@ -54,7 +54,7 @@ Each epistle file follows this structure:
 
 ```
 ---
-Excavated: YYYY-MM-DD | Status: [vapor | liquid | frozen]
+Excavated: YYYY-MM-DD | Status: [vapor | liquid | semi-liquid | frozen]
 ---
 
 Epistle NNN — Title
