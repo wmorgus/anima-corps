@@ -59,4 +59,4 @@ Relationship to distributed corpus: concurrency and distribution share happens-b
 
 ## Security
 
-No security corpus exists. Agents operating without a security corpus must flag security-relevant concurrency decisions (race conditions in authentication paths, timing attacks) for human review rather than reasoning from silence.
+Security concerns (race conditions in authentication paths, timing attacks) route through existing agent slots by phase — Pavel (substrate/dependency, ingestion), Daedalus + Urania (craft/lineage, review). [→ corpora/ur-software/security.md, logic.md §16.4]
