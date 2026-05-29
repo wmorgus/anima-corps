@@ -1,5 +1,5 @@
 ---
-Excavated: 2026-05-29 | Status: vapor
+Excavated: 2026-05-29 | Status: liquid
 ---
 
 Epistle 013 — The Vocabulary Corpus
@@ -13,7 +13,7 @@ Topic: Anima needs a declared vocabulary corpus — a dedicated file that is the
 
 **entry shape.** Each entry carries four things: (1) the term; (2) the compressed Anima-specific definition; (3) what it rules out — the folk reading or near-synonym the entry exists to block; (4) provenance — the §-claim, epistle, gravel record, agent definition (`.claude/agents/*.md`), or `CLAUDE.md` that grounded the meaning. Same shape as a logic §-claim minus the conviction force: a definition is not a stake about the world, it is a coordinate for reading stakes about the world.
 
-Agent definitions and `CLAUDE.md` are valid provenance because they are the operational substrate — the documents that define how the system runs. The terms they define ("epistle," "gold," "gravel," "reach," the status lifecycle) are real and load-bearing. A term grounded in `lite.md` is grounded as firmly as one grounded in a §-claim; the substrate differs, the chain of custody holds the same.
+Agent definitions and `CLAUDE.md` are valid provenance because they are the operational substrate — the documents that define how the system runs. The terms they define ("epistle," "gold," "gravel," "reach," the status lifecycle) are real and load-bearing. Two kinds of firmness, not one. A term grounded in `lite.md` / `CLAUDE.md` carries operational-substrate firmness: real, load-bearing, valid provenance — the chain of custody holds. A term grounded in a §-claim carries ratified-corpus firmness: frozen under the §3 ratification cycle. The provenance-validity is the same; the ratification status is not. Naming the asymmetry here is the same cut the kind signal makes below (operational vs. epistemic vocabulary) — the two claims reinforce each other.
 
 **provenance source = vocabulary kind signal.** The provenance source tells an agent what *kind* of vocabulary it is reading. Terms grounded in agent definitions / `CLAUDE.md` → operational vocabulary: germane to builders, to how the system runs. Terms grounded in §-claims, epistles, gravel → epistemic vocabulary: germane to reasoners, to how the corpus holds. Same vocab corpus, two provenance registers, two audiences. An agent reads the citation and knows whether a term is its problem. Load-bearing: it lets agents filter the vocab corpus by what's relevant to their job without reading the whole thing. The provenance field does double duty — chain of custody (below) and audience routing.
 
@@ -26,7 +26,7 @@ No comparative argumentation inside an entry. No "why not refine?" The definitio
 - *epistle* — staked direction submitted to shitcorping; not an argument. Rules out: essay, proof, position paper that argues its case. [`CLAUDE.md` — epistle format, status lifecycle, staked-direction framing]
 - *gravel / shitcorpus* — the via-negativa aggregate; permanent record of what was dropped and why. Rules out: trash (gravel is evidence); scratch notes. [§6.6, §3.20]
 - *gold / gravel (as shitcorping outputs)* — gold = earned weight; gravel = dropped, with because. Rules out: pass/fail; gold as praise rather than load-bearing-survival. [`.claude/agents/lite.md` — operational definitions of panning outputs]
-- *vapor / liquid / frozen* — epistle status lifecycle: written-not-shitcorped / shitcorped-candidate / ratified-into-corpus. Rules out: draft/review/final (these track process, not epistemic standing). [§1.6, §2.5]
+- *vapor / liquid / semi-liquid / frozen* — epistle status lifecycle fully mapped to the §1.6/§2.5 liquidity gradient: vapor = conversation, epistle not yet written; liquid = epistle drafted and iterating; semi-liquid = shitcorping proposed and agreed, corpus changes drafted not yet committed; frozen = gravel committed, corpus updated, epistle preserved as provenance artifact. Rules out: draft/review/final (these track process, not epistemic standing); conflating semi-liquid (agreed but uncommitted) with liquid (still iterating). [§1.6, §2.5 — the liquidity gradient the lifecycle fully instantiates; CLAUDE.md — epistle lifecycle definition]
 - *§-claim* — a numbered conviction-corpus claim carrying what it rules out. Rules out: assertion without a rules-out; a citation target without conviction force. [`corpora/anima/logic.md` format — the §-numbered conviction-corpus entry form; the corpus defines by demonstrating]
 - *reach* — a claim that grasps past what it earned. Rules out: error (a reach can be directionally right); the reach is named in shitcorping, not deleted. [`.claude/agents/lite.md` — "reasoning that arrives at the edge of something real and stops"]
 - *corpus* — a domain reasoned-*from*, frozen as coordinates. Rules out: documentation; a domain reasoned-*about*. [§6.6]
