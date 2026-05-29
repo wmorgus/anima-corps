@@ -1,5 +1,5 @@
 ---
-Excavated: 2026-05-29 | Status: semi-liquid
+Excavated: 2026-05-29 | Status: frozen
 ---
 
 Epistle 013 — The Vocabulary Corpus
