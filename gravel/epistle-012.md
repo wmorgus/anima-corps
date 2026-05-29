@@ -1,5 +1,5 @@
 ---
-Shitcorped: 2026-05-26 | Source: epistle-012 | Verdict: liquid
+Shitcorped: 2026-05-26 | Source: epistle-012 | Verdict: frozen
 ---
 
 Gravel Record — Epistle 012: The Session Chain

@@ -1,5 +1,5 @@
 ---
-Excavated: 2026-05-26 | Status: liquid
+Excavated: 2026-05-26 | Status: frozen
 ---
 
 Epistle 012 — The Session Chain
