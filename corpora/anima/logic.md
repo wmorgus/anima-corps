@@ -55,7 +55,7 @@ Frozen reference. Reason FROM this, not about it. Updates are supersession event
 
 | Register | Obligation | Failure mode |
 |---|---|---|
-| Domain model / ubiquitous language | Ratified vocabulary the other registers cite; terms mean one thing across registers. *Self-referential note: this corpus is Anima's domain model register.* | Same word, two meanings — drift undetectable because each register is internally coherent |
+| Domain model / ubiquitous language | Ratified vocabulary the other registers cite; terms mean one thing across registers. *The domain-model / ubiquitous-language register is glossary.md. [→ §1.13, Epistle 019]* | Same word, two meanings — drift undetectable because each register is internally coherent |
 | ADR (architecture decision record) | The because for a structural choice — frozen when ratified | Epistemic debt (→ §8.2): change made without rationale, unquantifiable risk |
 | RFC / design doc | Pre-ratification deliberation — explicitly liquid | Because ratified without being externalized — lives in heads, not record |
 | Threat model | What the system commits to protecting against; constrains what contracts can safely be made | Security contracts made without grounding in actual risk |
@@ -103,6 +103,8 @@ Frozen reference. Reason FROM this, not about it. Updates are supersession event
 **Named extensions.** Two additions would convert this taxonomy from a list to something fully citable against the rest of the corpus: (1) **default liquidity per register** — what tier each register occupies by default, and what constitutes ratification to freeze it; (2) **reader column** — who reads each register, in what cadence, to detect failure (→ §15.14). Without the reader column, failure modes remain theoretical. These are flagged as explicit next work.
 
 Rules out: treating unit tests as a distinct register; collapsing transition registers into spine or deliberation; treating prompt/constellation as mere configuration; treating the taxonomy as a flat list rather than as nodes in a typed citation graph (→ §14).
+
+1.13 Corpus file partition. Each corpus file answers one question for one reader at one rate of change. When a file answers two questions for different readers for different reasons, it meets the split condition: the two questions belong in two files. The driver is the question, not the topic or subject matter. Rules out: sorting corpus entries by subject matter rather than by what question they answer and who reads them; adding a new register entry to an existing file when that file already answers a different question for a different reader. [→ §6a.2, §1.12, rhetoric §4.2, Epistle 019]
 
 ---
 

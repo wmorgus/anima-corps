@@ -1,5 +1,5 @@
 ---
-Excavated: 2026-05-29 | Status: vapor
+Excavated: 2026-05-29 | Status: frozen
 ---
 
 Epistle 019 — One file, one question
@@ -28,4 +28,4 @@ Named gaps.
 
 The schema is candidate, not ratified. Field set above lifted from what §6.13/§6.17 already carry. Don't know the exact set yet. Flag for the build.
 
-Scope. This epistle stakes the shape (one file, one question) and the cut (who vs. how-must-it-work). It does not perform the migration. Moving slot entries out of logic.md, writing agents.md, writing the glossary file — later work. The epistle is the architectural stake, not the implementation. What is not yet decided: whether migrated §6.13/§6.14/§6.17 leave a stub pointer in logic.md or move whole; the ratified field set; the cross-file citation discipline once §-numbers span three files. [→ §1.12, §6.5, §6.8, §6.12, §6.13, §6.14, §6.15, §6.17, §6a.2, §8.19, §8.20]
+Scope. This epistle stakes the shape (one file, one question) and the cut (who vs. how-must-it-work). It does not perform the migration. Moving slot entries out of logic.md, writing agents.md, writing the glossary file — later work. The epistle is the architectural stake, not the implementation. What is not yet decided: whether migrated §6.12/§6.13/§6.14/§6.17 leave a stub pointer in logic.md or move whole. §6.12 (Hermes) is the hardest case — the single-question test recurses inside its entry. Its slot spec (domain owned, reasoning obligation, harm-when-failed + harm-bearer, rules-out-as-slot) answers who and moves to agents.md. But its embedded Aufhebung naming (§6.9/§3.10 — Hermes superseded Will/Iris/Socrates, the because on the record), its §15.18 open question (applying Anima's epistemic norms to receiving a human request), and its §11.7 "acts on behalf of, not substitute for" stake answer how-must-it-work / what's-unresolved and should stay in logic.md. One entry, both questions: the cut runs through the middle of Hermes, not around it. The sharpest stress test of the principle. Also undecided: the ratified field set; the cross-file citation discipline once §-numbers span three files. [→ §1.12, §6.5, §6.8, §6.9, §6.12, §6.13, §6.14, §6.15, §6.17, §6a.2, §8.19, §8.20, §11.7, §15.18, §3.10]
