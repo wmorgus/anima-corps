@@ -2,10 +2,10 @@
 Excavated: 2026-05-29 | Status: vapor
 ---
 
-Epistle 013 — The Craft Standard
+Epistle 016 — The Craft Standard
 Topic: Pavel needs a structural-quality reference to ground craft diagnosis. The ur-software corpora hold positional forms (where a form sits on a moving world) but read on the wrong axis for craft (whether a form is well-made independent of any referent). The craft reference is present but mis-indexed; what's missing is the drift-stripped reading-axis over it, plus two content gaps the positional corpora never had reason to hold. Stake what the craft reference must hold and what it must rule out.
 
-**claim.** Craft diagnosis needs a reference Pavel reasons FROM, same as substrate diagnosis reasons from the ur-software corpora. The reference is present but mis-indexed — the forms live in the corpora's frozen tier, read on the drift axis; what's missing is the drift-stripped reading-axis over them. Resolves Epistle 012's open tension ("Craft's posture is the weakest leg") in favor of: craft needs its own standard, distinct from the positional corpora — not a separate *instrument*, the same instrument (read form against ideal), a different *standard read against*. Two exceptions: content the positional corpora never had reason to hold (stable-dependencies, abstraction-leak detection — staked below). The two-posture map (§6.14) holds; the reference count is two.
+**claim.** Craft diagnosis needs a reference Pavel reasons FROM, same as substrate diagnosis reasons from the ur-software corpora. The reference is present but mis-indexed — the forms live in the corpora's frozen tier, read on the drift axis; what's missing is the drift-stripped reading-axis over them. Resolves Epistle 015's open tension ("Craft's posture is the weakest leg") in favor of: craft needs its own standard, distinct from the positional corpora — not a separate *instrument*, the same instrument (read form against ideal), a different *standard read against*. Two exceptions: content the positional corpora never had reason to hold (stable-dependencies, abstraction-leak detection — staked below). The two-posture map (§6.14) holds; the reference count is two.
 
 **the gap is not macro-vs-micro.** Tempting frame: ur-software gives Pavel the macro (world of practice), craft needs the micro (a well-formed module). False. The corpora already hold micro structural forms — separation of concerns, dependency inversion, hexagonal, normalization (application §1, data §1). The forms are present. What is missing is not finer grain. It is a second *reading standard* over the same forms.
 
@@ -43,4 +43,4 @@ The empirical receipt — strip the external referents. Remove the platform, the
 
 *Resolved (was: does referent-free judgment even hold).* The standard-is-a-referent collapse worry is answered in the body — judgment standard is epistemic (the lens), not ontological (a relatum). The strip-the-referents test confirms craft survives where the relational debts dissolve. Craft is intrinsic predication. The fourth primitive stands, not degenerate substrate. No longer open.
 
-[→ §1.1, §1.11, §6.13, §6.14, §8, §8.3, §8.4, application §1.1, application §1.2, application §1.3, application §2, data §1, Epistle 010, Epistle 012]
+[→ §1.1, §1.11, §6.13, §6.14, §8, §8.3, §8.4, application §1.1, application §1.2, application §1.3, application §2, data §1, Epistle 010, Epistle 015]

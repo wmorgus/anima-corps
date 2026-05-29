@@ -1,9 +1,9 @@
 ---
-Source: epistles/epistle-012.md
+Source: epistles/epistle-015.md
 Shitcorped: 2026-05-29
 ---
 
-# Epistle 012 — Four Primitives, One Partition // Gravel Record
+# Epistle 015 — Four Primitives, One Partition // Gravel Record
 
 ## Gold (earned weight)
 
@@ -43,4 +43,4 @@ Shitcorped: 2026-05-29
 ## Verdict
 
 Status: liquid
-Net contribution: extends §8 from a three-form diagnostic list into a complete partition of software problems with a stated death condition, ties the partition to the existing posture seam (§8.3, §6.13/§6.14), and converts named-debt taxonomy into a decompose-then-route playbook. The craft leg's corpus ground remains a dependency (ur-software structural corpus, Epistle 013), but the posture and partition stand.
+Net contribution: extends §8 from a three-form diagnostic list into a complete partition of software problems with a stated death condition, ties the partition to the existing posture seam (§8.3, §6.13/§6.14), and converts named-debt taxonomy into a decompose-then-route playbook. The craft leg's corpus ground remains a dependency (ur-software structural corpus, Epistle 016), but the posture and partition stand.
