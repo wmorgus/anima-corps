@@ -1,5 +1,5 @@
 ---
-Excavated: 2026-05-29 | Status: vapor
+Excavated: 2026-05-29 | Status: frozen
 ---
 
 Epistle 020 — The severity register
