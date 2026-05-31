@@ -54,7 +54,7 @@ Each epistle file follows this structure:
 
 ```
 ---
-Excavated: YYYY-MM-DD | Status: [vapor | liquid | frozen]
+Excavated: YYYY-MM-DD | Status: [vapor | liquid | semi-liquid | frozen]
 ---
 
 Epistle NNN — Title
@@ -63,9 +63,10 @@ Topic: One line. The specific claim or gap this epistle addresses.
 ```
 
 **Status lifecycle:**
-- `vapor` — written, not yet shitcorped
-- `liquid` — shitcorped; candidate for ratification
-- `frozen` — ratified into the corpus; the epistle is preserved as provenance artifact
+- `vapor` — conversation; the epistle not yet written
+- `liquid` — epistle drafted and iterating
+- `semi-liquid` — shitcorping proposed and agreed; corpus changes drafted but not yet committed by builder
+- `frozen` — gravel committed, corpus updated; epistle preserved as provenance artifact
 
 **Numbering:** next available sequential integer. Check `epistles/` before assigning.
 
