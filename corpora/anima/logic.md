@@ -110,6 +110,8 @@ Rules out: treating unit tests as a distinct register; collapsing transition reg
 
 1.15 Corpus file partition — merge direction. §1.13 is not only file-generating. When one question currently lives in two files for the same reader at the same rate of change, the test runs in reverse: merge condition met. Instance: logic.md §18 (rendering registers) and rhetoric.md §4 (composition rule + cross-corpus seam) both answer "how must I compose into a corpus?" — same question, same reader, same rate of change — collapse to one composition-discipline file. Rules out: reading §1.13 as only applicable when splitting; leaving one question scattered across two corpus files. [→ §1.13, §1.14, Epistle 020, Epistle 021]
 
+1.16 Composition-discipline file. A fourth corpus file at `corpora/anima/composition.md` answering "how must I write into a corpus?" — authoring discipline addressed to the corpus author before writing an entry. Distinct from logic.md (conviction, read-from while reasoning), rhetoric.md (doxa, read-from), and glossary.md (term definitions). Holds: entry-format rules and register machinery from logic.md §18; authoring discipline from rhetoric.md §4.1 and the authoring-check half of §4.2. Does not hold: the logos/doxa seam claim (§4.2's conviction-shaped routing rule — stays in rhetoric.md). logic.md §18 becomes a stub pointer after migration. rhetoric.md §4 splits: discipline migrates, seam-claim stays. Rules out: a repo-root universal composition file; absorbing the seam-claim into authoring discipline; treating composition.md as a fifth conviction corpus. [→ §1.13, §1.15, rhetoric §4.2, Epistle 021]
+
 ---
 
 ## §2 Liquidity gradient

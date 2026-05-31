@@ -1,5 +1,5 @@
 ---
-Excavated: 2026-05-30 | Status: vapor
+Excavated: 2026-05-30 | Status: frozen
 ---
 
 Epistle 021 — The composition-discipline file
