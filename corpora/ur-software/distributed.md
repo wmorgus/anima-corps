@@ -67,4 +67,4 @@ Each step shows Aufhebung: the prior step's failure mode was preserved in histor
 
 ## Security
 
-No security corpus exists. Agents operating without a security corpus must flag security-relevant architectural decisions for human review rather than reasoning from silence.
+Security concerns route through existing agent slots by phase — Pavel (substrate/dependency, ingestion), Daedalus + Urania (craft/lineage, review). [→ corpora/ur-software/security.md, logic.md §16.4]

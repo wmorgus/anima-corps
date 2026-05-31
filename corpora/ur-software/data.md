@@ -67,4 +67,4 @@ Each step shows Aufhebung: the prior paradigm's access asymmetry limitation was 
 
 ## Security
 
-No security corpus exists. Agents operating without a security corpus must flag security-relevant data decisions (encryption at rest, access control, PII handling) for human review rather than reasoning from silence.
+Security concerns (encryption at rest, access control, PII handling) route through existing agent slots by phase — Pavel (substrate/dependency, ingestion), Daedalus + Urania (craft/lineage, review). [→ corpora/ur-software/security.md, logic.md §16.4]

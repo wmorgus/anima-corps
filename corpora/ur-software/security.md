@@ -1,11 +1,11 @@
 # Ur-Software Corpus — Security
 
-Frozen reference for security reasoning. Argus reasons FROM this, not about it. Updates are supersession events, not edits. Open surface marked [OPEN].
+Frozen reference for security reasoning. Security is not a distinct agent slot — it routes through existing slots by phase (logic.md §16.4): Pavel reasons FROM this on the substrate/dependency question at ingestion (§8.4), Daedalus on craft and Urania on lineage at review (§8.19). Updates are supersession events, not edits. Open surface marked [OPEN].
 
 Three tiers:
 - **Frozen**: invariants that have not moved in decades. Epistemic tag required: [theorem] (mathematically proven), [empirical] (well-observed, defeasible by counterevidence), [axiom] (staked-not-proven foundational commitment), [definition] (formal definition with provable properties).
 - **Semi-liquid**: pattern wisdom with because. Fields: *because*, *canonical failure* (mechanistic — the causal path, not the symptom), *signals* (observable conditions suggesting this pattern applies), *cross-refs*.
-- **Liquid**: external retrieval targets. NOT static knowledge — the agent queries this tier at decision time, does not memorize it. Argus has web search + advisory-database lookup tools scoped to this tier. Naming retrieval targets is the contract; their contents are out of scope for this document and change faster than the document can.
+- **Liquid**: external retrieval targets. NOT static knowledge — the agent queries this tier at decision time, does not memorize it. The routing agents (Pavel at ingestion, Daedalus/Urania at review) reach this tier via web search + advisory-database lookup scoped to it. Naming retrieval targets is the contract; their contents are out of scope for this document and change faster than the document can.
 
 Relationship to other corpora: security is cross-cutting. Trust boundaries are application concerns made adversarial; TOCTOU is a concurrency invariant with security consequences; transport security answers the "network is secure" distributed fallacy; encryption-at-rest and key management are least-privilege questions in the data domain. [→ corpus_ursoftware_application] [→ corpus_ursoftware_concurrency] [→ corpus_ursoftware_distributed] [→ corpus_ursoftware_data]
 
@@ -101,7 +101,7 @@ Security posture has evolved through paradigms. Each step shows Aufhebung: the p
 
 **Zero trust** — identity-verified, per-request authorization, no implicit trust from network location. *Insight retained:* trust attaches to verifiable claims about principals and actions, not to network topology. §1.7 (complete mediation) is the formal expression of this. *Currently stress-tested by:* AI-assisted credential attacks at scale; LLM prompt injection as a new confused-deputy vector (§1.8) where the model-with-tools is the deputy and untrusted text is the instruction; deepfake-assisted social engineering against the identity-verification steps zero trust depends on.
 
-**Verifiable software supply chain** (emerging, unsettled) — cryptographic attestation of build provenance (SLSA, sigstore, reproducible builds); software bill of materials (SBOM) as a first-class artifact; signed releases with auditable build pipelines. *Insight being elevated:* defense in depth failed against supply-chain entry because the trust granted to dependencies was unverified and invisible. The successor makes provenance verifiable and the dependency graph auditable. Not yet a settled posture — the field is building the tooling and the norms simultaneously. Argus treats this as the emerging current step; its specific instantiations are liquid-tier knowledge, not frozen.
+**Verifiable software supply chain** (emerging, unsettled) — cryptographic attestation of build provenance (SLSA, sigstore, reproducible builds); software bill of materials (SBOM) as a first-class artifact; signed releases with auditable build pipelines. *Insight being elevated:* defense in depth failed against supply-chain entry because the trust granted to dependencies was unverified and invisible. The successor makes provenance verifiable and the dependency graph auditable. Not yet a settled posture — the field is building the tooling and the norms simultaneously. The routing agents treat this as the emerging current step; its specific instantiations are liquid-tier knowledge, not frozen.
 
 ---
 
@@ -109,23 +109,23 @@ Security posture has evolved through paradigms. Each step shows Aufhebung: the p
 
 This tier is architecturally distinct from the liquid tiers of the other ur-software corpora. In those corpora, liquid means "the agent generates specifics from context." Here, liquid means "the agent looks specifics up from authoritative external sources at decision time." Enumerating vulnerabilities, advisories, algorithm recommendations, or framework-specific guidance statically in this document would be wrong: the document cannot be re-issued at the cadence this information changes, and stale security knowledge is worse than absent security knowledge because it is trusted.
 
-Argus is provisioned with retrieval tooling scoped to this tier. The contract this corpus makes is to name the retrieval targets and specify retrieval discipline. Their contents are out of scope.
+The routing agents are provisioned with retrieval tooling scoped to this tier. The contract this corpus makes is to name the retrieval targets and specify retrieval discipline. Their contents are out of scope.
 
 **Named retrieval targets:**
 - **NIST National Vulnerability Database (NVD)** — CVE lookup by dependency name and version; CVSS scoring; CWE classification. Primary source for "is this version vulnerable."
 - **GitHub Advisory Database (GHAD)** — ecosystem-scoped advisories (npm, PyPI, Maven, RubyGems, Go, NuGet, Composer, Rust). Often surfaces ecosystem advisories before NVD assigns a CVE.
-- **OWASP Top 10 (current edition)** — periodic synthesis of prevalent web application vulnerability classes. The edition matters; the corpus does not hardcode the list — Argus retrieves the current edition.
+- **OWASP Top 10 (current edition)** — periodic synthesis of prevalent web application vulnerability classes. The edition matters; the corpus does not hardcode the list — the routing agent retrieves the current edition.
 - **NIST cryptographic algorithm recommendations** — current guidance on approved algorithms, key sizes, deprecation timelines, and the post-quantum transition. Authoritative source for §1.11 decisions.
 - **Vendor / framework security advisories** — Django, FastAPI, SQLAlchemy, Rails, Spring, Node.js, etc. Framework-specific defaults and known-bad configurations are versioned with the framework.
 - **CISA Known Exploited Vulnerabilities (KEV) catalog** — CVEs with confirmed in-the-wild exploitation. Prioritization signal: a KEV-listed CVE warrants a different response posture than an equally-scored non-KEV CVE, regardless of CVSS score.
 
 **Retrieval discipline:**
-- Argus cites the retrieval source and timestamp for any claim sourced from this tier. A liquid-tier claim without a citation is not yet evidence.
-- Argus distinguishes "no advisory found at retrieval time" from "no advisory exists" — the former is bounded by the freshness of the source and the precision of the query.
-- When retrieval is unavailable, Argus declares the gap rather than substituting frozen-tier reasoning for a liquid-tier question. Frozen invariants do not answer "is this specific version of this specific library safe" — that is a retrieval question.
+- The routing agent cites the retrieval source and timestamp for any claim sourced from this tier. A liquid-tier claim without a citation is not yet evidence.
+- The routing agent distinguishes "no advisory found at retrieval time" from "no advisory exists" — the former is bounded by the freshness of the source and the precision of the query.
+- When retrieval is unavailable, the routing agent declares the gap rather than substituting frozen-tier reasoning for a liquid-tier question. Frozen invariants do not answer "is this specific version of this specific library safe" — that is a retrieval question.
 
 ---
 
 ## Security
 
-This IS the security corpus. Agents in the Anima constellation route security-relevant decisions to Argus. Argus reasons from the frozen and semi-liquid tiers of this document and from live retrieval at the liquid tier. Decisions that depend on liquid-tier information made without retrieval are declared as such and escalated for human review.
+This IS the security corpus. Security reasoning routes through existing agent slots by phase, not to a distinct security agent (logic.md §16.4): Pavel on the substrate/dependency question at ingestion (§8.4), Daedalus on craft and Urania on lineage at review (§8.19). Those agents reason from the frozen and semi-liquid tiers of this document and from live retrieval at the liquid tier. Decisions that depend on liquid-tier information made without retrieval are declared as such. [→ corpora/anima/logic.md §16.4]
