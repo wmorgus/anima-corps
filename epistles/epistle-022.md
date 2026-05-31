@@ -1,5 +1,5 @@
 ---
-Excavated: 2026-05-31 | Status: liquid
+Excavated: 2026-05-31 | Status: frozen
 ---
 
 Epistle 022 — What counts as a test for Anima
