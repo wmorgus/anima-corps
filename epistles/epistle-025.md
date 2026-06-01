@@ -2,8 +2,8 @@
 Excavated: 2026-06-01 | Status: liquid
 ---
 
-Epistle 025 — Four Causes, Four Debts
-Topic: The four debt primitives of Epistle 015 map one-to-one onto Aristotle's four causes. Each primitive is a cause-failure. The mapping grounds exhaustiveness harder than 015 did, and predicts causal interaction between debt types.
+Epistle 025 — Four Causes, Four Faults
+Topic: The four fault primitives map one-to-one onto Aristotle's four causes. Each fault is a seam come undone. The mapping grounds exhaustiveness harder than Epistle 015 did, and predicts causal interaction between fault types.
 
 **claim.** The four primitives (015) are the four causes (§13.6) read as failures. Final → spec. Efficient → epistemic. Material → substrate. Formal → craft. Not analogy — identity of structure. A software artifact has exactly four causes; a fault is what you measure when one is broken.
 
