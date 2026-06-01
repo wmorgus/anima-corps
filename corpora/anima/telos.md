@@ -21,7 +21,7 @@ That economy was rational under compute scarcity. Producing all registers — sp
 
 The end — teleological software (§1.11) — is not named here. It is what stands once the not-this is removed. Naming it forward would smuggle a program into a prayer.
 
-Direction and warrant are separable — this doc's own forward claim, not a ratified §-claim. The corpus states the conviction (§13.1) and the dated warrant (§13.9) but has not separately stated they are separable for the telos. Staked here: the direction is the prayer — not dated, falsified only by changing the reach; the warrant is dated — the thermodynamics changed, and that is what makes the architecture timely rather than merely correct (§13.9). The conviction came first and is not dated (§13.1); the timeliness is. If the separation holds, then: compute scarcity returning weakens the warrant without moving the direction.
+Direction and warrant are separable axes of a telos resolution (§13.14). The direction is the prayer — not dated, falsified only by changing the reach (§13.1); the warrant is dated — the thermodynamics changed, and that is what makes the architecture timely rather than merely correct (§13.9). If compute scarcity returned, the warrant weakens without the direction moving.
 
 ---
 
