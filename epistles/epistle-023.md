@@ -1,5 +1,5 @@
 ---
-Excavated: 2026-06-01 | Status: liquid
+Excavated: 2026-06-01 | Status: frozen
 ---
 
 Epistle 023 — Constitutional cost of core change: Aufhebung, not erasure
