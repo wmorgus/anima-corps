@@ -28,7 +28,9 @@ gravel/
 
 ### Write an epistle → use the `builder` agent
 
-Invoke when you want to draft a new epistle or tighten an existing one. Builder writes at epistle density: caveman prose, maximum compression, as few words as possible, as much meaning as possible. It does not argue — it stakes a direction and names where the reasoning ran out.
+Invoke when you want to draft a new epistle or tighten an existing one. Builder writes at epistle density: caveman prose, maximum compression, as few words as possible, as much meaning as possible.
+
+An epistle is an argument for consideration — the best faith effort to convince a highly scrutinous reader to see the vision in the claim. It does not suggest explicit corpus contributions; it stakes a direction and names where the reasoning ran out. Knowingly keeping some logic gravel as rhetoric decoration is a sign of a good epistle — not every image needs to be new ore.
 
 Usage: describe the claim or direction you want to stake. Builder produces a draft epistle in the correct format. You revise from there.
 
