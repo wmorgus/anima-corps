@@ -11,7 +11,7 @@ Committed-to, not argued-for. Implementation failure does not falsify it. Only c
 The status quo Anima negates is the **restricted economy of software** (§13.9). Stated load-bearing, so the negation has a baseline:
 
 - The *because* lives in heads and leaves when the heads leave (rhetoric §3.2).
-- Code is treated as ground truth; the reasoning behind it as disposable (§1.6, §12.3).
+- Code is treated as ground truth; the reasoning behind it as disposable (§12.3; contra §1.6, which holds code in production a frozen suggestion, not truth).
 - Decisions are recorded as facts, not ratified as commitments (§3.1, §12.1).
 - Onboarding is archaeology-from-ruins, because intent was never externalized (rhetoric §2.22).
 
@@ -21,7 +21,7 @@ That economy was rational under compute scarcity. Producing all registers — sp
 
 The end — teleological software (§1.11) — is not named here. It is what stands once the not-this is removed. Naming it forward would smuggle a program into a prayer.
 
-Direction and warrant are separable. The direction is the prayer: it is not dated, falsified only by changing the reach. The warrant is dated: the thermodynamics changed, and that is what makes the architecture timely rather than merely correct (§13.9). The conviction came first and is not dated (§13.1); the timeliness is. If compute scarcity returned, the warrant weakens without the direction moving.
+Direction and warrant are separable — this doc's own forward claim, not a ratified §-claim. The corpus states the conviction (§13.1) and the dated warrant (§13.9) but has not separately stated they are separable for the telos. Staked here: the direction is the prayer — not dated, falsified only by changing the reach; the warrant is dated — the thermodynamics changed, and that is what makes the architecture timely rather than merely correct (§13.9). The conviction came first and is not dated (§13.1); the timeliness is. If the separation holds, then: compute scarcity returning weakens the warrant without moving the direction.
 
 ---
 
@@ -62,6 +62,8 @@ The layer that speaks only to conflict. Not how motion runs — where it breaks.
 4. **Confidence vs. liquidity → never conflate; hold both axes.** Confidence (how sure) and liquidity (what weight, who owns, how revisable) are independent (§2.3, §2.4). A confident claim is not thereby frozen; a frozen claim is not thereby certain. When the two seem to demand the same tag, that is the tell to separate them, not collapse them. Conflating the axes launders staleness as authority — the category error most agent systems make.
 
 5. **Founder vs. corpus → the corpus, asymmetrically.** The externality requirement weighs most heavily against the architect's own motivated reasoning (§3.3a). The founder can be wrong about Anima in a way Anima can detect; the reverse is not true. When the person who wrote the frozen tier conflicts with it, the ordering does not defer to the author. The hardest conflict adjudicated here, and the one most prone to silent exemption.
+
+   Open: §3.3a names the asymmetry but not the enforcer. Who convenes against the founder when Anima runs solo (§10.5) is unlocated. The live hole.
 
 Open: when Tiers 1/2/3 conflict at runtime, inside a single invocation, the cycle cannot run synchronously (§6a.9). The ordering says the cycle wins; it does not say what a runtime agent does in the moment before the cycle can run. The live hole.
 
