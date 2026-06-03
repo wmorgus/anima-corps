@@ -1,5 +1,5 @@
 ---
-Excavated: 2026-06-03 | Status: liquid
+Excavated: 2026-06-03 | Status: frozen
 ---
 
 Epistle 027 — The Minimum Viable Telos
