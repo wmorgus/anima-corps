@@ -1,5 +1,5 @@
 ---
-Excavated: 2026-06-06 | Status: liquid
+Excavated: 2026-06-06 | Status: frozen
 ---
 
 Epistle 026 — The Forge
