@@ -25,7 +25,7 @@ Shitcorped: 2026-06-08
 
 **Contestation-record artifact type — [OPEN].** Janus's ruling "this execution falsified this commitment" is the §3.2 contestable claim the loop needed. What artifact carries it? Not field_record (Argus's, attestation-shaped, §4.9) — a contestation is a judgment, telos-referencing. Coupled to the occupant question; twin of the §4.9 field_record schema gap (029's schema/occupant coupling). Stays in the epistle's tensions only — not in corpus. Downstream work.
 
-**Agent, mode, or human occupant — §5.6 deferred.** §6.1 licenses the slot; §6.2 points at a new slot; neither decides the occupant. The two-faced requirement (hold spine + field at once) and the §9.6 inability of dumb infrastructure to reference the spine push toward §6 agent. Lean: agent. Argued, not felt — §5.6 forbids inventing the agent before pressure surfaces it.
+**Agent, mode, or human occupant — RESOLVED: §6 agent.** §6.1 licenses the slot; §6.2 points at a new slot; both now point unambiguously at an agent occupant. The function requires holding two artifact classes at once (ratification trail + field_record) and reasoning from both — no human does this at scale without becoming the bottleneck; no mode of an existing agent covers it (each reasons from one class — Mnemosyne the codebase §6.13, Pavel the forms §6.14, Argus the execution 029); the cadence triggers (threshold/transition/human) demand always-accessible reasoning, which a human occupant cannot supply on demand. §6.1 and §6.2 both land on the slot. Mirrors §6.19 of logic.md and epistle-030.md.
 
 ## Smelter's contribution
 
@@ -37,4 +37,4 @@ Shitcorped: 2026-06-08
 
 Status: liquid
 
-Closes the §1.12 return path at the naming level — third hole (reader-who-rules) filled, after artifact type (field_record, 027) and writer (Argus, 029). Janus is the reasoning custodian 027 left unnamed; the slot clears §6.1 with a distinct harm landing on the telos itself, the occupant deferred per §5.6. Net contribution: the return path from territory to intent is now structurally complete at the naming level — build and schema remain open.
+Closes the §1.12 return path at the naming level — third hole (reader-who-rules) filled, after artifact type (field_record, 027) and writer (Argus, 029). Janus is the reasoning custodian 027 left unnamed; the slot clears §6.1 with a distinct harm landing on the telos itself, the occupant resolved as a §6 agent (§6.19). Net contribution: the return path from territory to intent is now structurally complete at the naming level — build and schema remain open.
