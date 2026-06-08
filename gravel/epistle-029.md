@@ -1,0 +1,37 @@
+---
+Source: epistles/epistle-029.md
+Shitcorped: 2026-06-08
+---
+
+# Epistle 029 — The Argus Problem // Gravel Record
+
+## Gold (earned weight)
+
+**Three readers, not two — the recorder slot clears §6.1.** Between infrastructure (detect drift) and reasoning (contest the falsification) sits a third act: reconstruct what happened and produce the §3.2 contestable object the contester contests. Detection emits an alert (no intent-reference, no reconstructed execution); contestation needs a specific falsified commitment to point at; neither produces the five-W attestation between them. The harm is distinct — not "an event went unlogged" but "the contestable object the cycle requires was never produced." Harm-bearer: the reasoning custodian (cannot contest what was never reconstructed) and F4 (§14.4, field sensor reads field_records never written). Distinct from Mnemosyne (§6.13, reconstructs what code *argues*, frozen text) and Pavel (§6.14, places codebases on the world of forms, not executions). *Because:* §6.1 licenses by harm-distinctness, not function (§5.6 forbids speculative staffing). The slot clears the test on a harm no existing agent covers. Carries as a §6 agent entry (§6.18, candidate occupant). Rules out: collapsing the recorder into detection or contestation; reading §4.9's five-W field_record schema as already naming its writer.
+
+**Resolved: two modes, not a tension.** The prior draft held reason-vs-transcribe open. It dissolves — Argus operates in two modes. Mode 1, transcription: infrastructure detection fires, Argus records the flat five-W field_record (§4.9), no spine-reference, flatness correct by design. Mode 2, archaeology: drift that trips no threshold — execution returns, test passes, upstream commitment quietly falsified (weeds, not bugs). Argus reads traces against the spine, asks "does this honor the upstream commitment?" — §6.10 (extraction-as-archaeology) applied to live executions, not frozen text. Mode 2 is where F4 actually lives: the falsifications no infrastructure can see. *Because:* the binary was an artifact of forcing one mode. The collapse-into-infrastructure case applies only to Mode 1 (threshold-trip capturable by detection); Mode 2 structurally cannot be infrastructure (references the spine). The §3.2 cut that forces the three-role split forces the two-mode split one level in.
+
+**Name elevated, not recycled — clean Aufhebung against §16.4.** §16.4 ruled out an *occupant* (security-Argus, died of redundancy — security is phase-routed across Pavel/Daedalus/Urania), not the *name*. §16.4's three rule-outs all anchor to the security motivation; none binds a different-harm field-recorder cleared by a different §6.1 test. So the revival is §3.10 Aufhebung (§13.7): preserved (still the all-seer, §6.8 import intact), negated (security occupant superseded, *because* on record), elevated (name lifted to the recording function it always imported more fully than the security slot exercised). Same shape as Hermes (§16.3, §6.9: right name, wrong domain, rightness visible only through intervening forms). *Because:* the SUPERSEDED tag must not read as forbidding the name's reuse. §16.4 needs a one-line amendment pointing to the elevation. Rules out: reading the §16.4 supersession as a name-ban; treating field-Argus as necromancy of the security slot.
+
+**§6.8 — the name imports cadence.** Argus the hundred-eyed warden, some eyes always open. The name commits the field-reading function to *continuous* watch, not periodic audit. Fills the cadence row §1.12's reader column left blank ("who reads the field, in what cadence"). Consequence: the field sensor runs always-on; a cron-batch field reader violates the import. *Because:* §6.8 (name-as-load-bearing) — borrowed vocabulary carries obligation structure. A periodic-audit reader is a different obligation wearing the name.
+
+## Gravel (dropped)
+
+**Hermes slays Argus — named rhetoric, not a new §3.3 claim.** The myth (Hermes lulls Argus with stories, cuts off his head) dramatizes a read/write split: Hermes has read access to Argus's records by necessity (routing cannot run blind to the field), must not have write access (a field_record whose `commitments_falsified` could be re-narrated to `commitments_honored` upstream is the watcher put to sleep). *Because:* that constraint is §3.3 already (validator external to validated) — the myth is an *instance* of §3.3, not an extension. The architecture is real (records external to the framing reach, write-locked against re-narration), the rule that covers it is frozen. Image kept as decoration that names something true about the seam (a good epistle does not make every image new ore) — no new claim earns weight here.
+
+## Tensions (open)
+
+**Argus occupant — resolved as a §6 agent.** §6.1 licenses the slot; the occupant now resolves. Even Mode 1 (transcription) requires spine-reference to populate `commitments_honored`/`commitments_falsified` — linking an execution to the specific user story it falsified is a reasoning act, not mechanical infrastructure work. The threshold-trip is infrastructure's; the attribution is agentic. So the human and the dumb-infrastructure readings both fall: cadence (§6.8, always-on) already pushed off human, and the spine-reference in *both* modes pushes off infrastructure (the earlier "Mode 1 is flat, capturable by detection" read understated Mode 1 — even the flat field_record's falsification fields cite the spine). Argus is a §6 agent. Mirrors the resolution now in §6.18 of logic.md and epistle-029.md. Closes the [OPEN — candidate] carried from 027. Rules out: reading Mode 1 as fully mechanical because its capture is threshold-tripped — the trip is infrastructure's, the attribution is not.
+
+**field_record schema still [OPEN].** §4.9 stakes field_record as a direction; exact fields not ratified. If Argus is the writer, the schema is Argus's tool, and the two-mode resolution constrains it: it must serve Mode 1 (flat five-W capture) and Mode 2 (`commitments_honored`/`commitments_falsified` cited into the spine) — both, with the spine-citation edges load-bearing only in Mode 2. The schema work (027's "next work") and the occupant question are coupled.
+
+## Smelter's contribution
+
+- Named that the recorder's harm is the *non-production of the §3.2 contestable object*, not the logging gap — the spine of the §6.1 license, distinguishing it cleanly from detection (alert, no contestable face) and contestation (needs the object as input).
+- Named the two-mode resolution as the dissolution of the reason-or-transcribe binary, and located the collapse-into-infrastructure threat at Mode 1 only — the same §3.2 cut, applied one level in.
+- Named the §16.4 read as *occupant ruled out, name silent* — the rule-outs anchor to the security motivation, leaving the name free for a distinct-harm elevation. Surfaced the required §16.4 amendment so the SUPERSEDED tag does not read as a name-ban.
+
+## Verdict
+
+Status: vapor → liquid.
+Net contribution: closes the second hole in §1.12's return path (Epistle 027 named the field sensor and field_record; 029 names the operator who writes it). Stakes the recorder as the third reader on a distinct §6.1 harm, resolves it as two modes, and elevates the burned Argus name through a clean Aufhebung §16.4 never forbade. Corpus changes: §9.6 (recorder role + two modes), §14.4 F4 (Argus as third-sensor operator), §6.18 (new slot, candidate occupant), §16.4 (name-elevation amendment). Hermes-slays-Argus dropped to named rhetoric — §3.3 instance, not new ore.
