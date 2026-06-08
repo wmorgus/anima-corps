@@ -73,7 +73,9 @@ Open: when Tiers 1/2/3 conflict at runtime, inside a single invocation, the cycl
 
 Pointers only. The substance lives in the first-class artifacts downstream. A frozen artifact with no path back to this telos is a detectable graph gap, not a clean slate.
 
-- → `corpora/anima/logic.md` — the conviction corpus; the first-class §-claims reasoned-from.
+- → `corpora/anima/logic.md` — the conviction corpus; the first-class §-claims reasoned-from. The formal register; the pattern that makes Anima THIS system.
+- → `corpora/anima/substrate.md` — the material register; what the system is made of (agent definitions §6.12–§6.19, Bench, the constellation). [→ Epistle 032]
+- → `corpora/anima/process.md` — the efficient register; how the system moves and changes (epistle lifecycle, shitcorping loop, VERSION discipline). [→ Epistle 032]
 - → `corpora/anima/rhetoric.md` — the doxa register; the same commitments meeting conversation.
 - → `corpora/anima/corpus_vocab.md` — the definitional substrate; the other corpora cite it for term-meaning.
 - → `corpora/ur-software/*.md` — Pavel's reasoning surface (§6.6); distinct frozen coordinates, distinct telos docs of their own. Five files; four standalone reasoning surfaces; `security.md` phase-routed (§16.4), not a standalone surface.
