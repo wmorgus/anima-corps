@@ -30,10 +30,16 @@ Reason FROM this. Frozen reference. Updates are supersession events, not edits.
 
 ---
 
-## Bench
+## Bench — anima's home [→ Epistle 031]
 
-Bench (Epistle 031, liquid — pending ratification) is the host: the VS Code fork the whole loop runs in, the concrete place to run the constellation, where humans and constellation co-locate. The most material of materials — the concrete substrate the agents and their store inhabit.
+**Bench** is the runtime host: a VS Code fork, the concrete place where humans and the constellation co-locate to touch the loop. Anima's home — where intent is sharpened, form is shaped, commitments cross the hinge, and the field reads back against the spine. Not the same as Calliope (§4.1 — the commitment substrate, the append-only store where truth lives); a panel in Bench can hold vapor, it cannot hold truth. Host/system is the load-bearing distinction: Bench surfaces the loop, Calliope holds the commitments.
 
-Term collision held, not resolved: Bench is *host* (where humans and constellation co-locate, 031); Calliope is the *artifact store* (logic.md §4). Both "substrate" in different registers — Bench the runtime substrate, Calliope the commitment substrate. This doc houses Bench's definition once ratified and points to logic.md §4 for Calliope, which stays in logic.md as a formal-cause architectural claim (one append-only store, single API, §4.1 — an architectural principle, not an inventory of constituents).
+**One extension because one front door.** The VS Code extension IS the Hermes interface (§16.3). Extension topology follows agent topology — per-agent extension slots re-introduce the mesh §5.1 rules out.
 
-Bench will be added here in full once Epistle 031 is ratified. Until then this section is the placeholder the bridge points at. [→ Epistle 031, logic.md §4]
+**CLI is the spine; UI is a face on it.** Every hinge-crossing (§1.12) goes through CLI. The UI surface renders what the spine holds; it never replaces it. CLI-first is dependency order: build the spine solid before building the face on it (§9.1, §9.5). The liquid shape of the forge surface (§9.2) follows the frozen principle; freezing specific panel assignments before the evolution loop teaches which shape fits is ruled out.
+
+**Co-location is the substrate expression of the relay.** Human and constellation are both present natively in the same surface, each at their level: human at intent (§19.2), constellation at artifact depth. The fork makes this the default, not a feature to add. Reading A: both present, each doing their thing — relay division of levels expressed in the substrate, not collapsed. Rules out: AI-first surface where humans supervise the agent; reading "co-location" as both parties working at both levels simultaneously.
+
+**Bench hosts the complete loop.** Pre-hinge (forge/dojo surfaces), hinge (CLI submission, §1.12 telos-boundary crossing), post-hinge (Argus field records §6.18, Janus contestation views §6.19). One host, the whole alpha → spine → territory → omega → read-back (Epistle 028's loop, closed at the substrate level by Bench).
+
+[→ §1.12, §4.1, §5.1, §9.1, §9.2, §9.5, §16.3, §19.2, §6.18, §6.19, Epistle 026, Epistle 028, Epistle 031]

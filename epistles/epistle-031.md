@@ -1,5 +1,5 @@
 ---
-Excavated: 2026-06-08 | Status: liquid
+Excavated: 2026-06-08 | Status: frozen
 ---
 
 Epistle 031 — Bench: Where the Dojo and Forge Live
