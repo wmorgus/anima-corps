@@ -1,5 +1,5 @@
 ---
-Excavated: 2026-06-09 | Status: liquid
+Excavated: 2026-06-09 | Status: frozen
 ---
 
 Epistle 033 — The Friction Tax Is Insurance
@@ -21,7 +21,7 @@ The numbers, to keep it honest: 2 hours of Anima ≈ 30 min of raw codegen ≈ 3
 
 Primary case stays the productivity multiple. That is what gets bought. Bad faith resistance is a bonus — but load-bearing at this scale of acceleration, for the two reasons below.
 
-**Extension — reversibility.** The insurance is not only on time. Anima's layers surface consequences *before* they are baked into structure. Raw codegen surfaces them *after* — in the postmortem, when the decision is already load-bearing. Some bad-faith decisions, once embedded, do not reverse: they become the foundation other things stand on. Recovery is not "months." Recovery is architectural debt that never fully clears — a coordinate everything downstream inherits (cf. §3.15, staleness laundered as authority; here it is *bad intent* laundered as foundation). Before-vs-after is the whole difference between a cost you pay and a cost you carry forever. The premium hedges reversibility, not just schedule.
+**Extension — reversibility.** The insurance is not only on time. Anima's layers surface consequences *before* they are baked into structure. Raw codegen surfaces them *after* — in the postmortem, when the decision is already load-bearing. Some bad-faith decisions, once embedded, do not reverse: they become the foundation other things stand on. Recovery is not "months." Recovery is architectural debt that never fully clears — a coordinate everything downstream inherits (cf. §2.4/§2.9, staleness laundered as authority; here it is *bad intent* laundered as foundation). Before-vs-after is the whole difference between a cost you pay and a cost you carry forever. The premium hedges reversibility, not just schedule.
 
 **Extension — acceleration compounds the premium.** Non-obvious, worth stating flat: the faster you move, the *more* load-bearing the friction tax becomes. Velocity does not shrink blast radius — it grows it. More decisions per unit time, each one baking faster, less wall-clock for a consequence to surface organically before the next decision builds on top of it. So the insurance argument does not weaken as you accelerate. It *strengthens*, exactly in proportion to the speed that makes you want to drop it. The temptation to cut friction is highest precisely where the friction is most load-bearing. That inversion is the trap.
 
