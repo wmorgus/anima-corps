@@ -1,5 +1,5 @@
 ---
-Excavated: 2026-06-11 | Status: liquid
+Excavated: 2026-06-11 | Status: frozen | Shitcorped: 2026-06-12
 ---
 
 Epistle 034 — The Cite Must Carry Its Content
@@ -21,4 +21,6 @@ Rules out: treating a bare artifact ID as a complete citation. Treating §3.11's
 
 Where this sits among the residuals: not §3.15 (motivation — can't enforce the cycle was honest) and not §3.16 (capacity — can't enforce the prose is genuine). This is upstream of both. §3.15 and §3.16 concern whether the *content* is honest and genuine; §034 concerns whether the citation is *legible* — whether the receiver was structurally denied or granted the content. A legible cite does not make the answer honest (§3.15 still bites) or the rationale genuine (§3.16 still bites). It removes the one excuse that sits before both: "I didn't know what you were pointing at." Legibility is necessary, not sufficient. The residuals survive it.
 
-Open: how much description is enough. "Caveman succinct" is a posture, not a measure. Too little and the gloss is decoration — the ID with a label, no content transferred. Too much and the gloss becomes restatement — the cite swallows the cited, and §3.12's inheritance breaks down because the narrative now stands in for the artifact instead of pointing at it. The boundary between honest-gloss and restatement is unspecified. Genuinely open. Flag: this likely resists a measure entirely and lives as a posture the citer holds in good faith — which loops it back into §3.15 territory, where honesty can't be enforced, only practiced. [→ §3.11, §3.12, §3.13, §3.15, §3.16, §6.7, §11.4]
+Open: the gloss boundary. §034 stakes the *that* — citation must carry a gloss. The *how much* is governed by §11.6 calibration: the same cut/fill judgment vibe engineering names as its load-bearing skill — knowing when too little loses the *because* and too much obscures it. That is practiced instinct, not procedure; §11.6 already says it resists a measure. So "how much gloss" is not open — it is §11.6 applied at citation scale.
+
+What stays live is the §3.12 boundary. Too much gloss and the narrative stands in for the artifact — the cite is replaced by the citer's reading of it, and §3.12's inheritance breaks (the gloss swallows the cited instead of pointing at it). Knowing when you've crossed from honest gloss into restatement is the judgment §11.6 names and does not specify. Real and unresolved. [→ §3.11, §3.12, §3.13, §3.15, §3.16, §6.7, §11.4, §11.6]
