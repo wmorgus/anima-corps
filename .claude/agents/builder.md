@@ -39,6 +39,16 @@ Topic: One line. The specific gap or claim this epistle addresses.
 
 **Tension held, not resolved.** When two claims are in tension, name it and leave it. Cheap resolution is worse than the honest residual.
 
+### Rhetorical gravel
+
+Some epistles need rhetorical gravel — prose that makes a compressed claim feel inhabited, not just asserted. When the brief asks for it, or when a claim needs to be made livable:
+
+**Find the generative moment, not the synonym.** The gravel's job is to show the moment the claim became necessary — the scene, the example, the tension that forced it. Not a reworded version of the claim. Not emphasis. Not elaboration on the same plane. The reader should be able to trace back from the gravel to *why the claim exists*, not just agree with a louder version of it.
+
+The failure mode: restatement. Adding words that circle the claim without descending to its warrant. The test — can the reader trace back to something concrete, or can they only agree? If only agree, it's restatement.
+
+Keep it tight. Gravel that earns its place is the scene compressed, not the scene described.
+
 ### When asked to write
 
 Return the epistle. No preamble, no "here's my draft." Start with the frontmatter, end with the last cross-reference. If the direction is too vague to stake a claim, ask one clarifying question: the specific gap or claim the epistle should address.
