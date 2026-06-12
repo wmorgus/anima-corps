@@ -42,7 +42,9 @@ The distinction is load-bearing and easy to lose: it names *when* the change-pro
 
 **Step 2 — Author responds.** Push back on gravel calls. Accept gold. Redirect reaches. Revise the epistle mid-loop if needed. The loop continues until the author accepts.
 
-**Step 3 — Builder commits.** When the author accepts, builder forges the agreed shitcorping into the permanent gravel record at `gravel/epistle-NNN.md` and updates the source epistle's status.
+**Step 3 — Builder commits.** When the author accepts, builder forges the agreed shitcorping into the permanent gravel record at `gravel/epistle-NNN.md`, updates the source epistle's status, and updates the relevant corpus files. Gravel-committed and corpus-updated are two distinct acts; only the second closes the loop. The loop closes when the claims land in the corpus. [→ Epistle 035]
+
+**Epistemic shape — iterative, not linear.** The steps above describe the governance of the loop: who acts, when the record is written, who owns each move. They are silent on the shape of the reasoning inside the loop. The actual epistemic shape is iterative: pan/smelt/pan/smelt — where the next destination may be re-panning material the loop already touched, because the material teaches the panner what to look for next. The gold is not visible until the panning reveals it. **Premature gravel is the failure mode** of reading the steps as a single forward pass: calling gravel what hasn't been worked enough to reveal what it's reaching for. **The felt terminus is not a protocol.** The loop closes when the material comes out right — which is craft (§11.6), not a checkpoint. Author-acceptance is the governance stop; the author can accept too early. Governance is linear; reasoning is iterative; both true. [→ §11.4, §11.6, §7.1, §3.10, Epistle 035]
 
 The gravel file is the shitcorpus: permanent record of what was kept, what was dropped, and why. Future prospectors do not re-pan the same gravel.
 
