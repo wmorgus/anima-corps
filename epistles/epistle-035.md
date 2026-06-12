@@ -1,5 +1,5 @@
 ---
-Excavated: 2026-06-11 | Status: liquid
+Excavated: 2026-06-11 | Status: frozen | Shitcorped: 2026-06-12
 ---
 
 Epistle 035 — The Shitcorping Loop Has a Felt Terminus, Not a Scheduled One
@@ -23,6 +23,6 @@ Rules out: treating Step 1→2→3 as an exhaustive description of the loop's sh
 
 Open — the terminus is felt, not protocol. The loop has no natural stopping condition short of the author accepting. "Comes out just right" is a judgment, not a checkpoint. When has the material been panned *enough*? Pan too few times and you call premature gravel; pan forever and nothing freezes. The felt terminus is the craft (§11.6 — calibration of when to cut and when to fill, practiced instinct not procedure) — and like all craft it resists being written down.
 
-Two stopping points process.md names are not where the loop closes. First: author-acceptance is the governance stop, not the epistemic one — the author can accept too early too. Second: gravel-committed (Step 3) is not the governance terminus either. The loop closes when the gold lands in the corpus. process.md implies builder-commits-gravel ends the loop, but gravel-written and corpus-updated are two distinct acts, and only the second closes it — the gold is not in the corpora until it is written there. The procedure note: freezing an epistle should mean the corpus is updated, not merely the gravel record written. Gravel without ingestion is a verdict logged, not a loop closed.
+Two stopping points process.md names are not where the loop closes. First: author-acceptance is the governance stop, not the epistemic one — the author can accept too early too. Second: gravel-committed (Step 3) is not the governance terminus either. The loop closes when the gold lands in the corpus. Step 3's prose — builder forges the gravel record and updates the source epistle's status — underspecifies against process.md's own frozen-state definition. The lifecycle already names corpus-update as the freeze condition: `frozen` = "gravel committed, corpus updated"; `semi-liquid → frozen` = "commits the gravel record and updates the corpus." The gap is an internal seam between Step 3 prose and the frozen-state definition — Step 3 names only gravel-record and status-update; the lifecycle names corpus-update too. The procedure note is the patch that reconciles Step 3 to its own lifecycle. Gravel without ingestion is a verdict logged, not a loop closed.
 
 Both are the same move: process.md names a stopping point that is not where the loop actually closes. The governance description was not only silent on epistemic shape — it was also incomplete about where governance itself stops. This epistle names the shape and does not close the stopping question. Genuinely open: whether a felt terminus can be made legible without being falsified into a protocol. [→ process.md (shitcorp loop steps; the two distinct loops), §11.4, §11.6, §7.1, §3.10, Epistle 033]
