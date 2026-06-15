@@ -1,5 +1,5 @@
 ---
-Excavated: 2026-06-12 | Status: vapor
+Excavated: 2026-06-12 | Status: frozen | Shitcorped: 2026-06-15
 ---
 
 Epistle 036 — Two Gates: The Four-Cause Stays Inside
