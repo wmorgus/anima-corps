@@ -31,7 +31,11 @@ Shitcorped: 2026-06-15
 
 ## Tensions (open)
 
-1. **Cheap fan-out vs. §5.6 restraint.** §5.6 (let pressure surface agents) silently assumes fan-out is costly enough that pressure gates it. CC's near-zero spawn cost removes the natural gate. The three §6.15 conditions gate *whether* a swarm is licensed, not whether it was cheap enough to spawn unreflectively — they do not cover this. No corpus claim here. Genuinely open — candidate for a future epistle or a §5.6 amendment. Do not resolve by pretending §6.15 already covers it.
+None. Both tensions proposed at shitcorp time dissolved on author review:
+
+1. **"Cheap fan-out vs. §5.6 restraint" — category error, not a tension.** §5.6 is about constellation *slots* (topology discovered under pressure, agents earned through epistemic pressure across epistles, not invented to fill imagined gaps) — not about the cost of spawning session subagents. The cost-gate §5.6 relies on is the ratification loop itself, which cheap fan-out cannot touch. §6.15's three conditions are the correct gate for telescoping; they are independent of economic cost. The "tension" confused slot-proliferation with session fan-out. Dissolved.
+
+2. **"Multi-host `asserted_by`" — implementation note, not a tension.** A narrow field extension on §4.7, not a conflict with any corpus claim. Belongs in build records, not here.
 
 ## Smelter's contribution
 
