@@ -1,5 +1,6 @@
 ---
 Excavated: 2026-06-15 | Status: liquid
+Shitcorped: 2026-06-15 — verdict liquid (gravel/epistle-038.md). Nine gold claims earned weight as candidate corpus material; not frozen. Freeze pending: the gold extends §1.5, §5.6, §6a.10, §7, §6.18, §6.12b but lands as liquid contribution, not ratified §-amendments. Open tension (cheap fan-out vs. §5.6) and live §4.7 surface (multi-host asserted_by, shared with Epistle 031) hold the corpus update.
 ---
 
 Epistle 038 — The CLI Seam: Claude Code as Orchestration Model, anima-core as Mis-Shaped Server
