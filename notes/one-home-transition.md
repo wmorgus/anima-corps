@@ -14,7 +14,7 @@ Two liquid epistles were drafted and (038) shitcorped in this session:
 
 - **Epistle 038 — The CLI Seam.** Claude Code's architecture is the correct model for anima's invocation/orchestration layer (host invokes a capable CLI, triggering stays a live reasoning act), and anima-core is mis-shaped as a Python server that owns its HTTP surface — correct shape is library + daemon whose hosts own the surface. The CLI seam (`anima` shelled by any caller) is the externality primitive at the invocation boundary: whatever calls it meets §4 discipline behind one wall. It also gives §6a.10's [OPEN] pull-vs-push silence a concrete body (context pulled via `anima` query, not pushed by file). Shitcorped, verdict **liquid**, gravel record written. Both proposed tensions dissolved on review (see gravel/epistle-038.md). Not frozen — a liquid verdict is not a ratification.
 
-- **Epistle 039 — One Home: Single Source of Truth, Not Single Repo.** The corpus↔build split across two git repos (anima-corps = dojo/reasoning; anima-core = build) has no governed pipeline either way, and that is the §7.4 self-resonance failure made concrete: Anima sells a dojo→build pipeline it does not run on its own development. The unification target is **single source of truth (Calliope), not single repo**. Status **liquid**. Not yet shitcorped.
+- **Epistle 039 — One Home: Single Source of Truth, Not Single Repo.** The corpus↔build split across two git repos (anima-corps = dojo/reasoning; anima-core = build) has no governed pipeline either way, and that is the §7.4 self-resonance failure made concrete: Anima sells a dojo→build pipeline it does not run on its own development. The unification target is **single source of truth (Calliope), not single repo**. **Shitcorped** (lite, on Sonnet); verdict **liquid**; held at **semi-liquid** deliberately (see "the bind" — not frozen under the old step). Three gold (single-source-of-truth; freeze-must-write-to-Calliope; §7.4 dev-layer self-resonance), one gravel (the Bench citation in claim 3 — §7.4 carries it, Bench was a scope stretch), three tensions held open (the three below). See gravel/epistle-039.md.
 
 Both are the same move at different layers (039 §3): put §4 discipline / the frozen reference behind one wall, callers meet it as externality. 038 is the move at the invocation layer; 039 is the move at the development layer (Anima-developing-Anima).
 
@@ -73,7 +73,7 @@ Phasing:
 
 ## Verification flags for whoever resumes
 
-- **§6a.6 status:** builder framed the drift on the word that the Calliope migration completed. Confirm whether §6a.6 in logic.md is formally marked *closed*. If still open, 039 claim 1 is *strengthened* (the drift is the live instance of an unclosed contradiction).
+- **§6a.6 status — CONFIRMED FORMALLY OPEN (lite verified).** logic.md §6a.6 (~line 374) still reads "Contradiction 2 — Frozen corpora invisible to runtime agents... corpus_logic.md exists in docs/papers/ and is not retrievable by any runtime agent." No [CLOSED] marker, no amendment. The Calliope migration happened in anima-core (runtime) but the git corpus here still shows §6a.6 open — **the git corpus and the Calliope state disagree about whether §6a.6 is even closed, and that disagreement is itself a live instance of the drift 039 names, sitting inside the very section it cites.** This *strengthens* 039 claim 1: the drift is not "the §6a.6 failure one level up" (healed-and-reopened-higher) but a live instance of the still-open contradiction. Epistle 039 body was corrected to state this. **Standing TODO for the new home:** when §6a.6 actually closes, it must close in Calliope (the real fix), and the git corpus must reflect it — itself a test case for the freeze→Calliope propagation (039 claim 2).
 - **038 gravel tension correction:** gravel/epistle-038.md was corrected after first commit — both originally-proposed tensions (cheap fan-out vs §5.6; multi-host asserted_by) were dissolved as a category error and an implementation note respectively. The record now shows no open tensions. If 038 ever moves toward ratification, that corrected record is the one to read.
 - **038 ratification fork (deferred to human):** if gold 2 (seam as §6a.10 pull primitive) or gold 4 (§1.5 server role-shedding) is judged ratification-grade, that is a separate event requiring VERSION minor bump, corpus amendment, `frozen` transition, and git tag. Left to human call. (Under 039's logic, that ratification should happen via the *new* freeze step — see "the bind.")
 
@@ -82,7 +82,7 @@ Phasing:
 ## Concrete next actions
 
 **From anima-corps (authoring surface):**
-- Shitcorp epistle-039 (`lite` proposes, human iterates, `builder` commits). Hold at semi-liquid; do not freeze under the old step.
+- ~~Shitcorp epistle-039~~ — DONE. Shitcorped (lite/Sonnet), accepted, builder committed: gravel/epistle-039.md written, epistle held at semi-liquid, §6a.6 framing corrected, Bench cite dropped from claim 3. No corpus update, no VERSION bump, no tag (the transition is the first use of the fixed freeze step).
 
 **From anima-core (the build, needs both repos + running Calliope):**
 - Phase 1: build freeze→Calliope propagation (039 claim 2). The freeze act writes the corpus amendment to Calliope via §3.10 supersession, atomically with the git/version update.
