@@ -57,3 +57,39 @@ This conversation is vapor (process.md status lifecycle), and the Anima-native m
 ---
 
 *Note for the record: the "C1/C2/C3" framing from this response became the spine of Epistle 038's gold — the CLI seam was the synthesis that resolved all three (subagents write via `anima`→Calliope, context pulled via `anima` query, §4 discipline behind the seam) and gave §6a.10's [OPEN] pull-vs-push silence a concrete body. The "ride the host" framing was later amended by Epistle 040 (ride the execution, override the model-policy).*
+
+---
+
+# The Multi-Model Exchange — Model Intensity per Task
+
+*The exchange that became Epistle 040. A note tossed in near the end of the session — "maybe its own epistle" — read against the corpus and turned into a clean orthogonal axis with its own hazards.*
+
+## The note (Will)
+
+> one more note to tag here. maybe its own epistle. anima should be able to determine how intense of a model is needed per task. claude code doesn't do this bc anthropic isn't dumb and they want you to use as expensive of a model as the highest quality reasoning you need, but anima should be able to note that a more mechanical task can be done with haiku instead of sonnet. or even - run task on cheaper model, validate output with stronger one. lots of good patterns here to explore
+
+## The response
+
+Genuinely new surface, not a restatement. Where it lands determines whether it's clean:
+
+**It's a compute-substrate axis, orthogonal to agent identity — the load-bearing distinction.** Model intensity is *not* part of the §6.3 thin-agent tuple (BaseAgent + prompt + tools). Bake model into agent identity and you've turned a compute decision into a topology decision — which §6.2 forbids (behavioral injection / task-framing isn't a slot). The agent's reasoning *obligation* is fixed and model-independent; the compute allocated to discharge it varies per task. Cleanest framing: a third orthogonal axis alongside §2.3's confidence ⊥ liquidity — what the artifact *is* (liquidity), how sure we are (confidence), how much reasoning was spent producing it (intensity) are three independent dimensions.
+
+**The validate-cheap-with-strong pattern is §3.3 externality at the compute layer.** The part to lean hardest on. "Run on cheap, validate with strong" is the validator-external-to-validated shape (§5.2, rhetoric §2.5) — same structure as Daedalus at the review gate (§6.17) and Janus contesting (§6.19). The *new* thing is the capability gradient: the validator isn't just external, it's stronger. Two constraints fall out: the validator must be at least as capable (cheap-validates-cheap is no check), and it goes through Calliope (cheap executor writes the artifact, strong validator reads and contests — hub-and-spoke §5.1, never a direct model-to-model handoff).
+
+**Who decides intensity: triggering authority (Ari, §6.12b G3a).** G3a already owns "which specialist the goal requires, when, based on what success looks like." Model intensity is a dimension of "what success requires" — extends G3a from *which specialist, when* to *which specialist, when, at what intensity*. No new slot.
+
+**The CC observation is sharper than it looks, and it constrains 038.** CC defaults you to the strongest model because that serves Anthropic's incentive, not your task's economics. 038 said *ride CC as host*. This says: ride CC's execution, but **do not inherit CC's model-default** — anima's telos (optimize the whole pipeline's cost/quality) differs from Anthropic's incentive (maximize model spend). So anima needs its own model-policy layer *over* CC. A real amendment to 038's "ride the host": ride the execution, override the model policy.
+
+**Four holes to stake honestly, not resolve:**
+1. **Model-downgrade laundering.** If Daedalus-on-haiku misses craft debt, the harm lands on Daedalus's reasoning surface (§6.5) under a name you trust (§6.7) — but the cause was the compute choice. The model used must be **recorded as provenance** (§4.5, like `asserted_by`), or degraded output gets blamed on the agent instead of the under-powering.
+2. **"Is this mechanical?" is itself a fallible judgment.** Mis-classifying a subtle task as mechanical and under-powering it is a new failure mode. The classifier can be wrong.
+3. **Cheap-model confidence is suspect.** Confidence-gated escalation can't trust the cheap model's *self-reported* confidence — cheap models are confidently wrong. The trigger needs an external signal, not introspection.
+4. **Cost stays subordinate to the quality telos.** §8 craft + §3.3a (the master shitcorps himself first). Cheapening must never override the craft obligation — economy is licensed only where the task is genuinely mechanical; the burden of proof is on "mechanical."
+
+Plus a telescoping fit (§6.15): cheap leaves, expensive synthesis. Sub-scope work is mechanical → haiku; the synthesis (condition 3, real compression) is the expensive reasoning → opus.
+
+Recommendation: own epistle. Orthogonal to 038/039's home/seam concerns — a different axis — so it shouldn't ride inside them.
+
+---
+
+*Note for the record: this became Epistle 040. Builder's smelting added two sharpenings — the direct model-to-model handoff is specifically the §5.3 mesh pattern (not just "not through the store"), and an executor deciding its own intensity is self-ratification (the validator/validated collapse). The cost-subordinate hazard got its strongest form: cheapening-as-"optimization" is the §3.3a failure mode one layer down — the triggering authority quietly exempting its own pipeline from the craft obligation. Parked in the handoff doc as direction for the properly-configured future home, not to be retrofit onto the current system.*
