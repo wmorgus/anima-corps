@@ -98,7 +98,17 @@ Phasing:
 
 - `epistles/epistle-038.md` — The CLI Seam (liquid)
 - `gravel/epistle-038.md` — 038 shitcorping record (corrected; verdict liquid)
-- `epistles/epistle-039.md` — One Home (liquid, not yet shitcorped)
+- `epistles/epistle-039.md` — One Home (semi-liquid; shitcorped, held)
+- `gravel/epistle-039.md` — 039 shitcorping record (verdict liquid)
+- `epistles/epistle-040.md` — Model Intensity (liquid; not yet shitcorped)
 - `corpora/anima/process.md` — lifecycle, the two loops, VERSION + CORPS_VERSION discipline
 - `corpora/anima/logic.md` — §2.5, §3.3, §3.10, §4.2, §5.2, §5.6, §6a.5–6a.8, §6.15, §7.4
 - `corpora/anima/substrate.md` — §6.12 Hermes, §6.12b Ari (G3a), §6.18 Argus, Bench
+
+---
+
+## Parked good ideas — real, but NOT to be baked into the current (improperly configured) system
+
+These are staked as direction (epistles) but deliberately not implemented now. The present two-repo / server-shaped system is the wrong place to build them; they are for the properly-configured future home. Listed so they are not lost and not prematurely wired in.
+
+- **Epistle 040 — Model intensity per task (liquid).** Anima should choose how capable a model each task needs — mechanical work on a cheap model, expensive reasoning on a strong one; and the cheap-execute / strong-validate pattern as the §3.3 externality requirement at the compute layer. Model intensity is a compute-substrate axis orthogonal to agent identity (not a §6.3 tuple member), owned by triggering authority (Ari G3a), recorded as provenance (§4.5), subordinate to the quality telos (§8, §3.3a). Amends 038: ride the host's execution but override its model-default (the host-vendor's incentive ≠ anima's telos). Four open hazards carried in the epistle. **A genuinely great capability — but it wants the real home and the model-policy layer to exist first. Do not retrofit onto the current system.**
