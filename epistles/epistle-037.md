@@ -1,5 +1,5 @@
 ---
-Excavated: 2026-06-15 | Status: vapor
+Excavated: 2026-06-15 | Status: frozen | Shitcorped: 2026-06-15
 ---
 
 Epistle 037 — Ari Holds Telos Authority; The Show Is Operated
