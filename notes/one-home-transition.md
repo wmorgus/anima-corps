@@ -116,23 +116,23 @@ The discipline that falls out:
 **From anima-corps (authoring surface):**
 - ~~Shitcorp epistle-039~~ — DONE. Shitcorped (lite/Sonnet), accepted, builder committed: gravel/epistle-039.md written, epistle held at semi-liquid, §6a.6 framing corrected, Bench cite dropped from claim 3. No corpus update, no VERSION bump, no tag (the transition is the first use of the fixed freeze step).
 
-**From anima-core (the build, needs both repos + running Calliope):**
-- Phase 1: build freeze→Calliope propagation (039 claim 2). The freeze act writes the corpus amendment to Calliope via §3.10 supersession, atomically with the git/version update.
-- Verify whether the embedded Calliope router in the FastAPI app is superseded by the standalone calliope-anima service (carried from the 038 discussion). If superseded, stripping the server shell is mostly deleting the `web/` layer. If not, §4 enforcement must move into the CLI/library seam first.
+**The rebuild (nuclear option — no migration, build correctly from scratch):**
 
-**Shitcorp the current build into aZero's inheritance — run by the live constellation (needs anima-core + running Calliope):**
-- Use the current project state in Calliope as shitcorp material. The current anima-core build is an *argument* (§6.13 Mnemosyne — what the codebase argues, where it fractured without being named). Pan it: gold carries into aZero; gravel dies with the old shape (messy UI decisions, the server scaffolding 038 sheds, anything coupled to the two-repo / chat.html era).
-- **Run it as a real orchestration — Ari + Hermes running the show.** This is deliberately a stress test of the 038 orchestration model: Hermes carries the intent ("sort the old build for aZero") into the constellation's frame; Ari triggers (G3a) — picks Mnemosyne, scopes the archaeology, defines what success looks like (the inheritance manifest). If Ari/Hermes run this cleanly, that is live evidence for 038 gold-1 (the host keeps triggering a live reasoning act). Note: this uses the *anima-core constellation* (Ari/Hermes/Mnemosyne), NOT the anima-corps authoring agents (builder/lite) — it cannot be run from the anima-corps-only session.
-- **Legitimate telescoping (§6.15 / §6.13 / §7.3).** The current build is too large for single-pass; it decomposes into non-overlapping sub-scopes (web layer, agents, tools, calliope client, drive scripts, schemas); synthesis = the aZero inheritance manifest (real compression — what carries, integrated across sub-scopes, condition 3). Mnemosyne is licensed to telescope here; this is the swarm receipt on a real workload. Honor the swarm_manifest discipline.
-- **Governed sort, not amnesiac rewrite.** Record each drop as a `discard_record` (§4.9, via negativa §3.20 / §6.6) with its *because*. The shape of what aZero drops is evidence; recording it stops the next project re-traversing the same gravel. A clean delete loses that. The reason the chat.html/server era is dead (it served an interface that was never the real one) is itself the gold that justifies aZero's shape — the gravel is where 038's whole argument came from.
-- **Distinguish two artifact classes in the current Calliope.** It holds *corpus* artifacts (the migrated reference — the 039 single-source-of-truth thread; carries forward by definition) AND *build/project* artifacts (implementation decisions, schemas, agent wiring, UI cruft). This pass pans the **build/project** class only. Do not shitcorp the corpus here — that is a category error.
-- **Can run early, independent of the bootstrap.** Archaeology is read-only against the current build; its discard_records and manifest are build-shitcorpus writes, not corpus freezes, so they do not need the Phase 1 freeze→Calliope step. It can run before/alongside Phase 1 to inform what aZero should be.
-- **Preservation flag:** the inheritance manifest and its discard_records are themselves part of aZero's inheritance — write them so they survive the Calliope transition (into the shitcorpus aZero inherits), not stranded in the dying build's store.
-- Method: Hermes intake → Ari triggers Mnemosyne → Mnemosyne archaeology (telescoped) → smelting → discard_records for the gravel → an aZero inheritance manifest (what carries, what dies, why).
+Follow epistle-041's methodology. Telos is committed (four project teloses, staked above). Architecture is committed-for-build (038/039/040/041 liquid epistles; deliberate hold, treated as the derived architecture). Next move: grow the minimal story sets that prove each architecture serves its telos.
 
-**Then (Phase 2):** ratify 038/039 using the new freeze step.
+Build in dependency order: Calliope → aZero → Bench.
 
-**Then (Phase 3):** downstream epistles — CC-plugin delivery, CORPS_VERSION transform-or-dissolve, repo topology — surfaced by build pressure.
+**First: archaeology of the old anima-core.** The current build is an argument — what the codebase argued, where it fractured without being named. Read it as engineering input, not a governed run (the old constellation cannot govern its own rebuild — that's circular). Record what carries and what doesn't; governed sort, not amnesiac rewrite. The because for each drop stops future work re-traversing the same gravel.
+- Distinguish corpus artifacts from build artifacts in the current Calliope. Corpus carries forward by definition. This pass pans the build/project class only — implementation decisions, schemas, agent wiring, UI cruft.
+- The archaeology output is an inheritance manifest: what aZero inherits from anima-core, what dies with it.
+
+**Calliope first.** Build §4 discipline correctly from the start — append-only, typed-edge, schema-validated, externality primitive. Ratify 038/039 using the new freeze step once it exists; their freezing is the proof the step works.
+
+**aZero against Calliope.** CLI + library + daemon shape (038). Put the seam in. Generate minimal stories that prove the seam correctly enforces §4 discipline and keeps triggering a live reasoning act.
+
+**Bench against aZero.** UI that talks to both aZero and Calliope directly. Minimal stories that prove it serves the human-facing telos.
+
+**Downstream epistles** (CC-plugin delivery, CORPS_VERSION transform-or-dissolve, repo topology) — surfaced by build pressure, not speculated ahead of it (§5.6).
 
 ---
 
