@@ -8,13 +8,16 @@
 
 ---
 
-## Naming (as of 2026-06-16)
+## Naming and project structure (as of 2026-06-16)
 
-- **aZero** — the anima CLI. The library + daemon + seam that anima-core becomes (the 038/039 rebuild target). The project being built. Possible §6.8 name-import: a-zero → the zeroth-class / alpha / ground invocation layer (telos.md calls Calliope "where the zeroth-class artifact lives"; Epistle 028's loop is alpha→spine→territory→omega). If intentional, load-bearing; confirm.
-- **Bench** — the forge+dojo VS Code fork. The host. Unchanged from substrate.md; Bench keeps its name.
-- **Anima** — the system as a whole (the corpus, aZero, Bench, the constellation — the entire thing).
+Four projects, in dependency order:
 
-Collision resolved: Bench stays Bench (the fork/host); "Anima" names the system, not the fork. This resolves 039's open Bench/CC tension: Bench is the rich host; aZero is the CLI it invokes; CC is the *model* aZero is built in the image of, never Bench itself.
+- **Anima** — the upstream system. The logic corpora, telos, rhetoric, process — the reason the other projects exist. Its telos is the corpus itself: `corpora/anima/telos.md` is the authority. Anima is not a piece of software; it is what the software implements.
+- **Calliope** — the governed artifact store. Its own project with its own telos: be the externality primitive that makes §3.3 real — append-only, typed-edge, schema-validated single source of truth that any Anima-conformant system builds on. Both aZero and Bench are clients of Calliope; neither owns it. This is why it is its own project: no single downstream owns the substrate.
+- **aZero** — faithful CLI implementation of Anima. Its telos: put §4 discipline behind one wall (the seam), make triggering a live reasoning act, let any host invoke Anima by shelling it. Library + daemon shape (038). Possible §6.8 name-import: zeroth-class / ground invocation layer — confirm if intentional.
+- **Bench** — the useful UI for working with Anima through aZero. Its telos: be the rich human-facing interface — the VS Code fork where human and Anima work together.
+
+Previously named anima-core becomes the aZero + Calliope split. Collision resolved: Bench stays Bench (the rich host); aZero is the CLI it invokes; CC is the *model* aZero is built in the image of, never Bench itself. This resolves 039's open Bench/CC tension.
 
 ---
 
@@ -53,6 +56,8 @@ Freeze today = update VERSION + git tag + edit corpus markdown, with the Calliop
 This is not a blocker — it is the tell for the right ordering: **the transition is the first use of the fixed freeze step, not the last use of the broken one.** Same shape as Epistle 032 (the migration event was itself the structural reshape). 038/039 freeze *into* the new world, as its inaugural acts.
 
 Therefore: hold 038/039 at liquid (or shitcorp-to-agreement and hold at semi-liquid) deliberately. Do not freeze them under the old step.
+
+**Nuclear rebuild dissolves the bind.** The bind was a migration concern — how do you use a broken process to ratify the fix for that process? A rebuild from scratch has no prior path to be dependent on. Build Calliope correctly first; build aZero against it; build Bench against that. The sequencing concern only applies to incremental migration; the ceremony can be dropped.
 
 ---
 
