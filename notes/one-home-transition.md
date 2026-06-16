@@ -63,16 +63,13 @@ Therefore: hold 038/039 at liquid (or shitcorp-to-agreement and hold at semi-liq
 
 ## The plan
 
-**Lowest-regret first build move:** claim 2 of 039 — make ratification propagate to Calliope atomically. Right regardless of how the open tensions resolve. Does not require deciding CC-plugin-vs-not, merging repos, or settling CORPS_VERSION. It closes the loop where it currently leaks and establishes Calliope as the de-facto single source of truth before any topology decision.
+Nuclear rebuild. No incremental migration. Build the right thing in dependency order.
 
-Phasing:
+**Build sequence:** Calliope → aZero → Bench. Each project: commit telos (staked above), commit architecture (038/039/040/041 liquid epistles serve as the committed-for-build architecture), grow the minimal story set that proves the architecture serves the telos (Epistle 041).
 
-- **Phase 0 (now):** 038/039 stay liquid. Keep the transition staked as a coherent unit.
-- **Phase 1 (anima-core):** build freeze→Calliope propagation. Calliope becomes the source of truth in practice. Lowest regret.
-- **Phase 2:** ratify 038/039 *using* the new freeze step — they freeze themselves into the new home. Self-resonant.
-- **Phase 3:** the downstream tensions each become their own epistle, ratified in the new home, surfaced by build pressure (§5.6) rather than speculated ahead of it.
+**038/039/040 stay liquid.** Ratify them once Calliope's freeze step exists — their freezing is the proof the step works. Don't ratify under the old process.
 
-**Recommended immediate next step:** shitcorp 039 to agreement, hold it semi-liquid, then move to anima-core for Phase 1. Reasoning: stake the spine, don't over-stake. The downstream epistles (esp. CC-plugin mechanics) will be better reasoned in the new home where the actual shape is visible — 039's own §5.6 logic.
+**Downstream tensions** (CC-plugin delivery, CORPS_VERSION, repo topology) surface by build pressure (§5.6), not ahead of it.
 
 ---
 
