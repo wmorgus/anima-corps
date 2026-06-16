@@ -1,10 +1,10 @@
 # One Home — Transition Working Note
 
-**Status:** working note, not corpus. Not frozen reference, not an epistle, not gravel. A session handoff capturing the conversation that produced epistles 038 and 039 and the sequencing plan for the unification they argue for.
+**Status:** working note, not corpus. Not frozen reference, not an epistle, not gravel. A session handoff capturing the conversation that produced epistles 038–041 and the rebuild plan that followed.
 
-**Branch:** `claude/tender-maxwell-gnrzfr` (anima-corps). Epistles 038 and 039 and the 038 gravel record are committed and pushed here.
+**Branch:** `claude/anima-development-pattern-zyhc8j` (anima-corps).
 
-**Pick-up context:** this thread ran in an environment with only anima-corps in reach. The next phase needs anima-core too. Resume where you can touch both repos plus the running Calliope.
+**Pick-up context:** the rebuild starts fresh — Calliope first, then aZero, then Bench. The old anima-core is archaeology input, not the starting point. See "The plan" and "Concrete next actions."
 
 ---
 
@@ -73,26 +73,9 @@ Nuclear rebuild. No incremental migration. Build the right thing in dependency o
 
 ---
 
-## Running the rebuild as a governed pipeline (the bootstrap line)
-
-The rebuild is to be done *by following the process we staked here* — not as a developer rewriting anima-core, but as Anima's first real run of its own dojo→build pipeline on itself (the §7.4 receipt). Hard rule: **stake before building.** Every rebuild move is an epistle first — staked, shitcorped, ratified — with one honest exception: the bootstrap.
-
-**The bootstrap paradox.** 039 says ratification must propagate to Calliope (the fixed freeze step). But *building that propagation is Phase 1* — you cannot ratify-through-the-new-step the building of the new step, because it does not exist yet. There is an irreducible bootstrap: the freeze→Calliope mechanism must be hand-built under the *old* process (git, markdown, human review) before it can govern anything. You cannot dogfood your way to the first bite.
-
-The discipline that falls out:
-
-1. **Minimize the bootstrap.** Phase 1 = *only* freeze→Calliope propagation. Nothing else rides in it. Everything built in the bootstrap is ungoverned-by-the-new-process, so the smallest bootstrap is the least ungoverned surface. (The lowest-regret first move and the minimal bootstrap are the same thing — 039 claim 2.)
-2. **The bootstrap line is explicit.** Name the exact point where governance-through-Calliope begins: *the moment freeze→Calliope works.* Before it — old process, all work held liquid. After it — every freeze writes to Calliope, no exceptions.
-3. **Phase 2 is the inaugural governed act, and it is self-justifying.** Ratify 038/039 (and the bootstrap epistle) *through* the new step; their freezing IS the proof the step works. Clean against the lifecycle: building against liquid epistles, then freezing them once the mechanism exists, is normal liquid→frozen, not a retroactive write — §4.2/§3.3 stay satisfied (no edit-in-place, just the lifecycle advancing).
-4. **Phase 3+ fully dogfoods.** Server-shedding, the CLI seam, the plugin, the model-policy layer (040) — each staked, shitcorped, ratified into Calliope. This is where the rebuild becomes the pipeline's first customer.
-
-**Why holding 038/039/040 liquid now is already correct.** Committing them to corpora today would use the broken freeze step (markdown edit + manual migration = drift) — the exact thing being rebuilt. Holding them as a working note rather than corpus is not hesitation; it is the staked process being honored before the mechanism that would let them freeze cleanly exists. The transition doc being a note, not corpus, is the process working.
-
----
-
 ## Open tensions (carried from 039, not resolved)
 
-1. **Multi-device reachability → anima-core CLI as a Claude Code plugin.** Reaching CC from personal laptop / phone / work laptop is host-provided (CC runs in the cloud, reachable anywhere). Anima should inherit that flexibility. Building it into anima-core would be the `server` role 038 said to shed (§1.5); riding CC-as-host gets it free → points toward anima-core CLI distributed as a Claude Code plugin, running wherever CC runs, with Calliope as the persistent networked substrate any session reaches. Resurfaces 038's gold-9 multi-host `asserted_by` (§4.7 / Epistle 031): multiple devices/hosts, one Calliope, provenance must distinguish them. The multi-device story IS the multi-host story. **Open:** plugin-delivery mechanics; whether Bench (VS Code fork, rich workstation host) and CC-web/mobile (lightweight host) are two faces on one Hermes front door (§16.3) or strain "one extension because one front door."
+1. **Multi-device reachability → aZero as a Claude Code plugin.** Reaching CC from personal laptop / phone / work laptop is host-provided (CC runs in the cloud, reachable anywhere). Anima should inherit that flexibility. Building it into anima-core would be the `server` role 038 said to shed (§1.5); riding CC-as-host gets it free → points toward anima-core CLI distributed as a Claude Code plugin, running wherever CC runs, with Calliope as the persistent networked substrate any session reaches. Resurfaces 038's gold-9 multi-host `asserted_by` (§4.7 / Epistle 031): multiple devices/hosts, one Calliope, provenance must distinguish them. The multi-device story IS the multi-host story. **Open:** plugin-delivery mechanics; whether Bench (VS Code fork, rich workstation host) and CC-web/mobile (lightweight host) are two faces on one Hermes front door (§16.3) or strain "one extension because one front door."
 
 2. **Discipline-boundary cost of unification.** The two-repo split crudely enforced two disciplines (corpus → shitcorp/ratify; code → normal dev). Collapse risks corpus markdown treated as just-more-source, edited in place — the §6a.8 mutable-frozen-artifact failure. **Resolution direction:** discipline lives in Calliope + the ratification process (append-only §4.2, supersession the only mutation §3.10), not the repo boundary. A real cost to handle, not wave away. Self-contained tractability was a genuine benefit — recoverable via session/worktree isolation, but name the cost.
 
@@ -147,8 +130,8 @@ Build in dependency order: Calliope → aZero → Bench.
 
 ---
 
-## Parked good ideas — real, but NOT to be baked into the current (improperly configured) system
+## Committed architecture (not yet implemented)
 
-These are staked as direction (epistles) but deliberately not implemented now. The present two-repo / server-shaped system is the wrong place to build them; they are for the properly-configured future home. Listed so they are not lost and not prematurely wired in.
+These epistles are the committed-for-build architecture. Liquid, not yet ratified — ratification happens once Calliope's freeze step exists. Not parked; these are what the rebuild is building toward.
 
-- **Epistle 040 — Model intensity per task (liquid).** Anima should choose how capable a model each task needs — mechanical work on a cheap model, expensive reasoning on a strong one; and the cheap-execute / strong-validate pattern as the §3.3 externality requirement at the compute layer. Model intensity is a compute-substrate axis orthogonal to agent identity (not a §6.3 tuple member), owned by triggering authority (Ari G3a), recorded as provenance (§4.5), subordinate to the quality telos (§8, §3.3a). Amends 038: ride the host's execution but override its model-default (the host-vendor's incentive ≠ anima's telos). Four open hazards carried in the epistle. **A genuinely great capability — but it wants the real home and the model-policy layer to exist first. Do not retrofit onto the current system.**
+- **Epistle 040 — Model intensity per task (liquid).** Anima should choose how capable a model each task needs — mechanical work on a cheap model, expensive reasoning on a strong one; and the cheap-execute / strong-validate pattern as the §3.3 externality requirement at the compute layer. Model intensity is a compute-substrate axis orthogonal to agent identity (not a §6.3 tuple member), owned by triggering authority (Ari G3a), recorded as provenance (§4.5), subordinate to the quality telos (§8, §3.3a). Amends 038: ride the host's execution but override its model-default (the host-vendor's incentive ≠ anima's telos). Four open hazards carried in the epistle.
