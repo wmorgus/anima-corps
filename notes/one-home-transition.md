@@ -101,6 +101,7 @@ Phasing:
 - `epistles/epistle-039.md` — One Home (semi-liquid; shitcorped, held)
 - `gravel/epistle-039.md` — 039 shitcorping record (verdict liquid)
 - `epistles/epistle-040.md` — Model Intensity (liquid; not yet shitcorped)
+- `epistles/epistle-041.md` — The Generative Build Procedure (vapor; not yet shitcorped)
 - `corpora/anima/process.md` — lifecycle, the two loops, VERSION + CORPS_VERSION discipline
 - `corpora/anima/logic.md` — §2.5, §3.3, §3.10, §4.2, §5.2, §5.6, §6a.5–6a.8, §6.15, §7.4
 - `corpora/anima/substrate.md` — §6.12 Hermes, §6.12b Ari (G3a), §6.18 Argus, Bench
