@@ -61,6 +61,23 @@ Phasing:
 
 ---
 
+## Running the rebuild as a governed pipeline (the bootstrap line)
+
+The rebuild is to be done *by following the process we staked here* — not as a developer rewriting anima-core, but as Anima's first real run of its own dojo→build pipeline on itself (the §7.4 receipt). Hard rule: **stake before building.** Every rebuild move is an epistle first — staked, shitcorped, ratified — with one honest exception: the bootstrap.
+
+**The bootstrap paradox.** 039 says ratification must propagate to Calliope (the fixed freeze step). But *building that propagation is Phase 1* — you cannot ratify-through-the-new-step the building of the new step, because it does not exist yet. There is an irreducible bootstrap: the freeze→Calliope mechanism must be hand-built under the *old* process (git, markdown, human review) before it can govern anything. You cannot dogfood your way to the first bite.
+
+The discipline that falls out:
+
+1. **Minimize the bootstrap.** Phase 1 = *only* freeze→Calliope propagation. Nothing else rides in it. Everything built in the bootstrap is ungoverned-by-the-new-process, so the smallest bootstrap is the least ungoverned surface. (The lowest-regret first move and the minimal bootstrap are the same thing — 039 claim 2.)
+2. **The bootstrap line is explicit.** Name the exact point where governance-through-Calliope begins: *the moment freeze→Calliope works.* Before it — old process, all work held liquid. After it — every freeze writes to Calliope, no exceptions.
+3. **Phase 2 is the inaugural governed act, and it is self-justifying.** Ratify 038/039 (and the bootstrap epistle) *through* the new step; their freezing IS the proof the step works. Clean against the lifecycle: building against liquid epistles, then freezing them once the mechanism exists, is normal liquid→frozen, not a retroactive write — §4.2/§3.3 stay satisfied (no edit-in-place, just the lifecycle advancing).
+4. **Phase 3+ fully dogfoods.** Server-shedding, the CLI seam, the plugin, the model-policy layer (040) — each staked, shitcorped, ratified into Calliope. This is where the rebuild becomes the pipeline's first customer.
+
+**Why holding 038/039/040 liquid now is already correct.** Committing them to corpora today would use the broken freeze step (markdown edit + manual migration = drift) — the exact thing being rebuilt. Holding them as a working note rather than corpus is not hesitation; it is the staked process being honored before the mechanism that would let them freeze cleanly exists. The transition doc being a note, not corpus, is the process working.
+
+---
+
 ## Open tensions (carried from 039, not resolved)
 
 1. **Multi-device reachability → anima-core CLI as a Claude Code plugin.** Reaching CC from personal laptop / phone / work laptop is host-provided (CC runs in the cloud, reachable anywhere). Anima should inherit that flexibility. Building it into anima-core would be the `server` role 038 said to shed (§1.5); riding CC-as-host gets it free → points toward anima-core CLI distributed as a Claude Code plugin, running wherever CC runs, with Calliope as the persistent networked substrate any session reaches. Resurfaces 038's gold-9 multi-host `asserted_by` (§4.7 / Epistle 031): multiple devices/hosts, one Calliope, provenance must distinguish them. The multi-device story IS the multi-host story. **Open:** plugin-delivery mechanics; whether Bench (VS Code fork, rich workstation host) and CC-web/mobile (lightweight host) are two faces on one Hermes front door (§16.3) or strain "one extension because one front door."
