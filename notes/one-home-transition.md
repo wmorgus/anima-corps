@@ -8,6 +8,16 @@
 
 ---
 
+## Naming (as of 2026-06-16)
+
+- **aZero** — the anima CLI. The library + daemon + seam that anima-core becomes (the 038/039 rebuild target). The project being built. Possible §6.8 name-import: a-zero → the zeroth-class / alpha / ground invocation layer (telos.md calls Calliope "where the zeroth-class artifact lives"; Epistle 028's loop is alpha→spine→territory→omega). If intentional, load-bearing; confirm.
+- **Bench** — the forge+dojo VS Code fork. The host. Unchanged from substrate.md; Bench keeps its name.
+- **Anima** — the system as a whole (the corpus, aZero, Bench, the constellation — the entire thing).
+
+Collision resolved: Bench stays Bench (the fork/host); "Anima" names the system, not the fork. This resolves 039's open Bench/CC tension: Bench is the rich host; aZero is the CLI it invokes; CC is the *model* aZero is built in the image of, never Bench itself.
+
+---
+
 ## Where we are
 
 Two liquid epistles were drafted and (038) shitcorped in this session:
@@ -61,6 +71,23 @@ Phasing:
 
 ---
 
+## Running the rebuild as a governed pipeline (the bootstrap line)
+
+The rebuild is to be done *by following the process we staked here* — not as a developer rewriting anima-core, but as Anima's first real run of its own dojo→build pipeline on itself (the §7.4 receipt). Hard rule: **stake before building.** Every rebuild move is an epistle first — staked, shitcorped, ratified — with one honest exception: the bootstrap.
+
+**The bootstrap paradox.** 039 says ratification must propagate to Calliope (the fixed freeze step). But *building that propagation is Phase 1* — you cannot ratify-through-the-new-step the building of the new step, because it does not exist yet. There is an irreducible bootstrap: the freeze→Calliope mechanism must be hand-built under the *old* process (git, markdown, human review) before it can govern anything. You cannot dogfood your way to the first bite.
+
+The discipline that falls out:
+
+1. **Minimize the bootstrap.** Phase 1 = *only* freeze→Calliope propagation. Nothing else rides in it. Everything built in the bootstrap is ungoverned-by-the-new-process, so the smallest bootstrap is the least ungoverned surface. (The lowest-regret first move and the minimal bootstrap are the same thing — 039 claim 2.)
+2. **The bootstrap line is explicit.** Name the exact point where governance-through-Calliope begins: *the moment freeze→Calliope works.* Before it — old process, all work held liquid. After it — every freeze writes to Calliope, no exceptions.
+3. **Phase 2 is the inaugural governed act, and it is self-justifying.** Ratify 038/039 (and the bootstrap epistle) *through* the new step; their freezing IS the proof the step works. Clean against the lifecycle: building against liquid epistles, then freezing them once the mechanism exists, is normal liquid→frozen, not a retroactive write — §4.2/§3.3 stay satisfied (no edit-in-place, just the lifecycle advancing).
+4. **Phase 3+ fully dogfoods.** Server-shedding, the CLI seam, the plugin, the model-policy layer (040) — each staked, shitcorped, ratified into Calliope. This is where the rebuild becomes the pipeline's first customer.
+
+**Why holding 038/039/040 liquid now is already correct.** Committing them to corpora today would use the broken freeze step (markdown edit + manual migration = drift) — the exact thing being rebuilt. Holding them as a working note rather than corpus is not hesitation; it is the staked process being honored before the mechanism that would let them freeze cleanly exists. The transition doc being a note, not corpus, is the process working.
+
+---
+
 ## Open tensions (carried from 039, not resolved)
 
 1. **Multi-device reachability → anima-core CLI as a Claude Code plugin.** Reaching CC from personal laptop / phone / work laptop is host-provided (CC runs in the cloud, reachable anywhere). Anima should inherit that flexibility. Building it into anima-core would be the `server` role 038 said to shed (§1.5); riding CC-as-host gets it free → points toward anima-core CLI distributed as a Claude Code plugin, running wherever CC runs, with Calliope as the persistent networked substrate any session reaches. Resurfaces 038's gold-9 multi-host `asserted_by` (§4.7 / Epistle 031): multiple devices/hosts, one Calliope, provenance must distinguish them. The multi-device story IS the multi-host story. **Open:** plugin-delivery mechanics; whether Bench (VS Code fork, rich workstation host) and CC-web/mobile (lightweight host) are two faces on one Hermes front door (§16.3) or strain "one extension because one front door."
@@ -87,6 +114,16 @@ Phasing:
 **From anima-core (the build, needs both repos + running Calliope):**
 - Phase 1: build freeze→Calliope propagation (039 claim 2). The freeze act writes the corpus amendment to Calliope via §3.10 supersession, atomically with the git/version update.
 - Verify whether the embedded Calliope router in the FastAPI app is superseded by the standalone calliope-anima service (carried from the 038 discussion). If superseded, stripping the server shell is mostly deleting the `web/` layer. If not, §4 enforcement must move into the CLI/library seam first.
+
+**Shitcorp the current build into aZero's inheritance — run by the live constellation (needs anima-core + running Calliope):**
+- Use the current project state in Calliope as shitcorp material. The current anima-core build is an *argument* (§6.13 Mnemosyne — what the codebase argues, where it fractured without being named). Pan it: gold carries into aZero; gravel dies with the old shape (messy UI decisions, the server scaffolding 038 sheds, anything coupled to the two-repo / chat.html era).
+- **Run it as a real orchestration — Ari + Hermes running the show.** This is deliberately a stress test of the 038 orchestration model: Hermes carries the intent ("sort the old build for aZero") into the constellation's frame; Ari triggers (G3a) — picks Mnemosyne, scopes the archaeology, defines what success looks like (the inheritance manifest). If Ari/Hermes run this cleanly, that is live evidence for 038 gold-1 (the host keeps triggering a live reasoning act). Note: this uses the *anima-core constellation* (Ari/Hermes/Mnemosyne), NOT the anima-corps authoring agents (builder/lite) — it cannot be run from the anima-corps-only session.
+- **Legitimate telescoping (§6.15 / §6.13 / §7.3).** The current build is too large for single-pass; it decomposes into non-overlapping sub-scopes (web layer, agents, tools, calliope client, drive scripts, schemas); synthesis = the aZero inheritance manifest (real compression — what carries, integrated across sub-scopes, condition 3). Mnemosyne is licensed to telescope here; this is the swarm receipt on a real workload. Honor the swarm_manifest discipline.
+- **Governed sort, not amnesiac rewrite.** Record each drop as a `discard_record` (§4.9, via negativa §3.20 / §6.6) with its *because*. The shape of what aZero drops is evidence; recording it stops the next project re-traversing the same gravel. A clean delete loses that. The reason the chat.html/server era is dead (it served an interface that was never the real one) is itself the gold that justifies aZero's shape — the gravel is where 038's whole argument came from.
+- **Distinguish two artifact classes in the current Calliope.** It holds *corpus* artifacts (the migrated reference — the 039 single-source-of-truth thread; carries forward by definition) AND *build/project* artifacts (implementation decisions, schemas, agent wiring, UI cruft). This pass pans the **build/project** class only. Do not shitcorp the corpus here — that is a category error.
+- **Can run early, independent of the bootstrap.** Archaeology is read-only against the current build; its discard_records and manifest are build-shitcorpus writes, not corpus freezes, so they do not need the Phase 1 freeze→Calliope step. It can run before/alongside Phase 1 to inform what aZero should be.
+- **Preservation flag:** the inheritance manifest and its discard_records are themselves part of aZero's inheritance — write them so they survive the Calliope transition (into the shitcorpus aZero inherits), not stranded in the dying build's store.
+- Method: Hermes intake → Ari triggers Mnemosyne → Mnemosyne archaeology (telescoped) → smelting → discard_records for the gravel → an aZero inheritance manifest (what carries, what dies, why).
 
 **Then (Phase 2):** ratify 038/039 using the new freeze step.
 
