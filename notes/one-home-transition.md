@@ -8,6 +8,17 @@
 
 ---
 
+## Naming (as of 2026-06-16)
+
+- **aZero** — the anima CLI. The library + daemon + seam that anima-core becomes (the 038/039 rebuild target). The project being built. Possible §6.8 name-import: a-zero → the zeroth-class / alpha / ground invocation layer (telos.md calls Calliope "where the zeroth-class artifact lives"; Epistle 028's loop is alpha→spine→territory→omega). If intentional, load-bearing; confirm.
+- **Anima** — the forge+dojo VS Code fork. The host. This is substrate.md's **Bench**.
+
+This resolves 039's open Bench/CC tension: Anima/Bench is the rich host; aZero is the CLI it invokes; CC is the *model* aZero is built in the image of, never Bench itself.
+
+**OPEN — name collision to resolve.** "Anima" now does double duty: the *system* (anima-corps, anima-core, "the Anima system" per CLAUDE.md) AND the *VS Code fork* specifically — and substrate.md calls the fork "Bench." Three referents, two names. Decide: is **Anima superseding Bench** as the fork's name (§6.9 renaming-as-Aufhebung, a corpus event — preserved/negated/elevated) with a new system-level term, or is Bench the corpus-internal name and Anima the product-facing name for the same host? A name doing double duty silently loses the precision §6.8 depends on. Settle before it propagates into the rebuild.
+
+---
+
 ## Where we are
 
 Two liquid epistles were drafted and (038) shitcorped in this session:
@@ -104,6 +115,12 @@ The discipline that falls out:
 **From anima-core (the build, needs both repos + running Calliope):**
 - Phase 1: build freeze→Calliope propagation (039 claim 2). The freeze act writes the corpus amendment to Calliope via §3.10 supersession, atomically with the git/version update.
 - Verify whether the embedded Calliope router in the FastAPI app is superseded by the standalone calliope-anima service (carried from the 038 discussion). If superseded, stripping the server shell is mostly deleting the `web/` layer. If not, §4 enforcement must move into the CLI/library seam first.
+
+**Shitcorp the current build into aZero's inheritance (needs anima-core + running Calliope):**
+- Use the current project state in Calliope as shitcorp material. The current anima-core build is an *argument* (§6.13 Mnemosyne — what the codebase argues, where it fractured without being named). Pan it: gold carries into aZero; gravel dies with the old shape (messy UI decisions, the server scaffolding 038 sheds, anything coupled to the two-repo / chat.html era).
+- **Governed sort, not amnesiac rewrite.** Record each drop as a `discard_record` (§4.9, via negativa §3.20 / §6.6) with its *because*. The shape of what aZero drops is evidence; recording it stops the next project re-traversing the same gravel. A clean delete loses that.
+- **Distinguish two artifact classes in the current Calliope.** It holds *corpus* artifacts (the migrated reference — the 039 single-source-of-truth thread; carries forward by definition) AND *build/project* artifacts (implementation decisions, schemas, agent wiring, UI cruft). This pass pans the **build/project** class only. Do not shitcorp the corpus here — that is a category error.
+- Method: Mnemosyne archaeology → lite-style smelting → discard_records for the gravel → an aZero inheritance manifest (what carries, what dies, why).
 
 **Then (Phase 2):** ratify 038/039 using the new freeze step.
 
