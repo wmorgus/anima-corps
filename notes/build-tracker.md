@@ -124,35 +124,39 @@ MongoDB confirmed (not Postgres — `ARCHITECTURE.md` in calliope-anima is a fos
 
 ## aZero build
 
-**Status:** Archaeology complete. Ready to start.
+**Status:** Initial build complete. 36 tests passing. `c98dd33`.
 
-**Telos:** Put §4 discipline behind one wall (the seam). Make triggering a live reasoning act. Any host can invoke Anima by shelling it.
+**Telos doc:** `aZero/telos.md` — written via G1 Moves 1+2 (2026-06-18). Gate metaphor ratified. Telos: put §4 discipline behind one gate; any caller crosses it by shelling `anima`.
 
 **Shape (from Epistle 038):** Library + daemon. Hosts own the HTTP surface; aZero is the CLI.
 
 **Inheritance manifest:** `notes/azero-inheritance-manifest.md`
 
-**Key carries:** `BaseAgent` agentic loop, Provider Protocol, tool definition/handler factory pattern, Heph build machinery (worktree isolation, policy gate, delegation), CostTracker, TraceRecorder, CalliopeClient interface, all six agent classes (minus server coupling), relay + dispatch tools, tree-sitter + SemanticMCPOrchestrator, probe_events + shitcorpus tools, `hephaestus/context.py` (new — neighbor expansion from bridge.py).
+### Build complete (2026-06-18)
 
-**Key dies:** FastAPI app, AnimaAuthMiddleware, `_build_artifact` router coupling, instance/ SQLite brain (as server concept), UraniaSweeper as server-lifecycle loop, bridge.py module, data provenance sweep as lifespan loop.
+- [x] Telos doc written + ratified (`aZero/telos.md`)
+- [x] G1 Epistle 041 sequence run — four stories proven:
+  - S1 ✓ gate holds for any caller (universal CLI entry point)
+  - S2 ✓ §4 enforced structurally (no bypass path to Calliope)
+  - S3 ✓ triggering is live, not compiled (Hermes dispatches via tools)
+  - S4 ✓ daemon outlives its host (host-neutral asyncio lifecycle)
+- [x] lib/ core — CalliopeClient (HTTP, not in-process), BaseAgent, providers, cost, trace
+- [x] lib/agents/ — all six agents, FastAPI stripped, UraniAgent → UraniaAgent
+- [x] lib/tools/ — dispatch, relay, probe_events, shitcorpus, web (web_search stubbed)
+- [x] cli/ — thin gate shell, Click, relay open/close, correct crossing_index
+- [x] daemon/ — on_load + on_cron fully implemented; on_pr + on_artifact stubbed
+- [x] 36 behavioral tests passing (4 code review passes applied)
+- [x] Committed — `c98dd33`
 
-**Carries reshaped:** Instance brain → `~/.azero/config.toml` + `secrets.toml` (Fernet) + relay artifacts. UraniaSweeper → configurable sweep triggers (on_load, on_cron, on_pr, on_artifact).
+### Known gaps / deferred
 
-**Known gaps inherited:** `spawn_swarm` executor never built; `web_search` dead; Calliope graph retrieval flat/lexical; Pavel §6.14 OPEN.
-
-**Stale references to correct:** Will/Iris → Hermes; `UraniAgent` → `UraniaAgent`; `adr-hephaestus-two-phase-execution` pending formal deprecation.
-
-**Pending before ratifying 038/039:**
-- ~~Calliope code review + git commit~~ ✓
-- ~~Calliope freeze step exists~~ ✓
-- ~~aZero archaeology pass~~ ✓
-- ~~New Calliope stood up~~ ✓ (port 8100, `calliope_legacy` preserves old data)
-- ~~Calliope types.py~~ ✓
-- ~~Re-ingest anima corpora~~ ✓ (50 corpus_section + manifest; substrate coverage in_progress pending 038 freeze)
-- ~~`anima` project seeded~~ ✓ (038 liquid, 039 semi_liquid)
-- ~~Then: freeze via new step~~ ✓ both frozen 2026-06-18
-
-**Why this order matters:** ratifying 038/039 into the old Calliope uses the broken freeze path 039 explicitly condemns (VERSION bump + git tag, Calliope write as separate manual step). The new Calliope has the correct freeze step. Ratifying before standing it up reproduces the problem the epistles diagnose.
+- `MnemosyneAgent.__init__` blocking sync I/O (MCP server startup) — needs `begin_session()` async pattern before Mnemosyne is wired into daemon
+- `spawn_swarm` executor still never built (inherited gap)
+- `web_search` stub (no backend — inherited gap)
+- Calliope graph retrieval flat/lexical (inherited gap)
+- Pavel §6.14 OPEN (inherited gap)
+- Cross-restart sweep deduplication — sweep artifacts written but not consulted on restart
+- `on_pr` / `on_artifact` daemon triggers stubbed (require Calliope event subscription)
 
 ---
 
@@ -163,6 +167,10 @@ MongoDB confirmed (not Postgres — `ARCHITECTURE.md` in calliope-anima is a fos
 **Telos:** Rich human-facing interface — the VS Code fork where human and Anima work together.
 
 **Base:** `anima-bench/` (existing claw-code/Claude Code foundation).
+
+### UI notes
+
+- **§ citation popovers** — in certain views, hovering over a §1.5-style citation should show a popover with the cited text. Scope TBD (corpus views likely; not all views).
 
 ---
 
