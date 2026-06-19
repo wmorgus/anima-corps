@@ -1,5 +1,6 @@
 ---
 Excavated: 2026-06-18 | Status: liquid
+Shitcorped: 2026-06-18 — verdict liquid (gravel/epistle-045.md). Earned: the intake-depth axis as a named configurable parameter on Hermes, and the sock-puppet honesty constraint as a clean §1.5 extension. Dropped: the generalization to arbitrary host contexts (staked as "what §6.12a already commits to" while the epistle's own Open admits it is new — the §3.3a founder-exemption shape), Option B as "the only reading that survives §6.12a" (forced by §6.12a-plus-the-generalization, not §6.12a alone), and the Socrates-as-face-name move (faithful eviction reading, but no weight beyond the §6.1 mechanism §6.12a already carries). Freeze blocked until the generalization is restaked as an explicit §6.12a extension and Option B rebuilt on it.
 ---
 
 Epistle 045 — The Face Is Configuration, Not an Agent
