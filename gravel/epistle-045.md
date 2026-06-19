@@ -59,3 +59,43 @@ Two contributions earn weight: the intake-depth axis as a named configurable par
 The load-bearing dropped claim is the generalization to arbitrary host contexts, staked as "what §6.12a already commits to" while the epistle's own Open admits it is new — the §3.3a founder-exemption shape, caught in the corpus it extends. Option B inherits the same flaw: it is forced by §6.12a-plus-the-generalization, not by frozen §6.12a, so "the only reading that survives §6.12a" overcharges the conclusion to the frozen section. The Socrates-as-face-name move reads the eviction faithfully but adds no architectural weight beyond the §6.1 mechanism §6.12a already carries.
 
 Path to freeze: restake the generalization as an explicit proposed extension of §6.12a (amendment-track, not derivation), rebuild Option B on that extension, re-warrant the load-mechanism Open off §5.4/§6a rather than §3.3, and either wire §9.4 into the honesty argument or drop it from the trailer. Liquid until then.
+
+---
+
+## Re-shitcorp pass (2026-06-18)
+
+Second pass over the revised epistle. The four freeze-path items were each addressed; checked against the corpus and re-audited adversarially for new issues.
+
+### Prior items — resolution
+
+**Gravel #1 (generalization restaked) — RESOLVED.** The body now carries a dedicated paragraph ("State the load-bearing distinction plainly," line 17) that inverts the founder-exemption move: "This epistle extends that distinction to arbitrary host contexts... That extension is new construction. It is not a reading of §6.12a; §6.12a names one face on one surface and stops there." It names §3.3a by name as the trap it is avoiding. The line-14 / line-50 contradiction the first pass located is gone — the Open (line 56) and the body now say the same thing: extension, amendment-track, not derivation. Honest extension framing, cleanly staked.
+
+*Warrant check (fresh-eyes Q2):* §6.12a's face/agent distinction runs through a *mechanism* — §6.2 outcome 2 (same information-poet harm, different material) → §6.1 returns "same harm, different material → face, not constellation entry." A mechanism is general by construction; it applies wherever the same harm reappears with different material, not only in the dojo. So the extension *has* a warrant available to it. The revised epistle does not lean on that warrant — it conservatively stakes the generalization as new construction rather than claiming the mechanism's generality derives it. That is safe, not a fault: it cleanly separates "the distinction is derived (mechanism is general)" from "the universal quantifier is a choice staked here." The claim is stakeable, not hedged into incoherence.
+
+**Gravel #2 (third intake depth) — RESOLVED.** The depth-axis section (line 28) now states outright: "A face on an external host does not add a third value to this axis. It is one of these two settings — cultivating or shallow... The axis has two values; the extension lets those two values run on surfaces beyond the CLI and the dojo." The double-count is removed; the axis is two settings, the surface is the generalization's contribution. Clean.
+
+**Gravel #3 (Option B attribution) — RESOLVED.** The "Option B is forced, not chosen" section (lines 36–38) now reads "the only reading consistent with §6.12a **and the extension this epistle stakes**. Not §6.12a alone," and makes the §5.1 mesh argument explicitly conjunctive: "that consequence only bites *if* faces generalize to arbitrary hosts... So the force is conjunctive." This is exactly the prior pass's prescription: Option B is charged to §6.12a-plus-the-extension, and the epistle openly states the result is downstream of the contested premise rather than independent support for it. Valid derivation from the stated premises.
+
+**Gravel #4 (Socrates-as-face-name) — RESOLVED.** The sock-puppet section (line 46) now frames the eviction reading as "illustration, not architecture... the name-recycling demonstrates nothing the mechanism does not already carry. It decorates the distinction; it does not establish it." Demoted exactly as recommended; no longer load-bearing.
+
+**Tension #2 (§3.3 warrant) — RESOLVED.** §3.3 is gone from the load-mechanism Open. The warrant is now §5.4 / §6a.10 (line 52), and it is wired correctly: §6a.10 *is* the corpus's pull-vs-push surface (verified — logic.md §6a.10 "Context delivery primitive," names pull/push and the externality consequence), and §5.4 *is* the cache-and-re-assert prohibition (verified). The epistle's gloss — "a pushed-in face is cached prior state; a pulled face is a substrate read" — is a faithful read of both. Routed to its right home.
+
+**Tension #3 (§9.4) — RESOLVED.** §9.4 is now invoked in the body, not merely trailered: "a face that concealed it was Anima would be the silent move §9.4 rules out — the system pretending not to know what it knows" (line 42). Faithful to logic.md §9.4 ("creepy: act on what it knows without surfacing it"). Concealment-of-identity read as the §9.4 silent move at the persona layer — the connection the first pass said would strengthen the argument is now made.
+
+### Fresh-eyes — residual / new
+
+No new gravel. Two notes:
+
+- **Residual soft spot (not new, already adjudicated): the §5.1 mesh framing.** Strictly, a per-host intake agent that writes to Calliope and is read by Hermes is another *spoke*, not mesh — §5.1 forbids agents talking *directly* to each other, not proliferation of spokes. The mesh objection only bites on the *peer-to-peer* reading (intake agents messaging each other). The first pass already ruled this invocation sound under the peer-to-peer reading ("peer-to-peer intake agents would be the mesh §5.1 rules out"). The revision preserves the "peer-to-peer topology" language — the blessed reading — and adds the conjunctivity. So this is the weakest link in the Option B chain, but it was settled in pass one and the revision did not weaken it. Noted for the record, not re-opened.
+
+- **§6.12b usage is faithful.** The new citation — "two expressions of one telos authority, not two agents" (line 13) — is a faithful quote and faithful use of substrate.md §6.12b, supporting "face is a register, not a being."
+
+- **No re-assertion drift.** Checked that the body does not quietly re-derive the generalization after disclaiming it. Lines 38 ("it is the extension that turns a local rule-out into a general one") and 56 (Open) both keep the load on the extension. Internally consistent throughout.
+
+### Verdict (re-shitcorp)
+
+Status: liquid — ready to freeze.
+
+All four dropped items and both held tensions are cleanly resolved. The generalization is honestly staked as a §6.12a extension on the amendment track; Option B is correctly rebuilt as downstream of that extension; the load-mechanism Open is re-warranted off §5.4/§6a.10; §9.4 is wired into the honesty argument. The two surviving Gold contributions (intake-depth axis as a named two-value configurable parameter on Hermes; sock-puppet honesty as a faithful §1.5 + §9.4 extension) stand intact and are no longer entangled with the contested premise. The §5.1 mesh framing is the one soft spot, already adjudicated sound in pass one and unchanged. The epistle now contains no internal contradiction and no claim charged to frozen material it does not carry.
+
+Ready to freeze (human act via the freeze step). Frontmatter advanced to semi_liquid pending that act.
