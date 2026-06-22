@@ -195,7 +195,28 @@ MongoDB confirmed (not Postgres — `ARCHITECTURE.md` in calliope-anima is a fos
 - aZero fixes: `base.py` full_text read; `client.py` auth header (`X-Anima-Agent-Key`); default URL `/api` prefix
 - **Hermes context load verified**: 17KB cited_context + 45KB agent_prompt
 
-**Step 2 — after load_face is built (both paths):**
+**Dogfood run 1 findings (fixed)**
+- `create_artifact` missing trailing slash → FastAPI stripped body on 307 redirect
+- `relay_record` cites in content only, not envelope — Calliope evidentiary predicate requires top-level
+- Agent prompts missing Calliope v2 schema → added `dk-calliope-schema-v2-001` to Hermes/Clio cites
+- `create_artifact` handler rejected top-level kwargs → now accepts both `artifact={...}` and flat kwargs
+- routing_decision content schema missing from DK → updated
+
+**Dogfood run 1 artifacts in Calliope** (Hermes→Clio→Hermes→Heph loop)
+- `adr-azero-load-face-pull-001` — pull-not-push ADR ✓
+- `lm-azero-load-face-001` — liquidity map ✓
+- `sc-azero-load-face-007` — sprint contract ✓ (17 ACs, doctrine-grounded)
+
+**Editor tools sprint (surfaced by Heph stub failure)**
+- `sc-azero-editor-tools-002` — sprint contract authored by Clio ✓
+- `write_file`, `edit_file`, `run_command`, `glob_search`, `grep_search` — implemented ✓ 55 tests passing
+- Workspace root containment enforced (AC2/AC3)
+- `cmd=` legacy alias in `run_command` (Heph prompt uses old kwarg name)
+
+**Step 2 — load_face implementation (Heph running against sc-azero-load-face-007)**
+- In progress — editor tools now real; Heph re-dispatched
+
+**Step 3 — after load_face built:**
 - 045 corpus amendment: amend `substrate.md` §6.12a (add face extension), create superseding `corpus_section` in Calliope, freeze — first real output of dogfood loop
 
 **Deferred — Calliope type expansion sprint (Epistle 048)**
