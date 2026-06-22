@@ -78,7 +78,7 @@ Four states. The states cite §2.3 as warrant — they are positions on the liqu
 **Transition triggers:**
 - `vapor → liquid` — builder drafts the epistle.
 - `liquid → semi-liquid` — lite and author agree the sorting (end of loop (b) Step 2).
-- `semi-liquid → frozen` — builder commits the gravel record and updates the corpus (loop (b) Step 3).
+- `semi-liquid → frozen` — builder commits the gravel record, updates the corpus files, syncs Calliope (re-ingest corpus sections + freeze epistle artifact), bumps VERSION, and tags (loop (b) Step 3).
 
 ---
 
@@ -126,8 +126,11 @@ Current version is in `VERSION`. anima-core declares which version it is faithfu
 - `major` — foundational supersession: a frozen §-claim is superseded, changing what the corpus rules out (§3.10 Aufhebung) — or the corpus shape itself changes foundationally (new docs, new file structure, claims re-homed across files), since `CORPS_VERSION` pins corpus shape and a structural delta is what downstream must account for. [→ Epistle 032 — the migration event that staked the structural-reshape reading of major.]
 
 **On a ratification or restructuring event:**
-1. Update `VERSION`.
-2. Git tag: `git tag v<version> -m "<epistle NNN ratified: one-line summary>"`.
+1. Update corpus files (`logic.md`, `rhetoric.md`, `substrate.md`, etc.) with gold claims from the epistle.
+2. **Calliope sync — corpus sections:** run `calliope/scripts/ingest_anima_corpora.py` to push updated sections as `corpus_section` artifacts (superseding any prior version of changed sections). Calliope is canonical; the git files are the authoring/rendering surface.
+3. **Calliope sync — epistle artifact:** POST the epistle as an `epistle`-type artifact to Calliope (`POST /api/artifacts/`), then freeze it (`POST /api/artifacts/{id}/freeze`). Use `calliope/scripts/seed_epistles_045_046_and_prompts.py` as the pattern.
+4. Update `VERSION`.
+5. Git tag: `git tag v<version> -m "<epistle NNN ratified: one-line summary>"`.
 
 **anima-core fidelity declaration.** Core maintains a `CORPS_VERSION` file pinning the version it is built against. When corps minor/major bumps, core must explicitly update its pin and account for the delta.
 
