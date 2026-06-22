@@ -1,103 +1,272 @@
 # Build Tracker — One Home Transition
 
-**Last updated:** 2026-06-22 (session 7 close)
-**Supersedes:** previous build-tracker.md (sessions 1–7 log)
-
-One Home Transition: nuclear rebuild of Calliope, aZero, anima-corps, Bench in dependency order. No incremental migration.
-
----
-
-## System state (as of 2026-06-22)
-
-### Calliope — live at localhost:8100
-- Built, 450 tests passing (2 skipped)
-- Freeze step implemented and proven
-- Types: full enum, typed content models for all priority types
-  - Includes `agent_prompt` (Step 0, Epistle 048) — §1.12 prompt-as-artifact register
-- Corpus ingested: 50 corpus_section artifacts + corpus_manifest
-- Constellation migrated from calliope_legacy (Option A): 6 agents, all agent_prompt artifacts
-- Epistles 038, 039, 045, 046, 047, 048 frozen in Calliope
-- §6.12d corpus_section frozen (first dogfood corpus output)
-
-### aZero — CLI gate, 78 tests passing
-- Library + daemon shape (Epistle 038)
-- All 6 agents with gpt-5.5/anthropic correct providers
-- Editor tools implemented: write_file, edit_file, run_command, glob_search, grep_search
-- `load_face` tool built (Hephaestus, sc-azero-load-face-007, 22 tests)
-- Hermes→Clio→Heph dogfood loop proven; sprint contracts authoring through the system
-- `prompt-builder-002` + `prompt-lite-002`: agent_prompt type with FaceArtifact fields; load_face("builder"/"lite") → LoadFaceSuccess verified
-
-### anima-corps — authoring surface
-- Epistles 042–048 authored and shitcorped
-- process.md: freeze procedure updated with Calliope sync steps (5-step sequence)
-- substrate.md: §6.12d added (face generalization, intake-depth axis)
-- ingest_anima_corpora.py: upserts on re-run (batch → per-item)
-
-### Bench — not started
-Depends on aZero being stable.
+**Sourced from:** `notes/one-home-transition.md`
+**Started:** 2026-06-16
+**Last updated:** 2026-06-18 (session 5)
 
 ---
 
-## Open gaps
+## The plan (formalized)
 
-### Calliope
+Nuclear rebuild. No incremental migration. Four projects in dependency order:
 
-| Gap | Severity | Notes |
-|-----|----------|-------|
-| Semantic search disabled | **Blocking** | `search_artifacts` fails on every agent run — embedder not injected into ArtifactService. Blocks Hermes/Clio from finding artifacts by content. |
-| §1.12 type expansion | Medium | Contract registers (API contracts, data schemas, event schemas, permission schemas, SLAs), operational registers (runbooks, deployment manifests, config, feature flags), verification registers (security audits, benchmarks). Design criterion: derive from §1.12, not pipeline. Epistle 048 stakes this. |
-| `deployment_record` schemaless | Low | Enum-present but no `_CONTENT_SCHEMAS` entry — name without schema |
-| `field_provenance_ancestors` stub | Low | Traversal preset returns empty |
-| Manifest upsert ID collision | Low | `ingest_anima_corpora.py` successor manifest gets ID collision on re-run |
-| 2 cross-repo integration tests skipped | Low | Require `hermes` package or external `DECISIONS.md` |
+1. **Calliope** — governed artifact store. Telos: externality primitive that makes §3.3 real. No upstream Anima dependencies; everything else depends on it.
+2. **aZero** — faithful CLI implementation. Library + daemon shape (Epistle 038). The seam that puts §4 discipline behind one wall.
+3. **Bench** — rich human-facing UI. Invokes aZero; talks to Calliope directly.
+4. **anima-corps** — authoring surface. Stays as git corpus; ratifies INTO Calliope once freeze step exists.
 
-### aZero
+Committed-for-build architecture (liquid, not yet ratified): Epistles 038, 039, 040, 041.
 
-| Gap | Severity | Notes |
-|-----|----------|-------|
-| Face enforcement missing | Medium | gpt-5.5 skips `load_face` call for pure text tasks — MUST instruction advisory, no code-level enforcement. Face section added to Hermes prompt is startup injection (§6a.5 violation, contradicts Epistle 047). Real fix: interception layer before corpus text output on named-face tasks + remove face content from startup prompt. |
-| Agent prompt schema drift | Medium | Hermes/Clio prompts are legacy (45KB+). They know about `load_face` and Calliope v2 schema via DK but occasionally generate wrong field names or missing required fields. `dk-calliope-schema-v2-001` helps but not complete. |
-| Urania produces no build_verification artifacts | Medium | Seen in Heph build run — Urania ran but emitted no verification artifact. Governance gate doesn't close. |
-| `spawn_swarm` executor never built | Medium | Inherited gap from legacy. Telescoping not functional. |
-| `MnemosyneAgent.__init__` blocking sync I/O | Medium | MCP server startup blocks — needs `begin_session()` async pattern before Mnemosyne wired into daemon |
-| `on_pr` / `on_artifact` daemon triggers stubbed | Low | Require Calliope event subscription |
-| `web_search` stub | Low | No backend |
-| Cross-restart sweep dedup | Low | Sweep artifacts written but not consulted on restart |
-| routing_decision content sometimes wrong | Low | Hermes sometimes writes wrong fields — DK has schema but enforcement is prompt-level only |
-
-### Corpus / retrieval
-
-| Gap | Severity | Notes |
-|-----|----------|-------|
-| Index artifacts — not yet designed | **Precondition** | Entry-point artifacts per corpus section required before effective chunking+retrieval. Needs design pass (what shape: summary+claims, tag cloud, Q&A pairs?). |
-| Chunking + semantic retrieval | Blocked | #1 self-directed task. Blocked on: (a) semantic search embedder in Calliope, (b) Index artifact design. Both halves pay off together. |
-| Corpus citation system gap | Medium | §-numbers travel with claims across migrations (logic→substrate per §32); causes reader confusion about file-of-residence. Queue for corpus tooling sprint. |
-| §6a.6 open | Low | git corpus and Calliope disagree on whether it's closed. When it closes, must close in Calliope first. |
-
-### Process / governance
-
-| Gap | Severity | Notes |
-|-----|----------|-------|
-| Epistles 042, 043 not yet frozen in Calliope | Low | Written and shitcorped; full freeze procedure now defined but not yet run on these |
-| 038 ratification fork | Low | If gold 2 (§6a.10 pull primitive) or gold 4 (§1.5 server role-shedding) is ratification-grade, requires VERSION minor bump + corpus amendment. Human call. |
-| CORPS_VERSION fate | Low | Dissolves under single source of truth, or transforms into "ratified-against" marker? Surfaces by build pressure. |
-| Multi-device / CC-plugin delivery | Low | aZero as CC plugin; multi-host `asserted_by` provenance (§4.7 / Epistle 031). Surfaces by build pressure. |
+038/039 ratification held deliberately — they freeze into the new world once Calliope's freeze step exists. Not frozen under the old process.
 
 ---
 
-## Next queue (priority order)
+## Calliope build
 
-1. **Semantic search + embedder** — inject embedder into ArtifactService; unblocks Hermes tool surface and is prerequisite for chunking
-2. **Index artifact design** — what shape? epistle track or design doc? precondition for chunking
-3. **Chunking + semantic retrieval** — chunk corpus per-§, add semantic retrieval to base.py; only pays off with (1) and (2)
-4. **Face enforcement** — code-level load_face check; remove face from Hermes startup prompt
-5. **Urania build_verification** — why Urania doesn't emit verification artifacts
-6. **§1.12 type expansion** — contract/operational/verification registers
+### Decisions staked (2026-06-16)
+
+| # | Decision |
+|---|---|
+| 1 | Library first, server optional (`calliope.server` subpackage) |
+| 2 | Embedder injection — `ArtifactService.__init__` accepts `embedder: Callable | None` |
+| 3 | Domain exceptions — `CalliopePermissionError` etc., not `HTTPException` |
+| 4 | Reconcile two `types.py` files — calliope-anima base + anima-core field additions |
+| 5 | `artifact_versions`: archive before minor mutations (`update_review_status`, `update_links`) |
+| 6 | External registry / filesystem tracking — **pinned future direction, out of scope for this pass** |
+| 7 | Freeze authority — human always; agent only if `review_status=="approved"` pre-existing |
+| 8 | Freeze does not auto-emit ratification record — caller (Hermes/human) writes `ARCHITECTURAL_DECISION` citing the frozen artifact |
+
+Source selected: `calliope-anima/api/artifacts/` (Implementation A) over `anima-core/src/anima_core/calliope/` — A has `RevisionRequestContent` + closure-on-supersede logic; B does not.
+
+MongoDB confirmed (not Postgres — `ARCHITECTURE.md` in calliope-anima is a fossil).
+
+### Location
+`~/Desktop/anima/calliope/` — joins the umbrella.
+
+### Status
+
+- [x] Shell created — `telos.md`, `CLAUDE.md`, `src/calliope/__init__.py`, `tests/__init__.py`
+- [x] Archaeology pass completed — inheritance manifest produced (see session notes)
+- [x] First-pass rebuild complete — **433 passed, 2 skipped, 0 failures**
+- [x] Code review pass — 11 findings surfaced (7 bugs/structural, 4 design gaps)
+- [x] Fixes 1–7 applied — **433 passed, 2 skipped, 0 failures**
+  - `AgentIdentity` moved to `calliope/identity.py` (FastAPI leak eliminated)
+  - `fastapi` removed from core deps (optional `[server]` only)
+  - `archive_version` duplicate key fixed (timestamp suffix)
+  - `find_live_successor` sort fixed (`created_at` desc, not `_id` desc)
+  - Successor ID generation fixed (strips `-vN` suffix before incrementing)
+  - `store.client` property added; `_col` private access removed from service
+  - `background_tasks` FastAPI coupling removed from service; `flagged_dependent_ids` on `ArtifactResponse`
+- [x] Fixes 8–11 applied — **433 passed, 2 skipped, 0 failures**
+  - 8: `ArtifactUpdate` constraint documented (no `cites`/`edges` on supersession — audit legibility)
+  - 9: `_create_conflict_records` populates `cites` with conflicting artifact IDs
+  - 10: `update_links` add/remove wrapped in Motor session
+  - 11: `Liquidity` enum normalization in `service.update` (defensive, string vs. enum)
+- [x] Git init + first commit — `038b7d0` (42 files, 11,590 insertions)
+- [x] Freeze step implemented — **450 passed, 2 skipped, 0 failures**
+  - `store.freeze_artifact` — archive → atomic `liquidity=frozen` + `review_status=approved`
+  - `service.freeze` — authority check + corpus audit closure + dependent flagging
+  - `POST /artifacts/{id}/freeze` router endpoint
+  - 17 new tests (`tests/test_freeze.py`), 3 classes: service / store / HTTP
+- [x] aZero archaeology pass completed — inheritance manifest produced (`notes/azero-inheritance-manifest.md`)
+  - Live Calliope survey: 305 sprint contracts, 218 build decisions, 65 architectural decisions, 228 domain_knowledge artifacts
+  - Codebase survey: anima-core structure, all 26 drive scripts, six agent classes, server layer fractures
+  - Cross-corroborated: Hermes merge (May 25), pure-append semantics live, constellation cites context live
+- [x] New Calliope stood up — server running on port 8100, `calliope_legacy` preserves old data
+- [x] Calliope types.py — add `corpus_section`, `corpus_manifest`, `epistle`, `gravel_record` (defined by Epistle 043)
+- [x] Re-ingest anima corpora as `corpus_section` artifacts — 50 sections + corpus_manifest in Calliope
+  - aZero not yet in substrate.md: 038 must be frozen first; substrate coverage marked `in_progress` in manifest
+- [x] Seed `anima` project — 038 (liquid) + 039 (semi_liquid) as `epistle` artifacts
+- [x] 038 ratification — frozen, approved, version=1
+- [x] 039 ratification — frozen, approved, version=1
+
+### Design decisions made during review
+
+- `ArtifactUpdate` intentionally excludes `cites`/`edges` — supersession and relationship assertions are separate acts; conflating them ambiguates the audit record. Callers add new edges via links PATCH on the successor.
+- `_create_conflict_records` cites the conflicting artifacts (correct semantic, not a bypass).
+
+### Known gaps / deferred
+
+- `field_provenance_ancestors` traversal preset is a stub (returns empty) — queued as future item
+- 2 cross-repo integration tests skipped (require `hermes` package or external `DECISIONS.md`)
+- External registry / filesystem tracking (pinned — own work item when ready)
 
 ---
 
-## Open tensions (from Epistle 039)
+## Corpus shape work (session 5, 2026-06-18)
 
-1. **Multi-device / CC-plugin delivery** — §4.7 / Epistle 031. Surfaces by build pressure.
-2. **Discipline-boundary cost of unification** — discipline lives in Calliope + ratification process, not repo boundary. Real cost, not waved away.
-3. **CORPS_VERSION fate** — dissolves or transforms into "ratified-against" marker. Surfaces by build pressure.
+### Epistles written and shitcorped
+
+**Epistle 042 — The Iceberg: Dojo In, Forge Out** (semi-liquid)
+- Coins dojo (surface → Calliope) and forge (Calliope → surface) as the two faces of the efficient cause
+- Three surface types: authored doc (dojo-primary), generated doc (pure-forge, no dojo path), code
+- Diagnoses domain_knowledge overload as the unnamed-forge asymmetry
+- Open tension T1: the forge has no externality cut yet (candidate for own epistle)
+
+**Epistle 043 — The Corpus Has No Type** (semi-liquid)
+- Defines `corpus_section` (section-granular, frozen, human_only ratification)
+- Defines `corpus_manifest` (four-cause coverage instrument, enforced at completeness declaration)
+- Defines `epistle` and `gravel_record` as Calliope-native provenance types; smith_notes as optional field on gravel_record
+- Ari reads the manifest; his telos authority is the mechanism that makes four-cause coverage reachable
+
+### Design decisions staked
+
+- **Bench's telos = Anima's efficient cause instantiated** — a project's final cause can be a system-level cause role
+- **Iceberg model** — every project has canonical Calliope body + human-visible surfaces; doc surfaces have dojo+forge; generated docs are pure-forge
+- **Re-ingest over port** — legacy data under `calliope_legacy`; fresh ingest against new types once types.py is updated
+
+### Next actions
+1. Calliope types.py — implement `corpus_section`, `corpus_manifest`, `epistle`, `gravel_record`
+2. Re-ingest anima corpora as `corpus_section` artifacts into new Calliope
+3. Seed 038/039 as liquid `epistle` artifacts → ratify via freeze step
+
+---
+
+## aZero build
+
+**Status:** Initial build complete. 36 tests passing. `c98dd33`.
+
+**Telos doc:** `aZero/telos.md` — written via G1 Moves 1+2 (2026-06-18). Gate metaphor ratified. Telos: put §4 discipline behind one gate; any caller crosses it by shelling `anima`.
+
+**Shape (from Epistle 038):** Library + daemon. Hosts own the HTTP surface; aZero is the CLI.
+
+**Inheritance manifest:** `notes/azero-inheritance-manifest.md`
+
+### Build complete (2026-06-18)
+
+- [x] Telos doc written + ratified (`aZero/telos.md`)
+- [x] G1 Epistle 041 sequence run — four stories proven:
+  - S1 ✓ gate holds for any caller (universal CLI entry point)
+  - S2 ✓ §4 enforced structurally (no bypass path to Calliope)
+  - S3 ✓ triggering is live, not compiled (Hermes dispatches via tools)
+  - S4 ✓ daemon outlives its host (host-neutral asyncio lifecycle)
+- [x] lib/ core — CalliopeClient (HTTP, not in-process), BaseAgent, providers, cost, trace
+- [x] lib/agents/ — all six agents, FastAPI stripped, UraniAgent → UraniaAgent
+- [x] lib/tools/ — dispatch, relay, probe_events, shitcorpus, web (web_search stubbed)
+- [x] cli/ — thin gate shell, Click, relay open/close, correct crossing_index
+- [x] daemon/ — on_load + on_cron fully implemented; on_pr + on_artifact stubbed
+- [x] 36 behavioral tests passing (4 code review passes applied)
+- [x] Committed — `c98dd33`
+
+### Known gaps / deferred
+
+- `MnemosyneAgent.__init__` blocking sync I/O (MCP server startup) — needs `begin_session()` async pattern before Mnemosyne is wired into daemon
+- `spawn_swarm` executor still never built (inherited gap)
+- `web_search` stub (no backend — inherited gap)
+- Calliope graph retrieval flat/lexical (inherited gap)
+- Pavel §6.14 OPEN (inherited gap)
+- Cross-restart sweep deduplication — sweep artifacts written but not consulted on restart
+- `on_pr` / `on_artifact` daemon triggers stubbed (require Calliope event subscription)
+
+---
+
+## Face mechanism + dogfood (session 7, 2026-06-22)
+
+**Status:** Doctrine staked. Build not started.
+
+### Doctrine ratified (all frozen in Calliope)
+
+- **Epistle 045** (`anima-epistle-045`) — face is configuration, not an agent; intake-depth axis on Hermes; §6.12a extension (amendment-track); builder/lite as faces via §6.1 information-poet harm test
+- **Epistle 046** (`anima-epistle-046`) — builder+lite missed in aZero initial build; last hand-authored epistle; `prompt-builder-001` + `prompt-lite-001` seeded in Calliope as `domain_knowledge`
+- **Epistle 047** (`anima-epistle-047`) — load_face mechanism: face selection by live Hermes reasoning (§6.0/§15.18, not §6.12b); §6a.10 pull from Calliope at task time; §5.4 forbids invisible re-assertion; §6.1 harm test run (builder/lite = faces, not slots)
+
+### Key design decisions
+
+- Face = persona + intake-depth config on Hermes, pulled from Calliope at task time
+- `load_face(face_id)` tool — new, does not exist yet; fetches `domain_knowledge` artifact, returns `full_text`
+- `_ensure_context_loaded` is startup-cached (§6a.5 shape) — face-pull is NEW machinery, not the existing cites path
+- `--face` flag valid for programmatic callers (Slack); primary path is live Hermes reasoning
+- `agent_prompt` type does not exist in Calliope schema — 045 open (prompt-* vs dedicated type) still open
+- builder/lite stay as faces (not constellation entries) — §6.1 returns information-poet harm, same as §11/Ari
+
+### Completed
+
+**Step 0 — add `agent_prompt` type to Calliope (Epistle 048)** ✓ `709cd8e`
+- `AGENT_PROMPT = "agent_prompt"` in enum; `AgentPromptContent` model (agent_name, full_text, narrative, prompt_version)
+- Registered in `_CONTENT_SCHEMAS` and `REQUIRE_CITES_TYPES`
+- `prompt-builder-002` + `prompt-lite-002` seeded as `agent_prompt`, superseding domain_knowledge v1
+- 450 passed, 2 skipped
+
+### Next actions (pinned)
+
+**Step 1 — Option A constellation migration** ✓ `462aba3` (calliope) / `d951f15` (aZero)
+- Migrated: `dk-builder-philosophy-frozen-001`, 6x `agent-prompt-*` (execution_prompt → agent_prompt), 6x `capability-map-*`, 6x `agent-config-*`, `anima-constellation-current`
+- Constellation updated: execution_prompt IDs → agent_prompt IDs; corpus-anima-* → `anima-corpus-manifest-001`
+- aZero fixes: `base.py` full_text read; `client.py` auth header (`X-Anima-Agent-Key`); default URL `/api` prefix
+- **Hermes context load verified**: 17KB cited_context + 45KB agent_prompt
+
+**Dogfood run 1 findings (fixed)**
+- `create_artifact` missing trailing slash → FastAPI stripped body on 307 redirect
+- `relay_record` cites in content only, not envelope — Calliope evidentiary predicate requires top-level
+- Agent prompts missing Calliope v2 schema → added `dk-calliope-schema-v2-001` to Hermes/Clio cites
+- `create_artifact` handler rejected top-level kwargs → now accepts both `artifact={...}` and flat kwargs
+- routing_decision content schema missing from DK → updated
+
+**Dogfood run 1 artifacts in Calliope** (Hermes→Clio→Hermes→Heph loop)
+- `adr-azero-load-face-pull-001` — pull-not-push ADR ✓
+- `lm-azero-load-face-001` — liquidity map ✓
+- `sc-azero-load-face-007` — sprint contract ✓ (17 ACs, doctrine-grounded)
+
+**Editor tools sprint (surfaced by Heph stub failure)**
+- `sc-azero-editor-tools-002` — sprint contract authored by Clio ✓
+- `write_file`, `edit_file`, `run_command`, `glob_search`, `grep_search` — implemented ✓ 55 tests passing
+- Workspace root containment enforced (AC2/AC3)
+- `cmd=` legacy alias in `run_command` (Heph prompt uses old kwarg name)
+
+**Step 2 — load_face built** ✓ `b4b4a53`
+- `load_face.py` written by Hephaestus (739 lines); FaceValidator, CallioPeFaceRepository, structured failure envelopes, audit records, topology no-op hooks
+- `FACE_ARTIFACT_TYPE` fixed → `agent_prompt`; wired into `hermes.py`
+- `prompt-builder-002` + `prompt-lite-002` updated with FaceArtifact fields alongside AgentPromptContent
+- `load_face("builder")`, `load_face("lite")` verified live → `LoadFaceSuccess`
+- 78 tests passing
+
+**Step 3 — golden path test** ✓ (partial)
+- `load_face("builder")` + `load_face("lite")` verified live → `LoadFaceSuccess`
+- Output correctly in builder register: "Face is not who acts. Face is how Hermes acts for this task."
+- Gap: gpt-5.5 skips the `load_face` tool call for pure text tasks — MUST instruction is advisory; no code-level enforcement. Adding face section to Hermes prompt created §6a.5 startup injection (the thing Epistle 047 says to avoid). Real enforcement requires interception layer before text output on corpus tasks — deferred.
+
+**Step 4 — 045 corpus amendment** ✓
+- `anima-corpus-substrate-sec6-12d` — frozen, approved in Calliope
+- §6.12d text added to `substrate.md` (face generalization, intake-depth axis, §5.1 Option B force)
+- First dogfood corpus output: Calliope-canonical, git surface updated to match
+
+**Deferred — face enforcement (surfaced by golden path)**
+- Code-level check that load_face was called before corpus text output on named-face tasks
+- Remove face content from Hermes startup prompt → restore §6a.10 pull semantics
+
+**Deferred — Calliope type expansion sprint (Epistle 048)**
+- Contract registers: API contracts, data schemas, event schemas, permission schemas, SLAs
+- Operational registers: runbooks, deployment manifests, dependency manifests, config, feature flags
+- Verification registers: security audits, compliance certs, performance benchmarks
+- Design criterion: derive downward from §1.12, not upward from pipeline needs
+- After face mechanism is running; doesn't block immediate sequence
+
+---
+
+## Bench build
+
+**Status:** Not started. Depends on aZero.
+
+**Telos:** Rich human-facing interface — the VS Code fork where human and Anima work together.
+
+**Base:** `anima-bench/` (existing claw-code/Claude Code foundation).
+
+### UI notes
+
+- **§ citation popovers** — in certain views, hovering over a §1.5-style citation should show a popover with the cited text. Scope TBD (corpus views likely; not all views).
+
+---
+
+## Open tensions (from Epistle 039, not resolved)
+
+1. **Multi-device / CC-plugin delivery** — aZero as a Claude Code plugin riding CC-as-host; multi-host `asserted_by` provenance (§4.7 / Epistle 031). Surfaces by build pressure.
+2. **Discipline-boundary cost of unification** — repo boundary previously enforced corpus vs. code discipline crudely. Resolution: discipline lives in Calliope + ratification process, not repo boundary. Real cost, not waved away.
+3. **CORPS_VERSION fate** — dissolves under single source of truth, or transforms into a "ratified-against" marker? Surfaces by build pressure.
+
+---
+
+## Verification flags (from one-home-transition.md)
+
+- **§6a.6 still open** — git corpus and Calliope state disagree on whether it's closed. Standing TODO: when §6a.6 closes, it must close in Calliope (the real fix), and git corpus must reflect it. Test case for the freeze→Calliope propagation (039 claim 2).
+- **038 gravel corrected** — both originally-proposed tensions dissolved. Record shows no open tensions. Read corrected `gravel/epistle-038.md` if 038 moves toward ratification.
+- **038 ratification fork** — if gold 2 (seam as §6a.10 pull primitive) or gold 4 (§1.5 server role-shedding) is ratification-grade, that is a separate event requiring VERSION minor bump + corpus amendment. Human call. Should use new freeze step.
