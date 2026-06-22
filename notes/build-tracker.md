@@ -179,26 +179,21 @@ MongoDB confirmed (not Postgres — `ARCHITECTURE.md` in calliope-anima is a fos
 - `agent_prompt` type does not exist in Calliope schema — 045 open (prompt-* vs dedicated type) still open
 - builder/lite stay as faces (not constellation entries) — §6.1 returns information-poet harm, same as §11/Ari
 
+### Completed
+
+**Step 0 — add `agent_prompt` type to Calliope (Epistle 048)** ✓ `709cd8e`
+- `AGENT_PROMPT = "agent_prompt"` in enum; `AgentPromptContent` model (agent_name, full_text, narrative, prompt_version)
+- Registered in `_CONTENT_SCHEMAS` and `REQUIRE_CITES_TYPES`
+- `prompt-builder-002` + `prompt-lite-002` seeded as `agent_prompt`, superseding domain_knowledge v1
+- 450 passed, 2 skipped
+
 ### Next actions (pinned)
 
-**Step 0 — add `agent_prompt` type to Calliope (Epistle 048)**
-- `agent_prompt` succeeds `execution_prompt` (deprecated, no successor, §15.2 still open)
-- Serves §1.12's first-class prompt-as-artifact register
-- Gives builder/lite/faces a proper type home
-- Re-seed `prompt-builder-001` + `prompt-lite-001` as `agent_prompt` (currently `domain_knowledge`)
-- Unblocks 047's open ("agent_prompt type doesn't exist")
-
-**Step 1 — prerequisite fork, choose before building:**
-
-**Option A — migrate constellation first, then full dogfood**
-1. Port constellation + agent prompts from `calliope_legacy` (port 27017) to new Calliope (port 8100)
-2. Write sprint contract for load_face feature → Clio plans → Heph builds in aZero
-3. Test `anima "write this up with builder"` → Hermes loads builder face → corpus amendment
-
-**Option B — direct Heph dogfood, skip constellation for now**
-1. Write sprint contract for load_face manually, seed into new Calliope
-2. Invoke HephaestusAgent directly (drive script pattern via aZero) to build load_face
-3. Proves build loop works; full Hermes + faces wiring comes after
+**Step 1 — Option A constellation migration** ✓ `462aba3` (calliope) / `d951f15` (aZero)
+- Migrated: `dk-builder-philosophy-frozen-001`, 6x `agent-prompt-*` (execution_prompt → agent_prompt), 6x `capability-map-*`, 6x `agent-config-*`, `anima-constellation-current`
+- Constellation updated: execution_prompt IDs → agent_prompt IDs; corpus-anima-* → `anima-corpus-manifest-001`
+- aZero fixes: `base.py` full_text read; `client.py` auth header (`X-Anima-Agent-Key`); default URL `/api` prefix
+- **Hermes context load verified**: 17KB cited_context + 45KB agent_prompt
 
 **Step 2 — after load_face is built (both paths):**
 - 045 corpus amendment: amend `substrate.md` §6.12a (add face extension), create superseding `corpus_section` in Calliope, freeze — first real output of dogfood loop
