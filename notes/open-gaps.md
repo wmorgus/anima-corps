@@ -1,7 +1,7 @@
 # System State — 2026-06-22
 
-**Supersedes context from:** `build-tracker.md` (sessions 1–7 log, preserved)
-**Purpose:** clean forward-looking state doc; build-tracker.md is the historical record
+**Session history:** `session-log.md` (sessions 1–7 chronological log, preserved)
+**Purpose:** current open gaps + next queue; updated as gaps close or open
 
 ---
 
