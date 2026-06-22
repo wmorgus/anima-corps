@@ -181,7 +181,14 @@ MongoDB confirmed (not Postgres — `ARCHITECTURE.md` in calliope-anima is a fos
 
 ### Next actions (pinned)
 
-**Prerequisite fork — choose before building:**
+**Step 0 — add `agent_prompt` type to Calliope (Epistle 048)**
+- `agent_prompt` succeeds `execution_prompt` (deprecated, no successor, §15.2 still open)
+- Serves §1.12's first-class prompt-as-artifact register
+- Gives builder/lite/faces a proper type home
+- Re-seed `prompt-builder-001` + `prompt-lite-001` as `agent_prompt` (currently `domain_knowledge`)
+- Unblocks 047's open ("agent_prompt type doesn't exist")
+
+**Step 1 — prerequisite fork, choose before building:**
 
 **Option A — migrate constellation first, then full dogfood**
 1. Port constellation + agent prompts from `calliope_legacy` (port 27017) to new Calliope (port 8100)
@@ -193,8 +200,15 @@ MongoDB confirmed (not Postgres — `ARCHITECTURE.md` in calliope-anima is a fos
 2. Invoke HephaestusAgent directly (drive script pattern via aZero) to build load_face
 3. Proves build loop works; full Hermes + faces wiring comes after
 
-**After load_face is built (both paths):**
+**Step 2 — after load_face is built (both paths):**
 - 045 corpus amendment: amend `substrate.md` §6.12a (add face extension), create superseding `corpus_section` in Calliope, freeze — first real output of dogfood loop
+
+**Deferred — Calliope type expansion sprint (Epistle 048)**
+- Contract registers: API contracts, data schemas, event schemas, permission schemas, SLAs
+- Operational registers: runbooks, deployment manifests, dependency manifests, config, feature flags
+- Verification registers: security audits, compliance certs, performance benchmarks
+- Design criterion: derive downward from §1.12, not upward from pipeline needs
+- After face mechanism is running; doesn't block immediate sequence
 
 ---
 
