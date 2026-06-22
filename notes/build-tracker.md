@@ -225,8 +225,10 @@ MongoDB confirmed (not Postgres — `ARCHITECTURE.md` in calliope-anima is a fos
 - Output correctly in builder register: "Face is not who acts. Face is how Hermes acts for this task."
 - Gap: gpt-5.5 skips the `load_face` tool call for pure text tasks — MUST instruction is advisory; no code-level enforcement. Adding face section to Hermes prompt created §6a.5 startup injection (the thing Epistle 047 says to avoid). Real enforcement requires interception layer before text output on corpus tasks — deferred.
 
-**Step 4 — 045 corpus amendment (next)**
-- Amend `substrate.md` §6.12a (face/intake-depth extension), create superseding `corpus_section` in Calliope, freeze — first real dogfood output
+**Step 4 — 045 corpus amendment** ✓
+- `anima-corpus-substrate-sec6-12d` — frozen, approved in Calliope
+- §6.12d text added to `substrate.md` (face generalization, intake-depth axis, §5.1 Option B force)
+- First dogfood corpus output: Calliope-canonical, git surface updated to match
 
 **Deferred — face enforcement (surfaced by golden path)**
 - Code-level check that load_face was called before corpus text output on named-face tasks
