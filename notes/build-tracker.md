@@ -213,11 +213,16 @@ MongoDB confirmed (not Postgres — `ARCHITECTURE.md` in calliope-anima is a fos
 - Workspace root containment enforced (AC2/AC3)
 - `cmd=` legacy alias in `run_command` (Heph prompt uses old kwarg name)
 
-**Step 2 — load_face implementation (Heph running against sc-azero-load-face-007)**
-- In progress — editor tools now real; Heph re-dispatched
+**Step 2 — load_face built** ✓ `b4b4a53`
+- `load_face.py` written by Hephaestus (739 lines); FaceValidator, CallioPeFaceRepository, structured failure envelopes, audit records, topology no-op hooks
+- `FACE_ARTIFACT_TYPE` fixed → `agent_prompt`; wired into `hermes.py`
+- `prompt-builder-002` + `prompt-lite-002` updated with FaceArtifact fields alongside AgentPromptContent
+- `load_face("builder")`, `load_face("lite")` verified live → `LoadFaceSuccess`
+- 78 tests passing
 
-**Step 3 — after load_face built:**
-- 045 corpus amendment: amend `substrate.md` §6.12a (add face extension), create superseding `corpus_section` in Calliope, freeze — first real output of dogfood loop
+**Step 3 — golden path test + corpus amendment**
+- Fire `anima "write this up with builder"` → Hermes selects builder face → `load_face("builder")` → success
+- Then: 045 corpus amendment — amend `substrate.md` §6.12a (face/intake-depth extension), create superseding `corpus_section` in Calliope, freeze — first real dogfood output
 
 **Deferred — Calliope type expansion sprint (Epistle 048)**
 - Contract registers: API contracts, data schemas, event schemas, permission schemas, SLAs
