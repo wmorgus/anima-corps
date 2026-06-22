@@ -220,9 +220,17 @@ MongoDB confirmed (not Postgres — `ARCHITECTURE.md` in calliope-anima is a fos
 - `load_face("builder")`, `load_face("lite")` verified live → `LoadFaceSuccess`
 - 78 tests passing
 
-**Step 3 — golden path test + corpus amendment**
-- Fire `anima "write this up with builder"` → Hermes selects builder face → `load_face("builder")` → success
-- Then: 045 corpus amendment — amend `substrate.md` §6.12a (face/intake-depth extension), create superseding `corpus_section` in Calliope, freeze — first real dogfood output
+**Step 3 — golden path test** ✓ (partial)
+- `load_face("builder")` + `load_face("lite")` verified live → `LoadFaceSuccess`
+- Output correctly in builder register: "Face is not who acts. Face is how Hermes acts for this task."
+- Gap: gpt-5.5 skips the `load_face` tool call for pure text tasks — MUST instruction is advisory; no code-level enforcement. Adding face section to Hermes prompt created §6a.5 startup injection (the thing Epistle 047 says to avoid). Real enforcement requires interception layer before text output on corpus tasks — deferred.
+
+**Step 4 — 045 corpus amendment (next)**
+- Amend `substrate.md` §6.12a (face/intake-depth extension), create superseding `corpus_section` in Calliope, freeze — first real dogfood output
+
+**Deferred — face enforcement (surfaced by golden path)**
+- Code-level check that load_face was called before corpus text output on named-face tasks
+- Remove face content from Hermes startup prompt → restore §6a.10 pull semantics
 
 **Deferred — Calliope type expansion sprint (Epistle 048)**
 - Contract registers: API contracts, data schemas, event schemas, permission schemas, SLAs
