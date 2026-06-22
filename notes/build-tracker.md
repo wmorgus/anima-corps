@@ -160,6 +160,44 @@ MongoDB confirmed (not Postgres — `ARCHITECTURE.md` in calliope-anima is a fos
 
 ---
 
+## Face mechanism + dogfood (session 7, 2026-06-22)
+
+**Status:** Doctrine staked. Build not started.
+
+### Doctrine ratified (all frozen in Calliope)
+
+- **Epistle 045** (`anima-epistle-045`) — face is configuration, not an agent; intake-depth axis on Hermes; §6.12a extension (amendment-track); builder/lite as faces via §6.1 information-poet harm test
+- **Epistle 046** (`anima-epistle-046`) — builder+lite missed in aZero initial build; last hand-authored epistle; `prompt-builder-001` + `prompt-lite-001` seeded in Calliope as `domain_knowledge`
+- **Epistle 047** (`anima-epistle-047`) — load_face mechanism: face selection by live Hermes reasoning (§6.0/§15.18, not §6.12b); §6a.10 pull from Calliope at task time; §5.4 forbids invisible re-assertion; §6.1 harm test run (builder/lite = faces, not slots)
+
+### Key design decisions
+
+- Face = persona + intake-depth config on Hermes, pulled from Calliope at task time
+- `load_face(face_id)` tool — new, does not exist yet; fetches `domain_knowledge` artifact, returns `full_text`
+- `_ensure_context_loaded` is startup-cached (§6a.5 shape) — face-pull is NEW machinery, not the existing cites path
+- `--face` flag valid for programmatic callers (Slack); primary path is live Hermes reasoning
+- `agent_prompt` type does not exist in Calliope schema — 045 open (prompt-* vs dedicated type) still open
+- builder/lite stay as faces (not constellation entries) — §6.1 returns information-poet harm, same as §11/Ari
+
+### Next actions (pinned)
+
+**Prerequisite fork — choose before building:**
+
+**Option A — migrate constellation first, then full dogfood**
+1. Port constellation + agent prompts from `calliope_legacy` (port 27017) to new Calliope (port 8100)
+2. Write sprint contract for load_face feature → Clio plans → Heph builds in aZero
+3. Test `anima "write this up with builder"` → Hermes loads builder face → corpus amendment
+
+**Option B — direct Heph dogfood, skip constellation for now**
+1. Write sprint contract for load_face manually, seed into new Calliope
+2. Invoke HephaestusAgent directly (drive script pattern via aZero) to build load_face
+3. Proves build loop works; full Hermes + faces wiring comes after
+
+**After load_face is built (both paths):**
+- 045 corpus amendment: amend `substrate.md` §6.12a (add face extension), create superseding `corpus_section` in Calliope, freeze — first real output of dogfood loop
+
+---
+
 ## Bench build
 
 **Status:** Not started. Depends on aZero.
