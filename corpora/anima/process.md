@@ -136,6 +136,18 @@ Current version is in `VERSION`. anima-core declares which version it is faithfu
 
 ---
 
+## Index generation
+
+A `corpus_section` freeze does not close until its index exists. When the freeze procedure under VERSION discipline completes — corpus files updated, Calliope synced, epistle frozen, VERSION bumped, tag written — Mnemosyne runs as the closing step to generate the section's `corpus_index` (logic.md §4.10, substrate.md §6.13b).
+
+**On freeze (step 6 of the ratification procedure):** For each newly-frozen `corpus_section`, Mnemosyne produces a `corpus_index` artifact — `summary` (2–3 sentence thesis), `claims` (one line per claim), `section_id`, `corpus`, and `source_version` set to the version just frozen — with `parent_artifact_id` pointing at the section. Humans do not write indexes; the section is the human-ratified artifact, the index is mechanical relative to the freeze.
+
+**On supersession:** when a `corpus_section` is superseded (§3.10), Mnemosyne regenerates the index in the same transaction — supersedes the old index and creates a new one against the successor section, with a `supersedes` edge from new index to old, mirroring the section's own supersession. The `source_version` of the new index records the successor's version. A lagging `source_version` is a detectable staleness signal, not a silent fault.
+
+The index is regenerated, never edited — same as the section it serves, same as §3.10 itself. The discipline in one line: the index moves when and only when its section moves. Rules out: closing a section freeze without generating its index; human-authored indexes; an index regenerated outside the freeze or supersession event; editing an index in place; a successor section left with an index pinned to the predecessor's `source_version`. [→ logic.md §2.11, logic.md §4.10, substrate.md §6.13b, §3.10, Epistle 050]
+
+---
+
 ## CLAUDE.md stays — as configuration, not corpus
 
 CLAUDE.md keeps what is genuinely harness-configuration: git conventions, directory structure, agent-file locations, permission modes, the operational scaffolding the harness reads to run. The intellectual and process content — the lifecycle, the loops, the versioning convictions — graduates into this doc. CLAUDE.md references process.md rather than duplicating it: a pointer from config to corpus, not a second copy. Config tells the harness how to behave; process.md tells agents how the system changes. The same content cannot be authoritative in two files; the corpus is the authority, config defers to it.

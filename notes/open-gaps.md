@@ -40,10 +40,11 @@
 
 | Gap | Severity | Notes |
 |-----|----------|-------|
-| Semantic search disabled | **Blocking** | `search_artifacts` fails on every agent run — embedder not injected into ArtifactService. Blocks Hermes/Clio from finding artifacts by content. |
+| ~~Semantic search disabled~~ | ~~**Blocking**~~ | ~~CLOSED 2026-06-22~~ — Python cosine fallback (local dev), OpenAI embedder injected via env, 725 artifacts backfilled. |
 | §1.12 type expansion | Medium | Contract, operational, verification registers. Derive from §1.12, not pipeline. Epistle 048 stakes this. |
 | `deployment_record` schemaless | Low | Enum-present, no `_CONTENT_SCHEMAS` entry |
 | `field_provenance_ancestors` stub | Low | Traversal preset returns empty |
+| Graph traversal unused by agents | Low | `traverse()`, `lineage()`, `impact()` exist on CalliopeClient and are exposed as tools — agents never reach for them. `relates_to` and `parent_artifact_id` edges are never walked at runtime; only `supersedes` is followed (auto via `follow_supersession=True`). Gap is behavioral: no agent prompt or retrieval pattern prompts structural traversal. Semantic search is the default; graph is an afterthought. |
 | Manifest upsert ID collision | Low | Successor manifest ID collides on re-run |
 | 2 cross-repo integration tests skipped | Low | Require `hermes` package or external `DECISIONS.md` |
 
@@ -51,9 +52,9 @@
 
 | Gap | Severity | Notes |
 |-----|----------|-------|
-| Face enforcement missing | Medium | gpt-5.5 skips `load_face` call for pure text tasks — MUST instruction advisory, no code-level enforcement. Face section in Hermes startup prompt is §6a.5 startup injection (contradicts Epistle 047). Fix: interception layer + remove face content from startup prompt. |
+| Face enforcement — explicit triggers enforced, default face open | Low | **Partially closed 2026-06-23:** `HermesAgent.run()` now detects face trigger keywords (`builder`, `lite`, `shitcorp`, etc.) and calls `load_face` programmatically before first LLM turn. 24 tests. **Remaining open:** (1) untagged tasks have no default face — model still decides via advisory prompt; (2) §6a.5 advisory instructions still in `agent-prompt-hermes-001` (cleanup deferred — separate corpus authoring task); (3) no "default to builder for all prose/authoring tasks" policy — intentional deferral pending design call. |
 | Agent prompt schema drift | Medium | Hermes/Clio prompts are legacy; `dk-calliope-schema-v2-001` helps but enforcement is prompt-level only |
-| Urania produces no build_verification artifacts | Medium | Governance gate doesn't close after Heph builds |
+| ~~Urania produces no build_verification artifacts~~ | ~~Medium~~ | **CLOSED 2026-06-23** — surgical tools (`search_file`, `read_file_section`) implemented with ANIMA_WORKSPACE_ROOT scope; `build_verification` schema block added to `agent-prompt-urania-001`; evidence anchor changed from `pull_request` to sprint_contract; `cites` required field documented. Loop should now close. Needs end-to-end dogfood test to confirm. |
 | `spawn_swarm` executor never built | Medium | Telescoping not functional — inherited gap |
 | `MnemosyneAgent.__init__` blocking sync I/O | Medium | Needs `begin_session()` async pattern before wired into daemon |
 | `on_pr` / `on_artifact` daemon triggers stubbed | Low | Require Calliope event subscription |
@@ -64,8 +65,8 @@
 
 | Gap | Severity | Notes |
 |-----|----------|-------|
-| Index artifacts — not designed | **Precondition** | Entry-point artifacts per corpus section required before effective chunking+retrieval. Shape TBD: summary+claims list, tag cloud, Q&A pairs? |
-| Chunking + semantic retrieval | Blocked | #1 self-directed task. Blocked on: (a) embedder in Calliope, (b) Index artifact design. Both halves only pay off together. |
+| ~~Index artifacts — not designed~~ | ~~**Precondition**~~ | ~~CLOSED 2026-06-22~~ — Epistle 050 frozen: `corpus_index` type, summary+claims shape, §2.11/§4.10/§6.13b in corpus, process.md step 6 added. |
+| Chunking + semantic retrieval | Blocked | #1 self-directed task. Blocked on: (a) ~~embedder in Calliope~~ ✓, (b) ~~Index artifact design~~ ✓. Next: implement `corpus_index` type in Calliope + Mnemosyne generation step. |
 | Corpus citation §-number location confusion | Medium | §-numbers travel with claims across corpus migrations; causes reader confusion about file-of-residence. Queue for corpus tooling sprint. |
 | §6a.6 still open | Low | git corpus and Calliope disagree on closure. Must close in Calliope first when it closes. |
 
@@ -82,12 +83,15 @@
 
 ## Next queue (priority order)
 
-1. **Semantic search + embedder** — inject embedder into ArtifactService; unblocks Hermes tool surface and is prerequisite for chunking
-2. **Index artifact design** — what shape? epistle track or design session?
-3. **Chunking + semantic retrieval** — chunk corpus per-§, add semantic retrieval to base.py
-4. **Face enforcement** — code-level load_face check; remove face from Hermes startup prompt
-5. **Urania build_verification** — why Urania doesn't emit verification artifacts
-6. **§1.12 type expansion** — contract/operational/verification registers
+1. ~~**Semantic search + embedder**~~ — CLOSED 2026-06-22
+2. ~~**Index artifact design**~~ — CLOSED 2026-06-22 (Epistle 050)
+3. ~~**`corpus_index` type + Mnemosyne generation**~~ — CLOSED 2026-06-23 (Heph via dogfood loop; `corpus_index` in types.py, CorpusIndexContent schema, lifecycle hooks in service.py, corpus_index.py)
+4. ~~**Face enforcement (explicit triggers)**~~ — CLOSED 2026-06-23 (interception layer in HermesAgent.run(); 24 tests; default-face policy and §6a.5 cleanup still open, documented in gaps table)
+5. ~~**Urania build_verification**~~ — CLOSED 2026-06-23 (surgical tools, schema, evidence anchor)
+6. **Dogfood loop end-to-end test** — run a real sprint through Hermes→Clio→Heph→Urania and confirm `build_verification` closes; first full loop closure
+7. **§1.12 type expansion** — contract/operational/verification registers (Epistle 048 stakes this; epistle track)
+8. **corpus_index backfill** — generate corpus_index artifacts for the 50 existing frozen corpus_sections (Mnemosyne step)
+9. **Default face policy** — should untagged prose/authoring tasks default to builder? Design call before implementation
 
 ---
 
