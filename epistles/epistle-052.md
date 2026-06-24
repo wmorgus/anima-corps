@@ -44,7 +44,7 @@ The inversion is the philosophical stake. Granting the agent's self-reported int
 
 **Resonance with Epistle 051 — flag, don't re-stake.**
 
-042's R3 reads whether the rate of "I agree with the agent" is the intentional stance (the agent's stated rationale) being handed credence the physical stance (what actually happened) never checked. P5 names the structure underneath that failure: the stances are not interchangeable, and the inversion in the sufficiency context is not an accident. "I agree with the agent," accumulating without review, *is* the intentional-stance-as-physical-stance substitution P5 forbids — R3 detects the rate, P5 names why the rate matters. R3 is the sensor; P5 is the standing it senses against. [→ §3.15a, §15.10, Epistle 051]
+051's R3 reads whether the rate of "I agree with the agent" is the intentional stance (the agent's stated rationale) being handed credence the physical stance (what actually happened) never checked. P5 names the structure underneath that failure: the stances are not interchangeable, and the inversion in the sufficiency context is not an accident. "I agree with the agent," accumulating without review, *is* the intentional-stance-as-physical-stance substitution P5 forbids — R3 detects the rate, P5 names why the rate matters. R3 is the sensor; P5 is the standing it senses against. [→ §3.15a, §15.10, Epistle 051]
 
 ---
 
