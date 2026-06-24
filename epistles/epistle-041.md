@@ -1,5 +1,6 @@
 ---
-Excavated: 2026-06-16 | Status: vapor
+Excavated: 2026-06-16 | Status: liquid
+Shitcorped: 2026-06-18 — verdict liquid (gravel/epistle-041.md). Two gold claims earned weight: G4 (failure-layer determines adjustment-layer; mis-escalation as belt-thickening is the dominant collapse mode) and G3 (minimal-stories-as-proof as the build loop's missing stopping condition). G2 (commit-not-freeze) dropped — corpus already carries the semantics three times over (§2.2, §3.5, §13.4); no new logic. Debt section dropped — restatement of §8.11/§8.12. G4 amended to name its axis as orthogonal to §8.9, not competing.
 ---
 
 Epistle 041 — The Generative Build Procedure
@@ -23,15 +24,7 @@ Agent receives telos doc. Five moves, in order.
 
 5. *Run them. Route each failure by layer.* (See G4.)
 
-The loop is the run-forward of §13.13: the agent builds the programme so it anticipates rather than absorbs — the architecture is staked to see the problem coming, and the stories are where the anticipation gets tested against the world.
-
----
-
-**G2 — Commit, not freeze.**
-
-"Freeze" imports false permanence. Wrong posture for telos and architecture. The correct posture is git-commit semantics one layer up (rhetoric §2.19, §3.5 — commit-as-ratification, append-only, supersession-via-merge): commit to telos and architecture *with intent*. Default is hold. Amendment requires a deliberate act — supersession with evidence (§3.5), never drift. The frozen tier is operated *from*, not re-litigated (§2.5), but operated-from is not metaphysically permanent; it is a deliberate hold that a deliberate act can move.
-
-Word-choice correction, not new logic. "Freeze" names a state nothing can move; "commit" names a state only an act can move. The architecture already runs on the second (§3.5); the first was the wrong word for it.
+The loop is the run-forward of §13.13: the agent builds the programme so it anticipates rather than absorbs — the architecture is staked to see the problem coming, and the stories are where the anticipation gets tested against the world. Moves 1–3 apply existing frozen claims (§13.11, §9.4, §13.6); the contribution is the integration with G3 and G4 into a single procedure with a stopping condition and an escalation rule.
 
 ---
 
@@ -55,13 +48,9 @@ Every failure routes by which of the four primitives it instantiates (§8.6 — 
 
 This is the §13.13 belt/core logic fused with the §8.6 partition. The protective belt absorbs anomalies; the hard core is protected by convention (§13.13). G4 says *which* anomalies the belt absorbs (craft, epistemic — local) and *which* reach the core (spec, substrate — architecture, telos). Neither §8 nor §13.13 states this join. §8 partitions the failures; §13.13 names belt vs. core; the wiring of the four onto the two is the stake here.
 
+This cut is orthogonal to §8.9's relational-vs-intrinsic routing axis, not competing with it. §8.9 routes by *type of bond* (spec and epistemic are both relational; craft is intrinsic) — that governs which posture or agent handles the work. G4 routes by *whether the aim is threatened* — that governs how far up the stack to escalate. Both can hold simultaneously: a spec failure routes to relational-posture work (§8.9) AND escalates to architecture (G4); an epistemic failure also routes to relational-posture work (§8.9) but stays local on the escalation axis (G4), because a broken because-chain degrades the record, not the aim.
+
 *Dominant collapse mode:* escalating a craft or epistemic failure to architecture. "We built it wrong" (craft) read as "we designed it wrong" (architecture). The belt anomaly mistaken for a core threat. The discipline is the guard against it: a local failure that triggers an architecture revision is the protective belt thickening to defend the core against pressure it was never under (§13.13 degenerative shape). The build that re-designs every time a module couples badly is degenerating, not improving.
-
----
-
-**Debt is not a fifth primitive.**
-
-The corpus is correct (§8.6, §8.11 — named debts are compositions, not peers). Debt is *accumulated [primitive]* — a temporal dimension running across the four, not a fifth alongside them. Route debt by naming which primitive it instantiates (§8.12 — decompose, then route each fraction). A debt does not enter the escalation loop as itself; it enters as the primitive it accumulated.
 
 ---
 
@@ -70,3 +59,5 @@ The corpus is correct (§8.6, §8.11 — named debts are compositions, not peers
 G3's "solid argument" inherits §11.6's open edge: what makes a proof solid resists a measure, and G3 does not close it — it names the object the felt judgment grips, no more.
 
 G4's spec/substrate → architecture leg holds an unresolved residual: a spec or substrate failure *can* reach the telos read, but the rule does not say *when* it stops at architecture and when it goes all the way to re-reading the telos. The boundary between "design was wrong" and "the read of the telos was wrong" is genuinely open — same shape as §13.13's open question of what counts as a registrable anticipation vs. ad hoc absorption. Flag, not resolved.
+
+[→ §8.1, §8.2, §8.4, §8.6, §8.9, §8.11, §8.12, §9.4, §11.6, §13.6, §13.11, §13.13, rhetoric §3.20]

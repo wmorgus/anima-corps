@@ -78,7 +78,7 @@ Four states. The states cite §2.3 as warrant — they are positions on the liqu
 **Transition triggers:**
 - `vapor → liquid` — builder drafts the epistle.
 - `liquid → semi-liquid` — lite and author agree the sorting (end of loop (b) Step 2).
-- `semi-liquid → frozen` — builder commits the gravel record and updates the corpus (loop (b) Step 3).
+- `semi-liquid → frozen` — builder commits the gravel record, updates the corpus files, syncs Calliope (re-ingest corpus sections + freeze epistle artifact), bumps VERSION, and tags (loop (b) Step 3).
 
 ---
 
@@ -126,10 +126,25 @@ Current version is in `VERSION`. anima-core declares which version it is faithfu
 - `major` — foundational supersession: a frozen §-claim is superseded, changing what the corpus rules out (§3.10 Aufhebung) — or the corpus shape itself changes foundationally (new docs, new file structure, claims re-homed across files), since `CORPS_VERSION` pins corpus shape and a structural delta is what downstream must account for. [→ Epistle 032 — the migration event that staked the structural-reshape reading of major.]
 
 **On a ratification or restructuring event:**
-1. Update `VERSION`.
-2. Git tag: `git tag v<version> -m "<epistle NNN ratified: one-line summary>"`.
+1. Update corpus files (`logic.md`, `rhetoric.md`, `substrate.md`, etc.) with gold claims from the epistle.
+2. **Calliope sync — corpus sections:** run `calliope/scripts/ingest_anima_corpora.py` to push updated sections as `corpus_section` artifacts (superseding any prior version of changed sections). Calliope is canonical; the git files are the authoring/rendering surface.
+3. **Calliope sync — epistle artifact:** POST the epistle as an `epistle`-type artifact to Calliope (`POST /api/artifacts/`), then freeze it (`POST /api/artifacts/{id}/freeze`). Use `calliope/scripts/seed_epistles_045_046_and_prompts.py` as the pattern.
+4. Update `VERSION`.
+5. Git tag: `git tag v<version> -m "<epistle NNN ratified: one-line summary>"`.
 
 **anima-core fidelity declaration.** Core maintains a `CORPS_VERSION` file pinning the version it is built against. When corps minor/major bumps, core must explicitly update its pin and account for the delta.
+
+---
+
+## Index generation
+
+A `corpus_section` freeze does not close until its index exists. When the freeze procedure under VERSION discipline completes — corpus files updated, Calliope synced, epistle frozen, VERSION bumped, tag written — Mnemosyne runs as the closing step to generate the section's `corpus_index` (logic.md §4.10, substrate.md §6.13b).
+
+**On freeze (step 6 of the ratification procedure):** For each newly-frozen `corpus_section`, Mnemosyne produces a `corpus_index` artifact — `summary` (2–3 sentence thesis), `claims` (one line per claim), `section_id`, `corpus`, and `source_version` set to the version just frozen — with `parent_artifact_id` pointing at the section. Humans do not write indexes; the section is the human-ratified artifact, the index is mechanical relative to the freeze.
+
+**On supersession:** when a `corpus_section` is superseded (§3.10), Mnemosyne regenerates the index in the same transaction — supersedes the old index and creates a new one against the successor section, with a `supersedes` edge from new index to old, mirroring the section's own supersession. The `source_version` of the new index records the successor's version. A lagging `source_version` is a detectable staleness signal, not a silent fault.
+
+The index is regenerated, never edited — same as the section it serves, same as §3.10 itself. The discipline in one line: the index moves when and only when its section moves. Rules out: closing a section freeze without generating its index; human-authored indexes; an index regenerated outside the freeze or supersession event; editing an index in place; a successor section left with an index pinned to the predecessor's `source_version`. [→ logic.md §2.11, logic.md §4.10, substrate.md §6.13b, §3.10, Epistle 050]
 
 ---
 
