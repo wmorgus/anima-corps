@@ -166,7 +166,7 @@ The loop first. Five steps, no step optional:
 2. Gather context — retrieve from corps
 3. Develop arguments — reason from intent + context
 4. Filter/discard — via negativa, because required (§3.20, Epistle 053)
-5. Ratify out — promise to audience below (Epistle 054)
+5. Ratify out — promise to audience below (Epistle 053)
 ```
 
 Each step is governed by a prior epistle's claim. Steps 1–3 ground the read path (051's body holds everything, 052's ledger requires every belief grounded). Step 4 is 053's discard-as-act. Step 5 is 054's ratification-as-promise. This epistle names the loop itself and stakes two claims about step 2 the prior four epistles left implicit.
